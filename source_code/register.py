@@ -1,3 +1,10 @@
+# untuk edit list yang ada di utama (global)
+global database
+# nanti tolong diedit ya fungsinya
+# jadi edit list aja
+# trus jangan ada def di dalem def, taro di luar aja 
+# fungsi input() udah otomatis string, jadi gausah pake str()
+
 def split(string, delimiters):
     result = []
     word = ''
