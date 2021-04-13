@@ -1,5 +1,5 @@
 def help():
-    return("==========================================HELP=========================================="
+    return("==========================================HELP==========================================",
            "register - untuk melakukan registrasi user baru",
            "login - untuk melakukan login ke dalam sistem",
            "carirariry - untuk melakukan pencarian gadget dengan rarity tertentu",
