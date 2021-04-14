@@ -1,3 +1,4 @@
 # prosedur akhir
-def riwayatkembali(gadget_return_history):
+def riwayatkembali(databases):
 	print("belum")
+	return databases

@@ -42,7 +42,7 @@ def conv_data_string(header,data):
         string_data += ",".join(arr_data_all_string)
         string_data += "\n"
     return string_data
-def register(array_data): # array data nanti bisa diganti jadi user
+def register(array_data): # array data nanti bisa diganti jadi databases, kalo mau akses list user bisa pake databases[user]
     def register_save(new_data):
         f = open("user.csv","w")
         f.write(new_data)

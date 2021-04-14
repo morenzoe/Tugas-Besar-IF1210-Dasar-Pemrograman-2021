@@ -1,3 +1,4 @@
 # prosedur akhir
-def carirarity(gadget):
+def carirarity(databases):
 	print("belum")
+	return databases

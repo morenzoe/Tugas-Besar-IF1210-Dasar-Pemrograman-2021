@@ -1,3 +1,4 @@
 # prosedur akhir
-def pinjam(gadget):
+def pinjam(databases):
 	print("belum")
+	return databases

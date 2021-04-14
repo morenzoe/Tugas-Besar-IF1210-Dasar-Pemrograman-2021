@@ -1,5 +1,4 @@
 # prosedur akhir
-def ubahjumlah(inputs):
-	gadget = inputs[0]
-	consumable =  = inputs[0]
+def ubahjumlah(databases):
 	print("belum")
+	return databases

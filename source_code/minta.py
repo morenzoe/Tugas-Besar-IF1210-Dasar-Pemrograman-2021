@@ -1,3 +1,4 @@
 # prosedur akhir
-def minta(consumable):
+def minta(databases):
 	print("belum")
+	return databases

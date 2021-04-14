@@ -1,5 +1,4 @@
 # prosedur akhir
-def tambahitem(inputs):
-	gadget = inputs[0]
-	consumable =  = inputs[0]
+def tambahitem(databases):
 	print("belum")
+	return databases

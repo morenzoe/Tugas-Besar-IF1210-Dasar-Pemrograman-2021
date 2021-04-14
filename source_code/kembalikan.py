@@ -1,3 +1,4 @@
 # prosedur akhir
-def kembalikan(gadget):
+def kembalikan(databases):
 	print("belum")
+	return databases
