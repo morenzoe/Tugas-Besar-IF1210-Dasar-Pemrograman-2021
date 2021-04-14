@@ -87,9 +87,6 @@ def csv_to_array(path, csv):
 		database.append(array_word_int)
 	return database
 
-def cetak_database(database):
-	print(databases[database])
-
 def baca_csv(path):
 	databases = []
 	# file csv sesuai
