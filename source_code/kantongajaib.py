@@ -71,25 +71,29 @@ dict_program = {
 # pesan selamat datang
 print()
 print("Selamat datang di inventarisasi Doraemonangis")
-print()
 # loop program
 while True:
+	print()
 	command = input(">>> ")
+	print()
 	if command=='exit':
-		save_option = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (Y/N) ")
+		while True:
+			save_option = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (Y/N) ")
+			if save_option in "YyNn":
+				break
+			print()
+			print("Input tidak sesuai. Ulangi!")
+			print()
 		if save_option in "Yy":
-			dict_program['save'][fungsi](databases)
+			dict_program['save'](databases)
 			print("Save berhasil. Sampai jumpa!")
 			break
 		elif save_option in "Nn":
 			print("Sampai jumpa!")
 			break
-		elif save_option not in "YyNn":
-			print("Input tidak sesuai. Ulangi (Y/N) ")
-			pass
 	elif command!='exit':
 		try:
-			databases = dict_program[command][fungsi](databases)
+			databases = dict_program[command](databases)
 		except KeyError:
 			print("Perintah salah! Ketik help dan tekan enter untuk menampilkan petunjuk.")
 		
