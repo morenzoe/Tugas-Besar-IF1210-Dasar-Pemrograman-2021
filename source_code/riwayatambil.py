@@ -1,3 +1,3 @@
 # prosedur akhir
-def riwayatambil():
+def riwayatambil(gadget_borrow_history):
 	print("belum")

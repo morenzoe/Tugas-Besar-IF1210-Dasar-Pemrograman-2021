@@ -1,3 +1,3 @@
 # prosedur akhir
-def kembalikan():
+def kembalikan(gadget):
 	print("belum")

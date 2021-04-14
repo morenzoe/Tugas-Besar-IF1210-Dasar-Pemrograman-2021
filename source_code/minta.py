@@ -1,3 +1,3 @@
 # prosedur akhir
-def minta():
+def minta(consumable):
 	print("belum")

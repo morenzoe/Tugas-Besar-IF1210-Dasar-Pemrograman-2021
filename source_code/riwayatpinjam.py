@@ -1,4 +1,4 @@
 # prosedur akhir
-def riwayatpinjam():
+def riwayatpinjam(consumable_history):
 	print("belum")
 	

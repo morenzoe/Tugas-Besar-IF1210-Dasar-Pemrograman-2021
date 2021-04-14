@@ -1,3 +1,3 @@
 # prosedur akhir
-def pinjam():
+def pinjam(gadget):
 	print("belum")

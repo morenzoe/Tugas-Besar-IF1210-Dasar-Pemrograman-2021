@@ -1,5 +1,5 @@
 # prosedur akhir
-def login():
+def login(user):
         uname = input("Ketik username : ")
         passw = input("Ketik password : ")
 

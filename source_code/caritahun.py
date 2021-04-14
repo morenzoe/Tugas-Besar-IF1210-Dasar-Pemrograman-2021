@@ -1,3 +1,3 @@
 # prosedur akhir
-def carirarity(gadget):
+def caritahun(gadget):
 	print("belum")

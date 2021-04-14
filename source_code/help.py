@@ -1,4 +1,4 @@
-def help():
+def help(argumen=None):
     print("""
 =================================== H E L P ===================================
 register       : untuk melakukan registrasi user baru
