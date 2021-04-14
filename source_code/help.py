@@ -1,6 +1,5 @@
-def help(argumen=None):
-    print("""
-=================================== H E L P ===================================
+def help(databases):
+	print("""=================================== H E L P ===================================
 register       : untuk melakukan registrasi user baru
 login          : untuk melakukan login ke dalam sistem
 carirariry     : untuk melakukan pencarian gadget dengan rarity tertentu
@@ -15,5 +14,5 @@ riwayatpinjam  : untuk melihat riwayat peminjaman gadget
 riwayatkembali : untuk melihat riwayat pengembalian gadget
 riwayatambil   : untuk melihat riwayat pengembalian consumable
 exit           : untuk keluar dari aplikasi
-===============================================================================
-""")
+===============================================================================""")
+	return databases
