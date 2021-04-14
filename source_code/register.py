@@ -1,5 +1,5 @@
 # nanti tolong diedit ya fungsinya
-# jadi edit list aja
+# jadi edit list aja di dalem fungsi ini
 # trus jangan ada def di dalem def, taro di luar aja 
 # fungsi input() udah otomatis string, jadi gausah pake str()
 
@@ -42,7 +42,7 @@ def conv_data_string(header,data):
         string_data += ",".join(arr_data_all_string)
         string_data += "\n"
     return string_data
-def register(array_data):
+def register(array_data): # array data nanti bisa diganti jadi user
     def register_save(new_data):
         f = open("user.csv","w")
         f.write(new_data)
