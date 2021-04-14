@@ -52,22 +52,22 @@ elif csv_path == 'folder tidak ada':
 # baca csv
 databases = baca_csv(csv_path)
 # kamus program
-dict_program = {'login' : [login,databases[user]],	# [nama fungsi,input]
-				'carirarity' : [carirarity,databases[gadget]],
-				'caritahun' : [caritahun,databases[gadget]],
-				'tambahitem' : [tambahitem,[databases[gadget],databases[consumable]]],
-				'hapusitem' : [hapusitem,[databases[gadget],databases[consumable]]],
-				'ubahjumlah' : [ubahjumlah,[databases[gadget],databases[consumable]]],
-				'pinjam' : [pinjam,databases[gadget]],
-				'kembalikan' : [kembalikan,databases[gadget]],
-				'minta' : [minta,databases[consumable]],
-				#'register' : [register,databases[user]]
-				'riwayatpinjam' : [riwayatpinjam,databases[gadget_borrow_history]],
-				'riwayatkembali' : [riwayatkembali,databases[gadget_return_history]],
-				'riwayatambil' : [riwayatambil,databases[consumable_history]],
-				'save' : [save,databases],
-				'help' : [help,None]
-				}
+dict_program = {
+    'login' : login,
+    'carirarity' : carirarity,
+    'caritahun' : caritahun,
+    'tambahitem' : tambahitem,
+    'hapusitem' : hapusitem,
+    'ubahjumlah' : ubahjumlah,
+    'pinjam' : pinjam,
+    'kembalikan' : kembalikan,
+    'minta' : minta,
+    'riwayatpinjam' : riwayatpinjam,
+    'riwayatkembali' : riwayatkembali,
+    'riwayatambil' : riwayatambil,
+    'save' : save,
+    'help' : help,
+    }
 # pesan selamat datang
 print()
 print("Selamat datang di inventarisasi Doraemonangis")
@@ -78,7 +78,7 @@ while True:
 	if command=='exit':
 		save_option = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (Y/N) ")
 		if save_option in "Yy":
-			dict_program['save'][fungsi](dict_program['save'][inputs])
+			dict_program['save'][fungsi](databases)
 			print("Save berhasil. Sampai jumpa!")
 			break
 		elif save_option in "Nn":
@@ -89,7 +89,7 @@ while True:
 			pass
 	elif command!='exit':
 		try:
-			dict_program[command][fungsi](dict_program[command][inputs])
+			databases = dict_program[command][fungsi](databases)
 		except KeyError:
 			print("Perintah salah! Ketik help dan tekan enter untuk menampilkan petunjuk.")
 		
