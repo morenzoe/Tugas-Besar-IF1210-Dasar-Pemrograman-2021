@@ -13,3 +13,7 @@ nama_csv = ["user.csv",
 		"consumable_history.csv",
 		"gadget_borrow_history.csv",
 		"gadget_return_history.csv"]
+
+# kamus fungsi
+fungsi = 0
+inputs = 1
