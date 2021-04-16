@@ -63,7 +63,7 @@ def register(databases):
         password = input("masukkan password mu tanpa ';' : ")
     alamat = input("Masukkan alamat: ")
     while checkdelimit(alamat):
-        print("ara.. so you have chosen death", nama)
+        print("ara.. so you have chosen death", nama + "-san")
         alamat = input("masukkan alamat tanpa tanda ';' untuk menghindari serangan yandere: ")
     id = len(data) +1
     role = "User"
