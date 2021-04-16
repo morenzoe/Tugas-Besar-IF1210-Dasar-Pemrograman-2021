@@ -55,3 +55,4 @@ def register(array_data):
     data.append(new_data)
     print("User", username, "telah berhasil register ke dalam Kantong Ajaib")
     register_save(conv_data_string(head,data))
+	#return databases

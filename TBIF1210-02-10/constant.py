@@ -8,8 +8,8 @@ gadget_return_history = 5
 
 # nama-nama file CSV
 nama_csv = ["user.csv",
-		"gadget.csv",
-		"consumable.csv",
-		"consumable_history.csv",
-		"gadget_borrow_history.csv",
-		"gadget_return_history.csv"]
+			"gadget.csv",
+			"consumable.csv",
+			"consumable_history.csv",
+			"gadget_borrow_history.csv",
+			"gadget_return_history.csv"]

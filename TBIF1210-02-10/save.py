@@ -45,6 +45,7 @@ def save(databases):
 		csv = nama_csv[i]
 		array_to_csv(csv, folder_path, databases[i])
 	print("Data telah disimpan pada folder", folder_save + "!")
+	return databases
 
 '''
 hasil array to csv
