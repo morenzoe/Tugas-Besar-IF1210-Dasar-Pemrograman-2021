@@ -18,6 +18,18 @@ def check_username(username,data):
         return True
     else: #check = 1
         return False
+def checkdelimit(check):
+    # mengecek apakah dalam input user terdapat ; dalam input user
+    
+    # kamus
+    # i : integer { indeks }
+    # check : string { yang ingin dicek }
+    # algoritma
+    for i in range(len(check)):
+        if check[i-1] == ";" :
+            return True
+        else:
+            return False
 
 def register(databases):
     # Fungsi utama dari register
@@ -35,14 +47,24 @@ def register(databases):
     array_data = databases[0]
     head = array_data.pop(0)
     data = array_data
+    print("dilarang menggunakan karakter ; dalam penginputan")
     nama = input("Masukkan nama: ")
+    while checkdelimit(nama):
+        print("umm.. b-baka (///).")
+        nama = input("umm.. ma-masukkan namamu dengan benar : ")
     nama = nama.title()
     username = input("Masukkan username: ")
-    while (check_username(username,data) == False):
-        print("username sudah diambil")
+    while ((check_username(username,data) == False) or (checkdelimit(username))):
+        print("username sudah diambil atau salah")
         username = input("Masukkan username: ")
     password = input("Masukkan password: ")
+    while checkdelimit(password):
+        print("bu-bukannya aku perhatian dengan mu tapi")
+        password = input("masukkan password mu tanpa ';' : ")
     alamat = input("Masukkan alamat: ")
+    while checkdelimit(alamat):
+        print("ara.. so you have chosen death", nama)
+        alamat = input("masukkan alamat tanpa tanda ';' untuk menghindari serangan yandere: ")
     id = len(data) +1
     role = "User"
     new_data = [id,username,nama,alamat,password,role]
