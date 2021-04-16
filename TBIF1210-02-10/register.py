@@ -3,12 +3,6 @@
 # meregister akun user ke dalam sistem
 
 # Kamus
-def register_save(new_data):
-    # menyimpan hasil ke file user.csv
-    f = open("user.csv","w")
-    f.write(new_data)
-    f.close()
-
 def check_username(username,data):
     # mengecek apakah username input sudah ada atau belum pada data
     # kamus
@@ -25,7 +19,7 @@ def check_username(username,data):
     else: #check = 1
         return False
 
-def register(array_data):
+def register(databases):
     # Fungsi utama dari register
 
     # Kamus lokal
@@ -38,9 +32,9 @@ def register(array_data):
     # data : array of array of string and integer { data pada file data }
 
     # algoritma
-
-    head = array_data[0]
-    data = array_data.pop(0)
+    array_data = databases[0]
+    head = array_data.pop(0)
+    data = array_data
     nama = input("Masukkan nama: ")
     nama = nama.title()
     username = input("Masukkan username: ")
@@ -53,6 +47,7 @@ def register(array_data):
     role = "User"
     new_data = [id,username,nama,alamat,password,role]
     data.append(new_data)
+    array_data = [head] + data
+    databases[0] = array_data
     print("User", username, "telah berhasil register ke dalam Kantong Ajaib")
-    register_save(conv_data_string(head,data))
-	#return databases
+    return databases

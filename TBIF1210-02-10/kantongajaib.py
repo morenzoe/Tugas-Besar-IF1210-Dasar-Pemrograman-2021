@@ -24,7 +24,7 @@ from load import baca_csv
 from login import login
 from minta import minta
 from pinjam import pinjam
-#from register import register # register belum mengubah list
+from register import register # register belum mengubah list
 from riwayatpinjam import riwayatpinjam
 from riwayatkembali import riwayatkembali
 from riwayatambil import riwayatambil
@@ -53,6 +53,7 @@ elif csv_path == 'folder tidak ada':
 databases = baca_csv(csv_path)
 # kamus program
 dict_program = {
+	'register' : register,
     'login' : login,
     'carirarity' : carirarity,
     'caritahun' : caritahun,
