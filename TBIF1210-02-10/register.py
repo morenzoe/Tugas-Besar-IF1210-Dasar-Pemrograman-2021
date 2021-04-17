@@ -26,13 +26,10 @@ def checkdelimit(check):
     # check : string { yang ingin dicek }
     # algoritma
 	
-	# pake in aja
-	
-	for i in range(len(check)):
-		if check[i-1] == ";":
-			return True
-		else:
-			return False
+	if ";" in check:
+        return True
+    else:
+        return False
 	
 
 
