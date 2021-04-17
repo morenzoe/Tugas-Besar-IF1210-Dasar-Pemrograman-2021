@@ -38,6 +38,7 @@ def tambahitem(databases):
                         new_gadget = [ID,nama,deskripsi,jumlah,rarity,tahun]
                         datag.append(new_gadget)
                         databases[gadget]=datag
+                        print("Item telah berhasil ditambahkan ke database.")
                         
         elif ID[0]=="C" :
                 if cekid(ID,datac)==False :
@@ -53,8 +54,9 @@ def tambahitem(databases):
                         new_consumable = [ID,nama,deskripsi,jumlah,rarity]
                         datac.append(new_consumable)
                         databases[consumable]=datac
+                        print("Item telah berhasil ditambahkan ke database.")
         else:
                 print("Gagal menambahkan item karena ID tidak valid.")
 
-        print("Item telah berhasil ditambahkan ke database.")
+
         return databases
