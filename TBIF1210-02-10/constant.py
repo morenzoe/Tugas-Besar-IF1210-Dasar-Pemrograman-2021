@@ -5,6 +5,7 @@ consumable = 2
 consumable_history = 3
 gadget_borrow_history = 4
 gadget_return_history = 5
+active_account = 6
 
 # nama-nama file CSV
 nama_csv = ["user.csv",
