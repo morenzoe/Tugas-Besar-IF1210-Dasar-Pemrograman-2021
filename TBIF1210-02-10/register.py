@@ -25,10 +25,16 @@ def checkdelimit(check):
     # i : integer { indeks }
     # check : string { yang ingin dicek }
     # algoritma
-	if ";" in check:
-		return True
-	else:
-		return False
+	
+	# pake in aja
+	
+	for i in range(len(check)):
+		if check[i-1] == ";":
+			return True
+		else:
+			return False
+	
+
 
 def register(databases):
     # Fungsi utama dari register
@@ -43,7 +49,12 @@ def register(databases):
     # data : array of array of string and integer { data pada file data }
 
     # algoritma
-    array_data = databases[0]
+	
+	# cek dulu role akun aktif
+	# di atas ketik from constant import user, active_account 
+	#role = databases[active_account][5]
+	
+    array_data = databases[0] # databases[user]
     head = array_data.pop(0)
     data = array_data
     print("dilarang menggunakan karakter ; dalam penginputan")
