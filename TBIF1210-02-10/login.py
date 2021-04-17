@@ -7,17 +7,18 @@ def login(databases):
 
         file = databases[user]
 
+        find = False
+        found = False
+
         for row in file:
-                if row[1] == username:
-                        if row[4] == password:
-                                print("Login berhasil!")
-                                databases.append(row)
-                                return True
-                        else:
-                                print("Login gagal! Password salah.")
-                                return False
+                if row[1] == username and row[4] == password:
+                        find = True
                 else:
-                        print("Login gagal! Username salah.")
-                        return False
+                        find = False
+        if find == True :
+                print("Login berhasil!")
+        else:
+                print("Login gagal! Username atau password salah.")
+                        
 
         return databases
