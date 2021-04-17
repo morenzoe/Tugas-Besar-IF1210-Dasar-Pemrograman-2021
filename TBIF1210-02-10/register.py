@@ -25,11 +25,10 @@ def checkdelimit(check):
     # i : integer { indeks }
     # check : string { yang ingin dicek }
     # algoritma
-    for i in range(len(check)):
-        if check[i-1] == ";" :
-            return True
-        else:
-            return False
+	if ";" in check:
+		return True
+	else:
+		return False
 
 def register(databases):
     # Fungsi utama dari register
