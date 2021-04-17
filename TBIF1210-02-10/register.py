@@ -25,11 +25,10 @@ def checkdelimit(check):
     # i : integer { indeks }
     # check : string { yang ingin dicek }
     # algoritma
-	
 	if ";" in check:
-        return True
-    else:
-        return False
+		return True
+	else:
+		return False
 	
 
 

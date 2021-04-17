@@ -19,9 +19,13 @@ def carirarity(database):
     # database : array of array of string and integer { array yang berisi data - data dengan header }
 
     # algoritma
-    array_data = database.pop(0)
+    array_data = database[1]
     rarity = input("Masukkan rarity: ")
     print("\n" + "Hasil pencarian: " + "\n")
-    for data in array_data:
-        if (array_data[data][4] == rarity):
-            printdata(array_data[data])
+    if len(array_data) == 1:
+        print("Tidak ada data pada gadget.csv, maafkan admin hu-hu~")
+    else:
+        for data in range(len(array_data)):
+            if (array_data[data-1][4] == rarity):
+                printdata(array_data[data-1])
+    return database
