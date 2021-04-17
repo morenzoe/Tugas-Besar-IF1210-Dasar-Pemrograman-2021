@@ -8,7 +8,6 @@ def login(databases):
         file = databases[user]
 
         find = False
-        found = False
 
         for row in file:
                 if row[1] == username and row[4] == password:
