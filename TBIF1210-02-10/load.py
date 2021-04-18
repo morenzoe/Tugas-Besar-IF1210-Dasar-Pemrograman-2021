@@ -3,7 +3,7 @@ import os
 import sys
 
 # import program lokal
-from constant import nama_csv
+from constant import nama_csv, dikonversi
 
 # PROCEDURE DAN FUNCTION
 def semicolon_split(row):
@@ -48,7 +48,7 @@ def row_to_array_word(row):
 	array_word = [word.strip() for word in raw_array_word]  # membersihkan spasi awal dan akhir
 	return array_word
 
-def to_int(array_word):
+def to_int(array_word, konversi):
 # menghasilkan word dalam type int jika word adalah angka
 
 # KAMUS LOKAL
@@ -57,13 +57,11 @@ def to_int(array_word):
 
 # ALGORITMA
 	for i in range(len(array_word)):
-		try:
+		if konversi[i]:
 			array_word[i] = int(array_word[i])
-		except ValueError:
-			pass
 	return array_word
 
-def csv_to_array(path, csv):
+def csv_to_array(path, csv, konversi):
 # menghasilkan array berisi seluruh data pada csv
 
 # KAMUS LOKAL
@@ -81,16 +79,17 @@ def csv_to_array(path, csv):
 	rows = [raw_row.replace("\n","") for raw_row in raw_rows]
 
 	database = []
-	for row in rows:
-		array_word = row_to_array_word(row)
-		array_word_int = to_int(array_word)
-		database.append(array_word_int)
+	for i in range(len(rows)):
+		array_word = row_to_array_word(rows[i])
+		if i!=0:
+			array_word = to_int(array_word, konversi)
+		database.append(array_word)
 	return database
 
 def baca_csv(path):
 	databases = []
 	# file csv sesuai
 	print("Loading...")
-	for csv in nama_csv:
-		databases.append(csv_to_array(path,csv))
+	for i in range(len(nama_csv)):
+		databases.append(csv_to_array(path,nama_csv[i],dikonversi[i]))
 	return databases
