@@ -49,33 +49,37 @@ def register(databases):
 	# cek dulu role akun aktif
 	# di atas ketik from constant import user, active_account 
 	#role = databases[active_account][5]
-	
-    array_data = databases[0] # databases[user]
-    head = array_data.pop(0)
-    data = array_data
-    print("dilarang menggunakan karakter ; dalam penginputan")
-    nama = input("Masukkan nama: ")
-    while checkdelimit(nama):
-        print("umm.. b-baka (///).")
-        nama = input("umm.. ma-masukkan namamu dengan benar : ")
-    nama = nama.title()
-    username = input("Masukkan username: ")
-    while ((check_username(username,data) == False) or (checkdelimit(username))):
-        print("username sudah diambil atau salah")
+    role = databases[6][5]
+    if role == "Admin":
+        array_data = databases[0] # databases[user]
+        head = array_data.pop(0)
+        data = array_data
+        print("dilarang menggunakan karakter ; dalam penginputan")
+        nama = input("Masukkan nama: ")
+        while checkdelimit(nama):
+            print("umm.. b-baka (///).")
+            nama = input("umm.. ma-masukkan namamu dengan benar : ")
+        nama = nama.title()
         username = input("Masukkan username: ")
-    password = input("Masukkan password: ")
-    while checkdelimit(password):
-        print("bu-bukannya aku perhatian dengan mu tapi")
-        password = input("masukkan password mu tanpa ';' : ")
-    alamat = input("Masukkan alamat: ")
-    while checkdelimit(alamat):
-        print("ara.. so you have chosen death", nama + "-san")
-        alamat = input("masukkan alamat tanpa tanda ';' untuk menghindari serangan yandere: ")
-    id = len(data) +1
-    role = "User"
-    new_data = [id,username,nama,alamat,password,role]
-    data.append(new_data)
-    array_data = [head] + data
-    databases[0] = array_data
-    print("User", username, "telah berhasil register ke dalam Kantong Ajaib")
-    return databases
+        while ((check_username(username,data) == False) or (checkdelimit(username))):
+            print("username sudah diambil atau salah")
+            username = input("Masukkan username: ")
+        password = input("Masukkan password: ")
+        while checkdelimit(password):
+            print("bu-bukannya aku perhatian dengan mu tapi")
+            password = input("masukkan password mu tanpa ';' : ")
+        alamat = input("Masukkan alamat: ")
+        while checkdelimit(alamat):
+            print("ara.. so you have chosen death", nama + "-san")
+            alamat = input("masukkan alamat tanpa tanda ';' untuk menghindari serangan yandere: ")
+        id = len(data) +1
+        role = "User"
+        new_data = [id,username,nama,alamat,password,role]
+        data.append(new_data)
+        array_data = [head] + data
+        databases[0] = array_data
+        print("User", username, "telah berhasil register ke dalam Kantong Ajaib")
+        return databases
+    else:
+        print("maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini")
+        return databases
