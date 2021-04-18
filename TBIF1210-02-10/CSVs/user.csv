@@ -1,5 +1,5 @@
 id;username;nama;alamat;password;role
 1;morenzoe;Eraraya Morenzo Muten;Depok;kucing123;Admin
-2;nisa,Khafifanisa;Bukittinggi;123sti;User
-3;raihan;M. Raihan Aulia;Indonesia,kucing456,User
+2;nisa;Khafifanisa;Bukittinggi;123sti;User
+3;raihan;M. Raihan Aulia;Indonesia;kucing456,User
 4;abik;Atabik Azfa;Rumah;inipass;User
