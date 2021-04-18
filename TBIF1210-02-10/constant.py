@@ -14,3 +14,11 @@ nama_csv = ["user.csv",
 			"consumable_history.csv",
 			"gadget_borrow_history.csv",
 			"gadget_return_history.csv"]
+			
+# data yang akan di convert
+dikonversi = [[False,False,False,False,False,False],
+			  [False,False,False,True,False,True],
+			  [False,False,False,True,False],
+			  [False,False,False,False,True],
+			  [False,False,False,False,True],
+			  [False,False,False,False]]
