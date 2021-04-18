@@ -22,7 +22,7 @@ def nama_user_id(database,id):
 def nama_gadget_id(database,id):
     for data in range(1,len(database)):
         if id == database[data][0]:
-            return database[1]
+            return database[data][1]
 def printdata(nama_user,nama_gadget,database):
     print("ID Peminjaman:", database[0])
     print("Nama Pengambil:", nama_user)
