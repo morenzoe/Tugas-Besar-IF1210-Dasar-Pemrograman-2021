@@ -18,12 +18,15 @@ def sortMaxMinTanggal(array):
             array[imax],array[Pass]=array[Pass],array[imax]
     return array
 def nama_user_id(database,id):
+    # menghasilkan nama dari user dari id tersebut
     return database[id][2]
 def nama_gadget_id(database,id):
+    # menghasilkan nama gadget dari id tersebut
     for data in range(1,len(database)):
         if id == database[data][0]:
             return database[data][1]
 def printdata(nama_user,nama_gadget,database):
+    # mengoutput data yang bersangkutan
     print("ID Peminjaman:", database[0])
     print("Nama Pengambil:", nama_user)
     print("Nama Gadget:", nama_gadget)
@@ -31,6 +34,7 @@ def printdata(nama_user,nama_gadget,database):
     print("Jumlah:", database[4])
 
 def riwayatpinjam(databases):
+    # menampilkan data pada "gadget_borrow_history.csv" secara berurutan berdasarkan tanggal
     if databases[6][5] == "User" :
         print("maafkan saya", databases[6][2] + "-san", "saya tidak dapat mengizinkan anda menggunakan command ini")
         return databases
@@ -66,5 +70,3 @@ def riwayatpinjam(databases):
                     print()
                 repeat = "N"
     return databases
-
-# database : [['2', 1, 'G2', '20/04/2021', 1], ['1', 1, 'G1', '10/04/2021', 3]]
