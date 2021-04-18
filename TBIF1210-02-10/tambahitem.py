@@ -42,17 +42,17 @@ def tambahitem(databases):
                                 print("Deskripsi tidak valid")
                                 deskripsi = input("Masukan Deksripsi : ")
                         jumlah = int(input("Masukan Jumlah : "))
-                        while cekdelimit(jumlah):
-                                print("Jumlah tidak valid")
-                                jumlah = input("Masukan Jumlah : ")
+                        # while cekdelimit(jumlah):
+                                # print("Jumlah tidak valid")
+                                # jumlah = input("Masukan Jumlah : ")
                         rarity = input("Masukan Rarity : ")
                         while rarity not in "CBAS":
                                 print("Input rarity tidak valid")
                                 rarity = input("Masukan Rarity: ")
                         tahun = int(input("Masukan tahun ditemukan : "))
-                        while cekdelimit(tahun):
-                                print("Tahun tidak valid")
-                                tahun = input("Masukan Tahun : ")
+                        # while cekdelimit(tahun):
+                                # print("Tahun tidak valid")
+                                # tahun = input("Masukan Tahun : ")
                         new_gadget = [ID,nama,deskripsi,jumlah,rarity,tahun]
                         datag.append(new_gadget)
                         databases[gadget]=datag
