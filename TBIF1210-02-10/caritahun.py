@@ -21,27 +21,28 @@ def caritahun(database):
     
     # algoritma
 
-    array_data = database.pop(0)
+    array_data = database[1]
     tahun = int(input("Masukkan tahun: "))
-    kategori = input("Masukkan kategori: ") # input user berupa ">" , "<" , "=" , "<=" , ">="
+    kategori =  (input("Masukkan kategori: ")) # input user berupa ">" , "<" , "=" , "<=" , ">="
     print("\n" + "Hasil pencarian: " + "\n")
     if (kategori == ">"):
-        for data in array_data:
-            if ((array_data[data][5]) > tahun) :
+        for data in range(1,len(array_data)):
+            if (int(array_data[data][5]) > tahun) :
                 printdata(array_data[data])
     elif (kategori == "="):
-        for data in array_data:
-            if ((array_data[data][5]) == tahun) :
+        for data in range(1,len(array_data)):
+            if (int(array_data[data][5]) == tahun) :
                 printdata(array_data[data])
     elif (kategori == "<"):
-        for data in array_data:
-            if ((array_data[data][5]) < tahun) :
+        for data in range(1,len(array_data)):
+            if (int(array_data[data][5]) < tahun) :
                 printdata(array_data[data])
     elif (kategori == ">="):
-        for data in array_data:
-            if ((array_data[data][5]) >= tahun) :
+        for data in range(1,len(array_data)):
+            if (int(array_data[data][5]) >= tahun) :
                 printdata(array_data[data])
     elif (kategori == "<="):
-        for data in array_data:
-            if ((array_data[data][5]) <= tahun) :
+        for data in range(1,len(array_data)):
+            if (int(array_data[data][5]) <= tahun) :
                 printdata(array_data[data])
+    return database
