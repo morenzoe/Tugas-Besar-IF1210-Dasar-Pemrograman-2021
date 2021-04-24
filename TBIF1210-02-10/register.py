@@ -55,6 +55,7 @@ def register(databases):
     # algoritma
     isLoggedIn = cek_active_account(databases)
     if isLoggedIn:
+        role = databases[active_account][5]
         if role == "Admin":
             array_data = databases[user]
             head = array_data.pop(0)
