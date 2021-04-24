@@ -20,11 +20,11 @@ from cek_csv import cek_csv
 from hapusitem import hapusitem
 from help import help
 from kembalikan import kembalikan
-from load import baca_csv
+from load import load
 from login import login
 from minta import minta
 from pinjam import pinjam
-from register import register # register belum mengubah list
+from register import register
 from riwayatpinjam import riwayatpinjam
 from riwayatkembali import riwayatkembali
 from riwayatambil import riwayatambil
@@ -50,7 +50,7 @@ File CSV yang diperlukan:
 elif csv_path == 'folder tidak ada':
 	sys.exit("Folder tidak ada!")
 # baca csv
-databases = baca_csv(csv_path)
+databases = load(csv_path)
 # kamus program
 dict_program = {
 	'register' : register,
@@ -74,6 +74,26 @@ print()
 print("Selamat datang di inventarisasi Doraemonangis")
 # loop program
 while True:
+
+	# debugging
+	print()
+	print("Mode debugging:")
+	printSemua = input("Print databases sebagai list? (Y/N) ")
+	if printSemua in "Yy":
+		print(databases)
+		print()
+	printSebagian = input("Print databases per baris? (Y/N) ")
+	if printSebagian in "Yy":
+		for i in range(len(nama_csv)):
+			print(nama_csv[i])
+			for row in databases[i]:
+				print(row)
+			print()
+		print("active_account")
+		for row in databases[active_account]:
+			print(row)
+	# debugging
+
 	print()
 	command = input(">>> ")
 	print()
