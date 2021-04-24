@@ -20,6 +20,7 @@ def login(databases):
                                 find_p = False
 		else:
 			find_u = False
+			break
 			
 	if find_u == True and find_p == True :
 		databases.append(row)
