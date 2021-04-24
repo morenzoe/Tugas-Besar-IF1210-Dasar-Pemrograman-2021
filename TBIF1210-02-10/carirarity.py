@@ -8,6 +8,7 @@ def printdata(data):
     print("Jumlah: ", data[3], "buah")
     print("Rarity: ", data[4])
     print("Tahun Ditemukan: ", data[5])
+    print()
 
 def carirarity(database):
     # meng-output data berdasarkan rarity yang dipilih
@@ -21,6 +22,7 @@ def carirarity(database):
     # algoritma
     array_data = database[1]
     rarity = input("Masukkan rarity: ")
+    rarity = rarity.title()
     print("\n" + "Hasil pencarian: " + "\n")
     if len(array_data) == 1:
         print("Tidak ada data pada gadget.csv, maafkan admin hu-hu~")
@@ -28,4 +30,5 @@ def carirarity(database):
         for data in range(len(array_data)):
             if (array_data[data-1][4] == rarity):
                 printdata(array_data[data-1])
+
     return database

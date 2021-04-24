@@ -42,7 +42,7 @@ def tambahitem(databases):
                         while cekdelimit(deskripsi):
                                 print("Deskripsi tidak valid")
                                 deskripsi = input("Masukan Deksripsi : ")
-                                
+                                  
                         jumlah = input("Masukan Jumlah : ")
                         while cekdelimit(jumlah):
                                 print("Jumlah tidak valid")

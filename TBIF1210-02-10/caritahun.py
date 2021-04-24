@@ -8,6 +8,7 @@ def printdata(data):
     print("Jumlah: ", data[3], "buah")
     print("Rarity: ", data[4])
     print("Tahun Ditemukan: ", data[5])
+    print()
 
 def caritahun(database):
     # meng-output data gadget berdasarkan tahun ditemukannya

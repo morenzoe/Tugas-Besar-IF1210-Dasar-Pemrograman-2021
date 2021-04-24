@@ -61,7 +61,4 @@ def ubahjumlah(databases):
                 print("Gagal mengubah jumlah karena ID tidak valid.")
                         
 
-
-
-
         return databases
