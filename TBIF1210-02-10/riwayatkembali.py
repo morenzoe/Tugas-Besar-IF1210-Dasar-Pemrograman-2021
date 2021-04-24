@@ -1,7 +1,8 @@
 import datetime
 
-from constant import user,gadget,gadget_return_history,active_account
-from riwayatpinjam import nama_gadget_id,sortMaxMinTanggal
+from constant import gadget_return_history,active_account
+from riwayatpinjam import sortMaxMinTanggal
+from login import cek_active_account
 
 def print_baris(row):
 	print("ID Pengambilan:",row[0])
@@ -18,54 +19,63 @@ def buat_list_tampilan(history, user, gadget):
 	return history_copy
 
 def riwayatkembali(databases):
-	db_history = list(databases[gadget_return_history][1:])
-	db_user = list(databases[user])
-	db_gadget = list(databases[gadget])
-	
-	# cek db_history
-	# for row in db_history:
-		# print(row)
-	
-	sorted_db_history = sortMaxMinTanggal(db_history)
-	
-	# cek sorted
-	# print()
-	# print("hasil sorted")
-	# for row in sorted_db_history:
-		# print(row)
-	
-	list_tampilan = buat_list_tampilan(sorted_db_history,db_user,db_gadget)
-	
-	# cek list_tampilan 
-	# print()
-	# print("hasil ganti isi")
-	# for row in list_tampilan:
-		# print(row)
-	
-	username = databases[active_account][1]
-
-	for i in range(len(list_tampilan)):
-		print_baris(list_tampilan[i])
-
-		if i!=len(list_tampilan)-1:
-			print()
+	isLoggedIn = cek_active_account(databases)
+	if isLoggedIn:
+		role = databases[active_account][5]
+		if role == "Admin":
+			db_history = databases[gadget_return_history][1:]
 			
-		if (i+1)%5==0 and i!=len(list_tampilan)-1:
-			while True:
-				lanjut = input("Apakah "+username+" mau melihat riwayat berikutnya? (Y/N) ")
-				print()
-				if lanjut in "YyNn" and len(lanjut)==1:
-					break
-				elif lanjut not in "YyNn" or len(lanjut)!=1:
-					print("Input tidak sesuai. Ulangi!")
+			# cek db_history
+			# for row in db_history:
+				# print(row)
+			
+			sorted_db_history = sortMaxMinTanggal(db_history)
+			
+			# cek sorted
+			# print()
+			# print("hasil sorted")
+			# for row in sorted_db_history:
+				# print(row)
+			
+			list_tampilan = buat_list_tampilan(sorted_db_history,db_user,db_gadget)
+			
+			# cek list_tampilan 
+			# print()
+			# print("hasil ganti isi")
+			# for row in list_tampilan:
+				# print(row)
+			
+			username = databases[active_account][1]
+
+			for i in range(len(list_tampilan)):
+				print_baris(list_tampilan[i])
+
+				if i!=len(list_tampilan)-1:
 					print()
-				
-			if lanjut in "Nn":
-				break	
-			
+					
+				if (i+1)%5==0 and i!=len(list_tampilan)-1:
+					while True:
+						lanjut = input("Apakah "+username+" mau melihat riwayat berikutnya? (Y/N) ")
+						print()
+						if lanjut in "YyNn" and len(lanjut)==1:
+							break
+						elif lanjut not in "YyNn" or len(lanjut)!=1:
+							print("Input tidak sesuai. Ulangi!")
+							print()
+						
+					if lanjut in "Nn":
+						break	
+					
 
-	return databases
-
+			return databases
+		else:
+			username = databases[active_account][1]
+			print("Role "+username+" bukan Admin, silahkan login akun Admin.")
+			return databases
+	else:
+		print("Silahkan login terlebih dahulu.")
+		return databases
+		
 # databases = [
 			 # [
 			  # ['id', 'username', 'nama', 'alamat', 'password', 'role'], 
