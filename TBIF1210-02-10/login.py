@@ -1,5 +1,12 @@
-from constant import user
+from constant import user,active_account
 
+def cek_active_account(databases):
+	jumlah_data = len(databases[active_account])
+	if jumlah_data != 0:
+		return True
+	else:
+		return False
+		
 # prosedur akhir
 def login(databases):
 	username = input("Ketik username : ")

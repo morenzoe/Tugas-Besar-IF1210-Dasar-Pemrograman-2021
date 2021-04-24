@@ -86,10 +86,12 @@ def csv_to_array(path, csv, konversi):
 		database.append(array_word)
 	return database
 
-def baca_csv(path):
+def load(path):
 	databases = []
 	# file csv sesuai
 	print("Loading...")
 	for i in range(len(nama_csv)):
 		databases.append(csv_to_array(path,nama_csv[i],dikonversi[i]))
+	active_account = []
+	databases.append(active_account)
 	return databases
