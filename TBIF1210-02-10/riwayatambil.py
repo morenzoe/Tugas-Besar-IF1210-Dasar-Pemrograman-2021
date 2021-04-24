@@ -1,23 +1,7 @@
 # prosedur akhir
 import datetime
+from riwayatpinjam import sortMaxMinTanggal
 
-
-def sortMaxMinTanggal(array):
-    # mengurutkan array dari tanggal terbesar menuju tanggal terkecil
-
-    # kamus
-
-    pjg = len(array)
-    if pjg > 1 :
-        for Pass in range(pjg-1):
-            imax = Pass
-            for i in range (Pass, pjg):
-                x = datetime.datetime.strptime(array[imax][3], "%d/%m/%Y")
-                y = datetime.datetime.strptime(array[i][3], "%d/%m/%Y")
-                if (x < y):
-                    imax = i
-            array[imax],array[Pass]=array[Pass],array[imax]
-    return array
 def nama_user_id(database,id):
     # menghasilkan nama dari user dari id tersebut
     return database[id][2]
@@ -41,7 +25,7 @@ def riwayatambil(databases):
     else:
         print("selamat datang", databases[6][2] + "-san", "berikut adalah data riwayat peminjaman consumeable")
         print()
-        sorted_history = sortMaxMinTanggal(databases[3][1:])
+        sorted_history = sortMaxMinTanggal(databases[3][1:],3)
         db_consumeable = databases[2]
         db_user = databases[0]
         username = databases[6][1]

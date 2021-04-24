@@ -1,7 +1,7 @@
 import datetime
 
 
-def sortMaxMinTanggal(array):
+def sortMaxMinTanggal(array,idx_tanggal):
     # mengurutkan array dari tanggal terbesar menuju tanggal terkecil
 
     # kamus
@@ -11,8 +11,8 @@ def sortMaxMinTanggal(array):
         for Pass in range(pjg-1):
             imax = Pass
             for i in range (Pass, pjg):
-                x = datetime.datetime.strptime(array[imax][3], "%d/%m/%Y")
-                y = datetime.datetime.strptime(array[i][3], "%d/%m/%Y")
+                x = datetime.datetime.strptime(array[imax][idx_tanggal], "%d/%m/%Y")
+                y = datetime.datetime.strptime(array[i][idx_tanggal], "%d/%m/%Y")
                 if (x < y):
                     imax = i
             array[imax],array[Pass]=array[Pass],array[imax]
@@ -41,7 +41,7 @@ def riwayatpinjam(databases):
     else:
         print("selamat datang", databases[6][2] + "-san", "berikut adalah data riwayat peminjaman gadget")
         print()
-        sorted_history = sortMaxMinTanggal(databases[4][1:])
+        sorted_history = sortMaxMinTanggal(databases[4][1:],3)
         db_gadget = databases[1]
         db_user = databases[0]
         username = databases[6][1]
