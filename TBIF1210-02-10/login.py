@@ -1,4 +1,3 @@
-from constant import user
 from constant import user,active_account
 
 def cek_active_account(databases):
@@ -20,21 +19,22 @@ def login(databases):
 
 	for row in file:
 		if row[1] == username :
-                        find_u = True
-                        if row[4] == password:
-                                find_p = True
-                                break
-                        else :
-                                find_p = False
+			find_u = True
+			if row[4] == password:
+					find_p = True
+					break
+			else :
+					find_p = False
+					break
 		else:
 			find_u = False
-			break
+			
 			
 	if find_u == True and find_p == True :
-		databases.append(row)
+		databases[active_account] = row
 		print("Login berhasil!")
 	elif find_u == False :
-                print("Login gagal! Username kamu tidak ditemukan.")
+		print("Login gagal! Username kamu tidak ditemukan.")
                 
 	else :
 		print("Login gagal! Password kamu salah.") 
