@@ -37,22 +37,37 @@ def tambahitem(databases):
                         while cekdelimit(nama):
                                 print("Nama tidak valid")
                                 nama = input("Masukan Nama : ")
+                                
                         deskripsi = input("Masukan Deskripsi : ")
                         while cekdelimit(deskripsi):
                                 print("Deskripsi tidak valid")
                                 deskripsi = input("Masukan Deksripsi : ")
-                        jumlah = int(input("Masukan Jumlah : "))
+                                
+                        jumlah = input("Masukan Jumlah : ")
                         while cekdelimit(jumlah):
                                 print("Jumlah tidak valid")
                                 jumlah = input("Masukan Jumlah : ")
+                        try :
+                                jumlah = int(jumlah)      
+                        except :
+                                print("Jumlah tidak valid, masukkan jumlah yang benar!")
+                                jumlah = input("Masukan Jumlah : ")
+                                
                         rarity = input("Masukan Rarity : ")
-                        while rarity not in "CBAS":
+                        while rarity not in "CBAS" and len(rarity) != 1 :
                                 print("Input rarity tidak valid")
                                 rarity = input("Masukan Rarity: ")
-                        tahun = int(input("Masukan tahun ditemukan : "))
+                        tahun = input("Masukan tahun ditemukan : ")
+                        
                         while cekdelimit(tahun):
                                 print("Tahun tidak valid")
                                 tahun = input("Masukan Tahun : ")
+                        try :
+                                tahun = int(tahun)
+                        except :
+                                print("Tahun tidak valid, masukkan tahun yang benar!")
+                                tahun = input("Masukan Tahun : ")
+                                
                         new_gadget = [ID,nama,deskripsi,jumlah,rarity,tahun]
                         datag.append(new_gadget)
                         databases[gadget]=datag
@@ -66,18 +81,27 @@ def tambahitem(databases):
                         while cekdelimit(nama):
                                 print("Nama tidak valid")
                                 nama = input("Masukan Nama : ")
+                                
                         deskripsi = input("Masukan Deskripsi : ")
                         while cekdelimit(deskripsi):
                                 print("Deskripsi tidak valid")
                                 deskripsi = input("Masukan Deksripsi : ")
-                        jumlah = int(input("Masukan Jumlah : "))
+                                
+                        jumlah = input("Masukan Jumlah : ")
                         while cekdelimit(jumlah):
                                 print("Jumlah tidak valid")
                                 jumlah = input("Masukan Jumlah : ")
+                        try :
+                                jumlah = int(jumlah)    
+                        except :
+                                print("Jumlah tidak valid, masukkan jumlah yang benar!")
+                                jumlah = input("Masukan jumlah: ")
+                                
                         rarity = input("Masukan Rarity : ")
-                        while rarity not in "CBAS":
+                        while rarity not in "CBAS" and len(rarity) != 1 :
                                 print("Input rarity tidak valid")
                                 rarity = input("Masukan Rarity: ")
+                                
                         new_consumable = [ID,nama,deskripsi,jumlah,rarity]
                         datac.append(new_consumable)
                         databases[consumable]=datac
