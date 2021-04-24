@@ -1,0 +1,10 @@
+id;id_peminjam;id_gadget;tanggal_peminjaman;jumlah;is_returned
+1;1;G1;10/04/2021;3;True
+2;1;G2;20/04/2021;1;True
+3;2;G4;17/03/2020;5;False
+4;1;G7;24/04/2021;53;True
+5;3;G4;18/08/2021;10;False
+6;2;G3;21/07/2078;18;True
+7;4;G5;19/05/2012;45;True
+8;4;G6;18/09/2021;80;True
+9;3;G3;19/11/2011;26;False
