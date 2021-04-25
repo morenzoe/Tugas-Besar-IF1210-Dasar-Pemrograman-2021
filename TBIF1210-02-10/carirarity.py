@@ -1,3 +1,6 @@
+from constant import gadget
+from login import cek_active_account
+
 def printdata(data):
     # meng-output setiap data yang terdapat pada array data
 
@@ -20,15 +23,18 @@ def carirarity(database):
     # database : array of array of string and integer { array yang berisi data - data dengan header }
 
     # algoritma
-    array_data = database[1]
-    rarity = input("Masukkan rarity: ")
-    rarity = rarity.title()
-    print("\n" + "Hasil pencarian: " + "\n")
-    if len(array_data) == 1:
-        print("Tidak ada data pada gadget.csv, maafkan admin hu-hu~")
+    isLoggedIn = cek_active_account(database)
+    if isLoggedIn:
+        array_data = database[1]
+        rarity = input("Masukkan rarity: ")
+        rarity = rarity.title()
+        print("\n" + "Hasil pencarian: " + "\n")
+        if len(array_data) == 1:
+            print("Tidak ada data pada gadget.csv, maafkan admin hu-hu~")
+        else:
+            for data in range(len(array_data)):
+                if (array_data[data-1][4] == rarity):
+                    printdata(array_data[data-1])
     else:
-        for data in range(len(array_data)):
-            if (array_data[data-1][4] == rarity):
-                printdata(array_data[data-1])
-
+        print("Anda belum login \(>_<)/")
     return database
