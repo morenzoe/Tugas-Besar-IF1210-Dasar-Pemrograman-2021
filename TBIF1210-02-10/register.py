@@ -1,4 +1,4 @@
-# Register
+# program Register
 
 # meregister akun user ke dalam sistem
 
@@ -23,7 +23,7 @@ def check_username(username,data):
 def checkdelimit(check):
     # mengecek apakah dalam input user terdapat ; dalam input user
     
-    # kamus
+    # kamus lokal
     # check : string { yang ingin dicek }
     # algoritma
 	if ";" in check:
@@ -32,6 +32,10 @@ def checkdelimit(check):
 		return False
 def ubahinput(masukan):
     # meminta kembali input user yang benar
+
+    # kamus lokal
+    # masukan : string { jika input user salah, akan dicek kembali }
+    # algoritma
     while checkdelimit(masukan):
         print("masukan anda salah UwU")
         masukan = input("mohon beri masukan yang benar (9^-^)9 : ")
@@ -47,7 +51,7 @@ def register(databases):
     # i : integer {sebagai indeks}
     # head : array of string { header pada file data }
     # nama, username, alamat, password : string {masukan nama user}
-    # id : integer {dibuat otomatis oleh sistem}
+    # Id : integer {dibuat otomatis oleh sistem}
     # role : string { dibuat secara default oleh sistem sebagai user. sehingga register hanya menghasilkan role user }
     # new_data : array of string
     # data : array of array of string and integer { data pada file data }
@@ -72,9 +76,9 @@ def register(databases):
             password = ubahinput(password)
             alamat = input("Masukkan alamat: ")
             alamat = ubahinput(alamat)
-            id = len(data) +1
+            Id = len(data) +1
             role = "User"
-            new_data = [id,username,nama,alamat,password,role]
+            new_data = [Id,username,nama,alamat,password,role]
             data.append(new_data)
             array_data = [head] + data
             databases[user] = array_data
@@ -84,5 +88,3 @@ def register(databases):
     else:
         print("Maaf tapi anda belum login")
     return databases
-    
-# python kantongajaib.py CSVs
