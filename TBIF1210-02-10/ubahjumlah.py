@@ -9,7 +9,7 @@ def cekid(ID,data):
     if cek == 1 :
         return True
     else:
-        return False
+        return False      
 
 def cekdelimit(cek):
 	if ";" in cek:
@@ -40,10 +40,10 @@ def ubah(ID,data,jumlah):
         
 # prosedur akhir
 def ubahjumlah(databases):
-    fg = databases[gadget]
-    datag = fg
-    fc = databases[consumable]
-    datac = fc
+    db_gadget = databases[gadget]
+    file_gadget = db_gadget
+    db_consumable = databases[consumable]
+    file_consumable = db_consumable
 
     isLoggedIn = cek_active_account(databases)
     if isLoggedIn:
@@ -54,23 +54,24 @@ def ubahjumlah(databases):
                 print("Gagal mengubah jumlah karena ID tidak valid.")
             else :
                 if ID[0] == "G" :
-                    if cekid(ID,datag):
+                    if cekid(ID,file_gadget):
                         jumlah = input("Masukan Jumlah : ")
                         try :
                             jumlah = int(jumlah)
                         except :
                             print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
-                        ubah(ID,datag,jumlah)
+                            return databases
+                        ubah(ID,file_gadget,jumlah)
                     else :
                         print("Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
                 elif ID[0] == "C" :
-                    if cekid(ID,datac):
+                    if cekid(ID,file_consumable):
                         jumlah = input("Masukan Jumlah : ")
                         try :
                             jumlah = int(jumlah)
                         except :
                             print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
-                        ubah(ID,datac,jumlah)
+                        ubah(ID,file_consumable,jumlah)
                     else :
                         print("Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
                 else :
