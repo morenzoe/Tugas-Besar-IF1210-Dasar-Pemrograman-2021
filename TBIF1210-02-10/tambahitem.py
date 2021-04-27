@@ -1,113 +1,141 @@
-from constant import gadget
-from constant import consumable
+from constant import gadget,consumable,active_account
+from login import cek_active_account
 
-# prosedur akhir
 
 def cekid(ID,data):
-        cek = 0
-        for i in range(len(data)):
-                if data[i][0]==ID :
-                        cek = 1
-        if cek == 0 :
-                return True
-        else:
-                return False
+    cek = 0
+    for i in range(len(data)):
+        if data[i][0]==ID :
+            cek = 1
+    if cek == 0 :
+        return True
+    else:
+        return False       
 
 def cekdelimit(cek):
-	if ";" in cek:
-		return True
-	else:
-		return False
+    if ";" in cek:
+        return True
+    else:
+        return False
 
-
+# prosedur akhir
 def tambahitem(databases):
-        fileg = databases[gadget]
-        datag = fileg
-        filec = databases[consumable]
-        datac = filec
-
-        ID = input("Masukan ID : ")
-
+    db_gadget = databases[gadget]
+    file_gadget = db_gadget
+    db_consumable = databases[consumable]
+    file_consumable = db_consumable
         
-        if ID[0]=="G" :
-                if cekid(ID,datag)==False :
-                        print("Gagal menambahkan item karena ID sudah ada.")
-                else:
+    isLoggedIn = cek_active_account(databases)
+    if isLoggedIn:
+        if databases[active_account][5] == "Admin":
+            ID = input("Masukan ID: ")
+            pjgID = len(ID)
+            if pjgID == 0 :
+                 print("Gagal menambah item karena ID tidak valid.")
+                 return databases
+            else :
+                if ID[0]=="G" :
+                    if cekid(ID,file_gadget) :
                         nama = input("Masukan Nama : ")
-                        while cekdelimit(nama):
-                                print("Nama tidak valid")
-                                nama = input("Masukan Nama : ")
-                                
+                        if cekdelimit(nama):
+                            print("Nama tidak valid.")
+                            return databases
+                            
                         deskripsi = input("Masukan Deskripsi : ")
-                        while cekdelimit(deskripsi):
-                                print("Deskripsi tidak valid")
-                                deskripsi = input("Masukan Deksripsi : ")
-                                  
+                        if cekdelimit(deskripsi):
+                            print("Deskripsi tidak valid.")
+                            return databases
+                            
                         jumlah = input("Masukan Jumlah : ")
-                        while cekdelimit(jumlah):
-                                print("Jumlah tidak valid")
-                                jumlah = input("Masukan Jumlah : ")
+                        if cekdelimit(jumlah):
+                            print("Jumlah tidak valid.")
+                            return databases
                         try :
-                                jumlah = int(jumlah)      
+                            jumlah = int(jumlah)
                         except :
-                                print("Jumlah tidak valid, masukkan jumlah yang benar!")
-                                jumlah = input("Masukan Jumlah : ")
-                                
+                            print("Jumlah harus berupa bilanhan bulat positif.")
+                            return databases
+                        if jumlah <= 0 :
+                            print("Jumlah harus bilangan bulat positif.")
+                            return databases
+                        
                         rarity = input("Masukan Rarity : ")
-                        while rarity not in "CBAS" and len(rarity) != 1 :
-                                print("Input rarity tidak valid")
-                                rarity = input("Masukan Rarity: ")
+                        pjg = len(rarity)
+                        if pjg == 1:
+                            if rarity not in "CBAS" :
+                                print("Rarity tidak valid.")
+                                return databases
+                        else :
+                            print("Rarity tidak valid.")
+                            return databases
+
                         tahun = input("Masukan tahun ditemukan : ")
-                        
-                        while cekdelimit(tahun):
-                                print("Tahun tidak valid")
-                                tahun = input("Masukan Tahun : ")
-                        try :
+                        if cekdelimit(tahun):
+                            try :
                                 tahun = int(tahun)
-                        except :
-                                print("Tahun tidak valid, masukkan tahun yang benar!")
-                                tahun = input("Masukan Tahun : ")
-                                
+                            except :
+                                print("Tahun tidak valid.")
+                                return databases 
+                        
                         new_gadget = [ID,nama,deskripsi,jumlah,rarity,tahun]
-                        datag.append(new_gadget)
-                        databases[gadget]=datag
+                        file_gadget.append(new_gadget)
+                        databases[gadget] = file_gadget
                         print("Item telah berhasil ditambahkan ke database.")
                         
-        elif ID[0]=="C" :
-                if cekid(ID,datac)==False :
-                        print("Gagal menambahkan item karena ID sudah ada.")
-                else:
+                    else :
+                        print("Gagal menambahkan gadget, karena ID sudah ada.")
+                        
+                elif ID[0] == "C" :
+                    if cekid(ID,file_consumable) :
                         nama = input("Masukan Nama : ")
-                        while cekdelimit(nama):
-                                print("Nama tidak valid")
-                                nama = input("Masukan Nama : ")
-                                
+                        if cekdelimit(nama):
+                            print("Nama tidak valid.")
+                            return databases
+                            
                         deskripsi = input("Masukan Deskripsi : ")
-                        while cekdelimit(deskripsi):
-                                print("Deskripsi tidak valid")
-                                deskripsi = input("Masukan Deksripsi : ")
-                                
+                        if cekdelimit(deskripsi):
+                            print("Deskripsi tidak valid.")
+                            return databases
+                            
                         jumlah = input("Masukan Jumlah : ")
-                        while cekdelimit(jumlah):
-                                print("Jumlah tidak valid")
-                                jumlah = input("Masukan Jumlah : ")
+                        if cekdelimit(jumlah):
+                            print("Jumlah tidak valid.")
+                            return databases
                         try :
-                                jumlah = int(jumlah)    
+                            jumlah = int(jumlah)
                         except :
-                                print("Jumlah tidak valid, masukkan jumlah yang benar!")
-                                jumlah = input("Masukan jumlah: ")
-                                
+                            print("Jumlah harus berupa bilanhan bulat positif.")
+                            return databases
+                        if jumlah <= 0 :
+                            print("Jumlah harus bilangan bulat positif.")
+                            return databases
+                        
                         rarity = input("Masukan Rarity : ")
-                        while rarity not in "CBAS" and len(rarity) != 1 :
-                                print("Input rarity tidak valid")
-                                rarity = input("Masukan Rarity: ")
-                                
+                        pjg = len(rarity)
+                        if pjg == 1:
+                            if rarity not in "CBAS" :
+                                print("Rarity tidak valid.")
+                                return databases
+                        else :
+                            print("Rarity tidak valid.")
+                            return databases
+                            
                         new_consumable = [ID,nama,deskripsi,jumlah,rarity]
-                        datac.append(new_consumable)
-                        databases[consumable]=datac
+                        file_consumable.append(new_consumable)
+                        databases[consumable] = file_consumable
                         print("Item telah berhasil ditambahkan ke database.")
-        else:
-                print("Gagal menambahkan item karena ID tidak valid.")
+                    
+                    else :
+                        print("Gagal menambahkan consumable karena ID sudah ada.")                    
 
+                else :
+                    print("Gagal menambahkan item karena ID tidak valid.")
 
+        else :
+            print("Maaf, kamu bukan Admin, silahkan login akun Admin.")
+            return databases
+    else :
+        print("Silahkan login terlebih dahulu.")
         return databases
+
+    return databases 
