@@ -14,30 +14,30 @@ def login(databases):
 	
 	file = databases[user]
 	
-	find_u = False
-	find_p = False
+	find_username = False
+	find_password = False
 
 	for row in file:
 		if row[1] == username :
-			find_u = True
+			find_username = True
 			if row[4] == password:
-				find_p = True
+				find_password = True
 				break
 			else :
-				find_p = False
+				find_password = False
 				break
 		else:
-			find_u = False
+			find_username = False
 			
 			
-	if find_u == True and find_p == True :
+	if find_username == True and find_password == True :
 		databases[active_account] = row
 		print("Login berhasil!")
-	elif find_u == False :
+	elif find_username == False :
 		print("Login gagal! Username kamu tidak ditemukan.")
                 
 	else :
 		print("Login gagal! Password kamu salah.") 
-		# mungkin nanti bisa dipisah. find buat username, setelah itu baru bandingin lagi passwordnya
+
 		
 	return databases
