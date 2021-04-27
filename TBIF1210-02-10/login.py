@@ -11,9 +11,9 @@ def cek_active_account(databases):
 def login(databases):
 	username = input("Ketik username : ")
 	password = input("Ketik password : ")
-
+	
 	file = databases[user]
-
+	
 	find_u = False
 	find_p = False
 
@@ -21,11 +21,11 @@ def login(databases):
 		if row[1] == username :
 			find_u = True
 			if row[4] == password:
-					find_p = True
-					break
+				find_p = True
+				break
 			else :
-					find_p = False
-					break
+				find_p = False
+				break
 		else:
 			find_u = False
 			
