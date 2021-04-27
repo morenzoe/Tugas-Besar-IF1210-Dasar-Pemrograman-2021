@@ -1,3 +1,7 @@
+from login import cek_active_account
+from constant import gadget
+
+
 def printdata(data):
     # meng-output setiap data yang terdapat pada array data
 
@@ -21,29 +25,32 @@ def caritahun(database):
     # database : array of array of string and integer { array yang berisi data - data dengan header }
     
     # algoritma
-
-    array_data = database[1]
-    tahun = int(input("Masukkan tahun: "))
-    kategori =  (input("Masukkan kategori: ")) # input user berupa ">" , "<" , "=" , "<=" , ">="
-    print("\n" + "Hasil pencarian: " + "\n")
-    if (kategori == ">"):
-        for data in range(1,len(array_data)):
-            if (int(array_data[data][5]) > tahun) :
-                printdata(array_data[data])
-    elif (kategori == "="):
-        for data in range(1,len(array_data)):
-            if (int(array_data[data][5]) == tahun) :
-                printdata(array_data[data])
-    elif (kategori == "<"):
-        for data in range(1,len(array_data)):
-            if (int(array_data[data][5]) < tahun) :
-                printdata(array_data[data])
-    elif (kategori == ">="):
-        for data in range(1,len(array_data)):
-            if (int(array_data[data][5]) >= tahun) :
-                printdata(array_data[data])
-    elif (kategori == "<="):
-        for data in range(1,len(array_data)):
-            if (int(array_data[data][5]) <= tahun) :
-                printdata(array_data[data])
+    isLoggedIn = cek_active_account(database)
+    if isLoggedIn:
+        array_data = database[gadget]
+        tahun = int(input("Masukkan tahun: "))
+        kategori =  (input("Masukkan kategori: ")) # input user berupa ">" , "<" , "=" , "<=" , ">="
+        print("\n" + "Hasil pencarian: " + "\n")
+        if (kategori == ">"):
+            for data in range(1,len(array_data)):
+                if (int(array_data[data][5]) > tahun) :
+                    printdata(array_data[data])
+        elif (kategori == "="):
+            for data in range(1,len(array_data)):
+                if (int(array_data[data][5]) == tahun) :
+                    printdata(array_data[data])
+        elif (kategori == "<"):
+            for data in range(1,len(array_data)):
+                if (int(array_data[data][5]) < tahun) :
+                    printdata(array_data[data])
+        elif (kategori == ">="):
+            for data in range(1,len(array_data)):
+                if (int(array_data[data][5]) >= tahun) :
+                    printdata(array_data[data])
+        elif (kategori == "<="):
+            for data in range(1,len(array_data)):
+                if (int(array_data[data][5]) <= tahun) :
+                    printdata(array_data[data])
+    else:
+        print("Anda belum login @_@")
     return database
