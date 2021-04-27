@@ -1,17 +1,15 @@
 from constant import gadget,consumable,active_account
 from login import cek_active_account
 
-
-
 def cekid(ID,data):
     cek = 0
     for i in range(len(data)):
         if data[i][0]==ID :
             cek = 1
-        if cek == 1 :
-            return True
-        else:
-            return False
+    if cek == 1 :
+        return True
+    else:
+        return False
 
 def cekdelimit(cek):
 	if ";" in cek:
@@ -24,21 +22,20 @@ def ubah(ID,data,jumlah):
         if data[i][0] == ID :
             idx = i
 
-        stok = data[idx][3] + jumlah
+    stok = data[idx][3] + jumlah
         
-        if stok >= 0 :
-            data[idx][3] = stok
-        else :
-            data[idx][3] = stok - jumlah
+    if stok >= 0 :
+        data[idx][3] = stok
+    else :
+        data[idx][3] = stok - jumlah
 
-
-        if stok < 0 :
-            print(jumlah, data[idx][1], "gagal dibuang karena stok kurang. Stok sekarang : ", (data[idx][3]))
+    if stok < 0 :
+        print(jumlah, data[idx][1], "gagal dibuang karena stok kurang. Stok sekarang : ", (data[idx][3]))
+    else :
+        if jumlah >= 0 :
+            print(jumlah , (data[idx][1]) , "berhasil ditambahkan. Stok sekarang : ",(data[idx][3]))
         else :
-            if jumlah >= 0 :
-                print(jumlah , (data[idx][1]) , "berhasil ditambahkan. Stok sekarang : ",(data[idx][3]))
-            else :
-                print(jumlah , (data[idx][1]) , "berhasil dibuang. Stok sekarang : ",(data[idx][3]))
+            print(jumlah , (data[idx][1]) , "berhasil dibuang. Stok sekarang : ",(data[idx][3]))
 
         
 # prosedur akhir
@@ -55,31 +52,36 @@ def ubahjumlah(databases):
             pjgID = len(ID)
             if pjgID == 0:
                 print("Gagal mengubah jumlah karena ID tidak valid.")
-                return databases
-            jumlah = input("Masukan Jumlah : ")
-            try :
-                jumlah = int(jumlah)
-            except :
-                print("Jumlah tidak valid. Jumlah harus berupa bilangan bulat!")
-                return databases
-            
-            if ID[0] == "G" :
-                if cekid(ID,datag) :
-                    ubah(ID,datag,jumlah)
-                else :
-                    print("Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
-            elif ID[0] == "C" :
-                if cekid(ID,datac) :
-                    ubah(ID,datac,jumlah)
-                else : print("Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
             else :
-                print("Gagal mengubah jumlah karena ID tidak valid.")
+                if ID[0] == "G" :
+                    if cekid(ID,datag):
+                        jumlah = input("Masukan Jumlah : ")
+                        try :
+                            jumlah = int(jumlah)
+                        except :
+                            print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
+                        ubah(ID,datag,jumlah)
+                    else :
+                        print("Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
+                elif ID[0] == "C" :
+                    if cekid(ID,datac):
+                        jumlah = input("Masukan Jumlah : ")
+                        try :
+                            jumlah = int(jumlah)
+                        except :
+                            print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
+                        ubah(ID,datac,jumlah)
+                    else :
+                        print("Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
+                else :
+                    print("Gagal mengubah jumlah karena ID tidak valid.")
+                return databases
         else :
             print("Maaf, kamu bukan Admin, silahkan login akun Admin.")
             return databases
     else :
         print("Silahkan login terlebih dahulu.")
-        return databases
-                        
+    
     return databases
+
 
