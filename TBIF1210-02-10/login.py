@@ -32,11 +32,11 @@ def login(databases):
 			
     if find_username == True and find_password == True :
         databases[active_account] = row
-        print("Login berhasil!")
+        print("Selamat, " + str(username) + " berhasil login!")
     elif find_username == False :
-        print("Login gagal! Username kamu tidak ditemukan.")
+        print("Maaf, kamu belum berhasil login! Username kamu tidak ditemukan.")
                
     else :
-        print("Login gagal! Password kamu salah.") 
+        print("Maaf, kamu belum berhasil login! Password kamu salah.") 
 		
-	return databases
+    return databases
