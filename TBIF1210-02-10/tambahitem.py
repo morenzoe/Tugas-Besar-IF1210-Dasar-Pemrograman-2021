@@ -102,7 +102,7 @@ def tambahitem(databases):
                         
                         else :
                             print("Gagal menambahkan gadget, karena ID sudah ada.")
-                            print("Format ID gadget yang valid adalah (G<angka>)")
+                            print("Gunakan ID lain. Format ID gadget yang valid adalah (G<angka>)")
                         
                 elif ID[0] == "C" :
                     if pjgID == 1 :
