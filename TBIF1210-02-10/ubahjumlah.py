@@ -49,31 +49,54 @@ def ubahjumlah(databases):
     if isLoggedIn:
         if databases[active_account][5] == "Admin":
             ID = input("Masukan ID : ")
-            pjgID = len(ID)
+            pjgID = len(ID)        
             if pjgID == 0:
                 print("Gagal mengubah jumlah karena ID tidak valid.")
             else :
                 if ID[0] == "G" :
-                    if cekid(ID,file_gadget):
-                        jumlah = input("Masukan Jumlah : ")
+                    if pjgID == 1 :
+                        print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                    else :
+                        Id = ID.replace('G','')
                         try :
-                            jumlah = int(jumlah)
+                            Id = int(Id)
                         except :
-                            print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
+                            print("Gagal mengubah jumlah karena ID gadget tidak valid.")
                             return databases
-                        ubah(ID,file_gadget,jumlah)
-                    else :
-                        print("Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
+                        
+                        if cekid(ID,file_gadget):
+                            jumlah = input("Masukan Jumlah : ")
+                            try :
+                                jumlah = int(jumlah)
+                            except :
+                                print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
+                                return databases
+                            ubah(ID,file_gadget,jumlah)
+                        else :
+                            print("Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
+                            return databases
                 elif ID[0] == "C" :
-                    if cekid(ID,file_consumable):
-                        jumlah = input("Masukan Jumlah : ")
-                        try :
-                            jumlah = int(jumlah)
-                        except :
-                            print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
-                        ubah(ID,file_consumable,jumlah)
+                    if pjgID == 1 :
+                        print("Gagal mengubah jumlah karena ID consumable tidak valid.")
                     else :
-                        print("Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
+                        Id = ID.replace('C','')
+                        try :
+                            Id = int(Id)
+                        except :
+                            print("Gagal mengubah jumlah karena ID consumable tidak valid.")
+                            return databases
+                    
+                        if cekid(ID,file_consumable):
+                            jumlah = input("Masukan Jumlah : ")
+                            try :
+                                jumlah = int(jumlah)
+                            except :
+                                print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
+                            ubah(ID,file_consumable,jumlah)
+                        else :
+                            print("Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
+                            return databases
+               
                 else :
                     print("Gagal mengubah jumlah karena ID tidak valid.")
                 return databases
