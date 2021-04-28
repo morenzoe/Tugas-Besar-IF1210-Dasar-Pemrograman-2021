@@ -90,7 +90,9 @@ def tambahitem(databases):
                                 if thn == 4 :
                                     break
                                 else :
-                                    print("Tahun tidak valid. Tahun harus dalam format YYYY.")                                
+                                    print("Tahun tidak valid. Tahun harus dalam format YYYY.")
+                                    break
+                                    
                         
                             new_gadget = [ID,nama,deskripsi,jumlah,rarity,tahun]
                             file_gadget.append(new_gadget)
