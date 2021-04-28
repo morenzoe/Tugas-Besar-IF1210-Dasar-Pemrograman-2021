@@ -52,10 +52,13 @@ def ubahjumlah(databases):
             pjgID = len(ID)        
             if pjgID == 0:
                 print("Gagal mengubah jumlah karena ID tidak valid.")
+                print("Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
+                print("Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
             else :
                 if ID[0] == "G" :
                     if pjgID == 1 :
                         print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                        print("Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                         return databases
                     else :
                         Id = ID[1:]
@@ -63,10 +66,12 @@ def ubahjumlah(databases):
                             Id = int(Id)
                         except :
                             print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                            print("Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                             return databases
                             
                         if(Id <= 0):
                             print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                            print("Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                             return databases
                         
                         if cekid(ID,file_gadget):
@@ -74,26 +79,30 @@ def ubahjumlah(databases):
                             try :
                                 jumlah = int(jumlah)
                             except :
-                                print("Jumlah tidak valid. Jumlah harus bilangan bulat.")
+                                print("Jumlah tidak valid. Jumlah harus berupa bilangan bulat.")
                                 return databases
                             ubah(ID,file_gadget,jumlah)
                         else :
                             print("Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
+                            print("Pastikan gadget yang dimaksud sudah tersedia di database.")
                             return databases
                 elif ID[0] == "C" :
                     if pjgID == 1 :
                         print("Gagal mengubah jumlah karena ID consumable tidak valid.")
+                        print("Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
                         return databases
                     else :
                         Id = ID[1:]
                         try :
                             Id = int(Id)
                         except :
-                            print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                            print("Gagal mengubah jumlah karena ID consumable tidak valid.")
+                            print("Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
                             return databases
                             
                         if(Id <= 0):
-                            print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                            print("Gagal mengubah jumlah karena ID consumable tidak valid.")
+                            print("Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
                             return databases
                     
                         if cekid(ID,file_consumable):
@@ -105,16 +114,20 @@ def ubahjumlah(databases):
                             ubah(ID,file_consumable,jumlah)
                         else :
                             print("Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
+                            print("Pastikan bahwa consumable yang dimaksud sudah tersedia di database.")
                             return databases
                
                 else :
                     print("Gagal mengubah jumlah karena ID tidak valid.")
+                    print("Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
+                    print("Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
+                    
                 return databases
         else :
-            print("Maaf, kamu bukan Admin, silahkan login akun Admin.")
+            print("Maaf, kamu bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
             return databases
     else :
-        print("Silahkan login terlebih dahulu.")
+        print("Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")
     
     return databases
 
