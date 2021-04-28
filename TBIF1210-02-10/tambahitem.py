@@ -86,12 +86,16 @@ def tambahitem(databases):
 
                             tahun = input("Masukan tahun ditemukan : ")
                             thn = len(tahun)
+                            try :
+                                tahun = int(tahun)
+                            except :
+                                print("Tahun tidak valid. Tahun harus berupa angka dalam format YYYY.")
+                                return databases 
                             while True :
-                                if thn == 4 :
+                                if thn == 4 and tahun > 0 :
                                     break
                                 else :
                                     print("Tahun tidak valid. Tahun harus dalam format YYYY.")
-                                    break
                                     return databases
                                     
                         
