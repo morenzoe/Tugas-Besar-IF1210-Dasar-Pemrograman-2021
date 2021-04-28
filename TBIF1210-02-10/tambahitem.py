@@ -92,6 +92,7 @@ def tambahitem(databases):
                                 else :
                                     print("Tahun tidak valid. Tahun harus dalam format YYYY.")
                                     break
+                                    return databases
                                     
                         
                             new_gadget = [ID,nama,deskripsi,jumlah,rarity,tahun]
