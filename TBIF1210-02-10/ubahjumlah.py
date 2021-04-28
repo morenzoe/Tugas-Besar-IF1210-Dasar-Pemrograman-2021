@@ -85,16 +85,15 @@ def ubahjumlah(databases):
                         print("Gagal mengubah jumlah karena ID consumable tidak valid.")
                         return databases
                     else :
-                        Id = ID.replace('C','')
+                        Id = ID[1:]
                         try :
                             Id = int(Id)
-                            try :
-                                Id > 0
-                            except :
-                                print("Gagal mengubah jumlah karena ID gadget tidak valid.")
-                                return databases
                         except :
-                            print("Gagal mengubah jumlah karena ID consumable tidak valid.")
+                            print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                            return databases
+                            
+                        if(Id <= 0):
+                            print("Gagal mengubah jumlah karena ID gadget tidak valid.")
                             return databases
                     
                         if cekid(ID,file_consumable):
