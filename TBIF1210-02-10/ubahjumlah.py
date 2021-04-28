@@ -56,6 +56,7 @@ def ubahjumlah(databases):
                 if ID[0] == "G" :
                     if pjgID == 1 :
                         print("Gagal mengubah jumlah karena ID gadget tidak valid.")
+                        return databases
                     else :
                         Id = ID.replace('G','')
                         try :
@@ -78,6 +79,7 @@ def ubahjumlah(databases):
                 elif ID[0] == "C" :
                     if pjgID == 1 :
                         print("Gagal mengubah jumlah karena ID consumable tidak valid.")
+                        return databases
                     else :
                         Id = ID.replace('C','')
                         try :
