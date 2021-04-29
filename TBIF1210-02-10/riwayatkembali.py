@@ -8,23 +8,23 @@ Akses : Admin
 """
 
 # KAMUS
-# Standard library imports
+# Daftar library standar
 import datetime
 
-# Local library imports
+# Daftar library lokal
 from login import cek_active_account
 from riwayatpinjam import sortMaxMinTanggal, nama_user_id, nama_gadget_id
 from constant import user, gadget, gadget_borrow_history, \
     gadget_return_history, active_account
     
-# Constant
+# Daftar konstanta
 # user : int
 # gadget : int
 # gadget_borrow_history : int
 # gadget_return_history : int
 # active_account : int
 
-# Variable
+# Daftar variabel
 # isLoggedIn : bool
 # username, role, : str
 # db_gadget, db_kembali, db_pinjam : list of list
