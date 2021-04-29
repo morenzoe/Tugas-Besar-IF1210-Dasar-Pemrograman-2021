@@ -1,9 +1,9 @@
 # Program F14 - Load Data
-# Input     : 
+# Input     :
 # Output    :
 
 # KAMUS
-# databases : array of array of array of string and int
+# databases : list of list of list
 # command : string
 # dict_program : dictionary
 
@@ -53,21 +53,21 @@ elif csv_path == 'folder tidak ada':
 databases = load(csv_path)
 # kamus program
 dict_program = {
-	'register' : register,
-    'login' : login,
-    'carirarity' : carirarity,
-    'caritahun' : caritahun,
-    'tambahitem' : tambahitem,
-    'hapusitem' : hapusitem,
-    'ubahjumlah' : ubahjumlah,
-    'pinjam' : pinjam,
-    'kembalikan' : kembalikan,
-    'minta' : minta,
-    'riwayatpinjam' : riwayatpinjam,
-    'riwayatkembali' : riwayatkembali,
-    'riwayatambil' : riwayatambil,
-    'save' : save,
-    'help' : help,
+	'register': register,
+    'login': login,
+    'carirarity': carirarity,
+    'caritahun': caritahun,
+    'tambahitem': tambahitem,
+    'hapusitem': hapusitem,
+    'ubahjumlah': ubahjumlah,
+    'pinjam': pinjam,
+    'kembalikan': kembalikan,
+    'minta': minta,
+    'riwayatpinjam': riwayatpinjam,
+    'riwayatkembali': riwayatkembali,
+    'riwayatambil': riwayatambil,
+    'save': save,
+    'help': help,
     }
 # pesan selamat datang
 print()
@@ -76,8 +76,7 @@ print("Selamat datang di inventarisasi Doraemonangis")
 while True:
 
 	# debugging
-	print()
-	print("Mode debugging:")
+	print("\nMode debugging:")
 	printSemua = input("Print databases sebagai list? (Y/N) ")
 	if printSemua in "Yy":
 		print(databases)
@@ -94,24 +93,22 @@ while True:
 			print(row)
 	# debugging
 
+	command = input("\n>>> ")
 	print()
-	command = input(">>> ")
-	print()
-	if command=='exit':
+	if command == 'exit':
 		while True:
-			save_option = input("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (Y/N) ")
-			if save_option in "YyNn":
+			save_option = input("Apakah Anda mau melakukan penyimpanan file " +
+                                "yang sudah diubah? (Y/N) ")
+			print()
+			if save_option in "YyNn" and len(save_option)==1:
 				break
-			print()
-			print("Input tidak sesuai. Ulangi!")
-			print()
+			print("\nInput tidak sesuai. Ulangi! \n")
 		if save_option in "Yy":
 			dict_program['save'](databases)
-			print("Save berhasil. Sampai jumpa!")
 			break
-		elif save_option in "Nn":
-			print("Sampai jumpa!")
-			break
+		print("\n(^O^)/ : Sampai jumpa!")
+		break
+        
 	elif command!='exit':
 		try:
 			databases = dict_program[command](databases)
