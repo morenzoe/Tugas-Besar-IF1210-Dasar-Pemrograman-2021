@@ -71,7 +71,7 @@ def tampilan(list_tampilan, username):
 
         # Setelah menampilkan lima data, user memilih lanjut atau tidak
         if (i + 1) % 5 == 0 and i != len(list_tampilan) - 1:
-            # Validasi input dari user
+            # Memvalidasi input dari user
             while True:
                 lanjut = input(
                     "^( '-' )^ : Apakah " +
@@ -134,10 +134,10 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
 
 # ALGORITMA PROGRAM UTAMA
 def riwayatkembali(databases):
-    # Validasi user sudah login
+    # Memvalidasi user sudah login
     isLoggedIn = cek_active_account(databases)
 
-    # User sudah login, validasi role
+    # User sudah login, memvalidasi role
     if isLoggedIn:
         # Mendapatkan data terkait user
         username = databases[active_account][1]
