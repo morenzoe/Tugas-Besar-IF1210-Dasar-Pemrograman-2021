@@ -1,6 +1,6 @@
 """Program F15 - Save Data
-Fungsi ini akan  menyimpan tiap list di dalam list yang diterima 
-sebagai file dengan ekstensi .csv yang dipisahkan semicolon.  
+Fungsi ini akan  menyimpan tiap list di dalam list yang diterima
+sebagai file dengan ekstensi .csv yang dipisahkan semicolon.
 Fungsi akan meminta input nama folder sebagai lokasi penyimpanan.
 
 Akses : Admin
@@ -13,8 +13,8 @@ import os
 # Daftar library lokal
 from cek_csv import cek_folder
 from constant import user, gadget, consumable, consumable_history, \
-                     gadget_borrow_history, gadget_return_history, \
-                     active_account, nama_csv
+    gadget_borrow_history, gadget_return_history, \
+    active_account, nama_csv
 
 # Daftar konstanta
 # user : int
@@ -33,7 +33,7 @@ from constant import user, gadget, consumable, consumable_history, \
 
 
 def to_str(array_word_int):
-    """Fungsi ini membaca list dan merubah tipe data semua elemen menjadi 
+    """Fungsi ini membaca list dan merubah tipe data semua elemen menjadi
     tipe data string.  Kemudian fungsi mengembalikan list of string tersebut.
     """
 
@@ -47,31 +47,31 @@ def to_str(array_word_int):
 
 
 def array_word_to_row(array_word):
-    """Fungsi ini membaca list of string dan menggabungkan semua elemen 
-    dengan pemisah semicolon menjadi satu kalimat.  Kemudian fungsi 
+    """Fungsi ini membaca list of string dan menggabungkan semua elemen
+    dengan pemisah semicolon menjadi satu kalimat.  Kemudian fungsi
     mengembalikan string tersebut.
     """
-    
+
     # KAMUS LOKAL
     # row : str
-    
+
     # ALGORITMA
     row = ";".join(array_word) + "\n"
     return row
 
 
 def array_to_csv(csv, folder_path, database):
-    """Prosedur menerima nama file dengan ekstensi .csv, directory 
+    """Prosedur menerima nama file dengan ekstensi .csv, directory
     penyimpanan, dan list of list yang akan disimpan.  Prosedur
     menulis tiap list sebagai satu baris dalam file.
     """
-    
+
     # KAMUS LOKAL
     # save_csv : list of str
     # array_word : list of list of str
     # row, csv_path : str
     # f : file
-    
+
     # ALGORITMA
     save_csv = []
     for array_word_int in database:
@@ -88,26 +88,26 @@ def array_to_csv(csv, folder_path, database):
 def save(databases):
     karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
     isValid = True
-    
+
     # Meminta nama folder untuk penyimpanan data
     folder_save = input("(~ ^v^)~ : Masukkan nama folder penyimpanan: ")
-    
+
     # Memvalidasi input nama folder
-    if len(folder_save)==0:
-        print("\nm/(>.<)\m : nama folder tidak boleh kosong!")
+    if len(folder_save) == 0:
+        print("\nm/(>.<)\\m : nama folder tidak boleh kosong!")
         isValid = False
     elif any(item in folder_save for item in karakter_eror):
-        print("\nm/(>.<)\m : nama folder tidak boleh mengandung karakter "
+        print("\nm/(>.<)\\m : nama folder tidak boleh mengandung karakter "
               + 'sebagai berikut: \\ / : * & ? " < > |')
         isValid = False
-    
+
     # Nama folder tidak valid, terminasi fungsi
     if not isValid:
         return databases
-    
+
     # Memeriksa ada tidaknya folder tersebut dalam workspace
     folder_path, workspace = cek_folder(folder_save)
-    
+
     # Folder tidak ada, membuat folder baru dengan nama sesuai input
     if folder_path == 'folder tidak ada':
         folder_path = os.path.join(workspace, folder_save)
@@ -117,13 +117,13 @@ def save(databases):
             print("\n(╥_╥) : Data tidak berhasil disimpan, terjadi eror "
                   + "terkait sistem")
             return databases
-        
+
     # Folder ada, simpan semua data dalam file berekstensi .csv
     print("\n( o _o) : Saving...")
-    for i in range(len(databases)-1):
+    for i in range(len(databases) - 1):
         csv = nama_csv[i]
         array_to_csv(csv, folder_path, databases[i])
-    
+
     # Penyimpanan selesai, menampilkan pesan konfirmasi
     print("\n( >_<)b : Data telah disimpan pada folder", folder_save + "!")
-    return databases 
+    return databases
