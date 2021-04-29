@@ -50,20 +50,3 @@ def save(databases):
         array_to_csv(csv, folder_path, databases[i])
     print("Data telah disimpan pada folder", folder_save + "!")
     return databases
-
-
-'''
-hasil array to csv
-['id;username;nama;alamat;password;role\n',
-'1;morenzoe;Eraraya Morenzo Muten;Depok;kucing123;Admin\n',
-'2;nisa,Khafifanisa;Bukittinggi;123sti;User\n',
-'3;raihan;M. Raihan Aulia;Indonesia,kucing456,User\n',
-'4;abik;Atabik Azfa;Rumah;inipass;User\n']
-
-goal
-['id;username;nama;alamat;password;role\n',
-'1;morenzoe;Eraraya Morenzo Muten;Depok;kucing123 ;Admin\n',
-'2;nisa,Khafifanisa;Bukittinggi;123sti;User\n',
-'3;raihan;M. Raihan Aulia;Indonesia,kucing456,User\n',
-'4;abik;Atabik Azfa; Rumah;inipass;User']
-'''

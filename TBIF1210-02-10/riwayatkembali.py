@@ -1,8 +1,8 @@
 """Program F12 - Melihat Riwayat Pengembalian Gadget
-Prosedur ini akan menampilkan riwayat pengembalian gadget berisi data
+Fungsi ini akan menampilkan riwayat pengembalian gadget berisi data
 ID Pengambil, Nama Pengambil, Nama Gadget, dan Tanggal Pengambilan.
-Prosedur ini akan menampilkan riwayat pengembalian yang terurut menurun
-dari yang paling terbaru.  Prosedur menampilkan tiap lima data sekali.
+Kemudian fungsi menampilkan riwayat pengembalian yang terurut menurun
+dari yang paling terbaru.  Fungsi menampilkan tiap lima data sekali.
 
 Akses : Admin
 """
@@ -45,7 +45,7 @@ def print_baris(row):
 
 
 def tampilan(list_tampilan, username):
-    """Fungsi ini akan menerima input list of list berisi data yang
+    """Prosedur ini akan membaca list of list berisi data yang
     akan ditampilkan per lima baris dan akan dilanjutkan sesuai
     keinginan user.
     """
