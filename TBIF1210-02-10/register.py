@@ -1,6 +1,6 @@
 # program Register
 
-# meregister akun user ke dalam sistem
+# meregister akun user ke dalam databases
 
 # Kamus
 from constant import user,active_account
@@ -62,8 +62,7 @@ def register(databases):
         role = databases[active_account][5]
         if role == "Admin":
             array_data = databases[user]
-            head = array_data.pop(0)
-            data = array_data
+            data = array_data[1:]
             print("dilarang menggunakan karakter ; dalam penginputan")
             nama = input("Masukkan nama: ")
             nama = ubahinput(nama)
@@ -76,12 +75,10 @@ def register(databases):
             password = ubahinput(password)
             alamat = input("Masukkan alamat: ")
             alamat = ubahinput(alamat)
-            Id = len(data) +1
+            Id = str(len(data) +1)
             role = "User"
             new_data = [Id,username,nama,alamat,password,role]
-            data.append(new_data)
-            array_data = [head] + data
-            databases[user] = array_data
+            databases[user].append(new_data)
             print("User", username, "telah berhasil register ke dalam Kantong Ajaib")
         else:
             print("maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini")
