@@ -12,10 +12,17 @@ Akses : Admin
 import datetime
 
 # Local library imports
-from constant import user, gadget, gadget_borrow_history, \
-    gadget_return_history, active_account
 from login import cek_active_account
 from riwayatpinjam import sortMaxMinTanggal, nama_user_id, nama_gadget_id
+from constant import user, gadget, gadget_borrow_history, \
+    gadget_return_history, active_account
+    
+# Constant
+# user : int
+# gadget : int
+# gadget_borrow_history : int
+# gadget_return_history : int
+# active_account : int
 
 # Variable
 # isLoggedIn : bool
