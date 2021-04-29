@@ -1,6 +1,22 @@
+"""Program F15 - Save Data
+Fungsi ini akan  menyimpan tiap list di dalam list yang diterima
+sebagai file dengan ekstensi .csv yang dipisahkan semicolon.  
+Fungsi akan meminta input nama folder sebagai lokasi penyimpanan.
+
+Akses : Admin
+"""
+
+# KAMUS
+# Standard library imports
 import os
+
+# Local library imports
 from constant import *
 from cek_csv import cek_folder
+
+# Variable
+# folder_save, folder_path, workspace, csv : str
+#
 
 
 def to_str(array_word_int):
