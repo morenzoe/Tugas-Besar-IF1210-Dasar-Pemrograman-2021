@@ -126,42 +126,41 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
 # ALGORITMA PROGRAM UTAMA
 def riwayatkembali(databases):
     # Validasi user sudah login
-	isLoggedIn = cek_active_account(databases)
-
+    isLoggedIn = cek_active_account(databases)
+    
     # User sudah login, validasi role
-	if isLoggedIn:
+    if isLoggedIn:
         # Mendapatkan data terkait user
-		username = databases[active_account][1]
-		role = databases[active_account][5]
-
+        username = databases[active_account][1]
+        role = databases[active_account][5]
+        
         # Role user adalah admin, jalankan prosedur riwayatkembali
-		if role == "Admin":
-            # Membuat list untuk tiap data yang dibutuhkan
-			db_kembali = databases[gadget_return_history][1:]
-			db_pinjam = databases[gadget_borrow_history]
-			db_gadget = databases[gadget]
-			db_user = databases[user]
-
+        if role == "Admin":
+        # Membuat list untuk tiap data yang dibutuhkan
+            db_kembali = databases[gadget_return_history][1:]
+            db_pinjam = databases[gadget_borrow_history]
+            db_gadget = databases[gadget]
+            db_user = databases[user]
+            
             # Mengurutkan data pengembalian menurun berdasarkan tanggal
-			sorted_db_kembali = sortMaxMinTanggal(db_kembali, 2)
-
+            sorted_db_kembali = sortMaxMinTanggal(db_kembali, 2)
+            
             # Mencari data yang sesuai dan membuat list baru untuk ditampilkan
-			list_tampilan = buat_list_tampilan(sorted_db_kembali, db_pinjam,
+            list_tampilan = buat_list_tampilan(sorted_db_kembali, db_pinjam,
                                                db_user, db_gadget)
-
+            
             # Menampilkan data yang sesuai dengan tampilan yang rapih
-			tampilan(list_tampilan, username)
-
+            tampilan(list_tampilan, username)
+            
             # Mengembalikan databases yang sudah digunakan
-			return databases
-
+            return databases
+        
         # Role user bukan admin, terminate prosedur riwayatkembali
-		else:
-			print("Role " + username + " bukan Admin, silahkan \
-                   login akun Admin.")
-			return databases
-
-	# User belum login, terminate prosedur riwayatkembali
+        else:
+            print("Role " + username + " bukan Admin, silahkan login \
+                   akun Admin.")
+            return databases
+    # User belum login, terminate prosedur riwayatkembali
     else:
-		print("Silahkan login terlebih dahulu.")
-		return databases
+        print("Silahkan login terlebih dahulu.")
+        return databases
