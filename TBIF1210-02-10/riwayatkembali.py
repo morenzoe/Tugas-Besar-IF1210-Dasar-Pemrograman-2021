@@ -1,8 +1,54 @@
+"""Program F12 - Melihat Riwayat Pengembalian Gadget 
+Prosedur ini akan menampilkan riwayat pengembalian gadget berisi data 
+ID Pengambil, Nama Pengambil, Nama Gadget, dan Tanggal Pengambilan.
+Prosedur ini akan menampilkan riwayat pengembalian yang terurut menurun
+dari yang paling terbaru. Prosedur menampilkan 5 data sekali keluaran.
+"""
+
+# KAMUS
+# standard library imports
 import datetime
 
-from constant import user,gadget,gadget_borrow_history,gadget_return_history,active_account
+# local library imports
+from constant import user,gadget,gadget_borrow_history, \
+                     gadget_return_history,active_account
 from login import cek_active_account
 from riwayatpinjam import sortMaxMinTanggal,nama_user_id,nama_gadget_id	
+
+# variable
+#
+
+# function and procedure
+#
+
+# ALGORITMA PROGRAM UTAMA
+def riwayatkembali(databases):
+	isLoggedIn = cek_active_account(databases)
+	if isLoggedIn:
+		username = databases[active_account][1]
+		role = databases[active_account][5]
+		if role == "Admin":
+			db_kembali = databases[gadget_return_history][1:]
+			db_pinjam = databases[gadget_borrow_history]
+			db_gadget = databases[gadget]
+			db_user = databases[user]
+		
+			sorted_db_kembali = sortMaxMinTanggal(db_kembali,2)
+			
+			list_tampilan = buat_list_tampilan(sorted_db_kembali,db_pinjam,db_user,db_gadget)
+			
+			tampilan(list_tampilan,username)
+						
+			return databases
+			
+		else:
+			print("Role "+username+" bukan Admin, silahkan login akun Admin.")
+			return databases
+	else:
+		print("Silahkan login terlebih dahulu.")
+		return databases
+
+# REALISASI FUNGSI DAN PROSEDUR
 
 def print_baris(row):
 	print("ID Pengambilan:",row[0])
@@ -44,30 +90,3 @@ def tampilan(list_tampilan,username):
 						break
 					elif lanjut in "Yy":
 						print()
-
-def riwayatkembali(databases):
-	isLoggedIn = cek_active_account(databases)
-	if isLoggedIn:
-		username = databases[active_account][1]
-		role = databases[active_account][5]
-		if role == "Admin":
-			db_kembali = databases[gadget_return_history][1:]
-			db_pinjam = databases[gadget_borrow_history]
-			db_gadget = databases[gadget]
-			db_user = databases[user]
-		
-			sorted_db_kembali = sortMaxMinTanggal(db_kembali,2)
-			
-			list_tampilan = buat_list_tampilan(sorted_db_kembali,db_pinjam,db_user,db_gadget)
-			
-			tampilan(list_tampilan,username)
-						
-			return databases
-			
-		else:
-			print("Role "+username+" bukan Admin, silahkan login akun Admin.")
-			return databases
-	else:
-		print("Silahkan login terlebih dahulu.")
-		return databases
-	
