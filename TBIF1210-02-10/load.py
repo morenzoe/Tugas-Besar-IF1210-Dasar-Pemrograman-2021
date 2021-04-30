@@ -13,15 +13,21 @@ Akses : -
 import os
 import sys
 
-# import program lokal
+# Daftar library lokal
 from constant import nama_csv, dikonversi
 
-# PROCEDURE DAN FUNCTION
+# Daftar konstanta
+# nama_csv : list of str
+# dikonversi : list of list of bool
 
+# Daftar variabel
+# databases : list of list of list
+# database : list of list
+# active_account : list
 
 def semicolon_split(row):
-    # menghasilkan array of string tiap string (kata) antara koma
-
+    """Fungsi ini membaca menghasilkan array of string tiap string (kata) antara koma
+    """
     # KAMUS LOKAL
     # Variabel
     # array_word : array of string
@@ -112,7 +118,8 @@ def load(path):
     # file csv sesuai
     print("Loading...")
     for i in range(len(nama_csv)):
-        databases.append(csv_to_array(path, nama_csv[i], dikonversi[i]))
+        database = csv_to_array(path, nama_csv[i], dikonversi[i])
+        databases.append(database)
     active_account = []
     databases.append(active_account)
     return databases
