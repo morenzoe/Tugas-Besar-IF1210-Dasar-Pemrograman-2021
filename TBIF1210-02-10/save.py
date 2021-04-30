@@ -3,7 +3,7 @@ Fungsi ini akan  menyimpan tiap list di dalam list yang diterima
 sebagai file dengan ekstensi .csv yang dipisahkan semicolon.
 Fungsi akan meminta input nama folder sebagai lokasi penyimpanan.
 
-Akses : Admin
+Akses : Admin, User
 """
 
 # KAMUS
@@ -11,6 +11,7 @@ Akses : Admin
 import os
 
 # Daftar library lokal
+from login import cek_active_account
 from cek_csv import cek_folder
 from constant import user, gadget, consumable, consumable_history, \
     gadget_borrow_history, gadget_return_history, \
@@ -86,6 +87,28 @@ def array_to_csv(csv, folder_path, database):
 
 # ALGORITMA PROGRAM UTAMA
 def save(databases):
+    # Memvalidasi pengguna sudah login
+    isLoggedIn = cek_active_account(databases)
+    if not isLoggedIn:
+        # Pengguna belum login, terminate prosedur riwayatkembali
+        print("^.^ : Silahkan login terlebih dahulu.")
+        return databases
+    
+    # Pengguna sudah login, mendapatkan data terkait pengguna
+    username = databases[active_account][1]
+    role = databases[active_account][5]
+    
+    # Memvalidasi role pengguna
+    if role != "Admin" and role != "User":
+            # Role pengguna bukan admin atau user, terminate prosedur save
+            print(
+                "=^.^= : Role "
+                + username
+                + " bukan Admin atau User, silahkan login akun Admin atau "
+                + "User.")
+            return databases
+    
+    # Role pengguna adalah admin atau user, jalankan prosedur save
     karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
     isValid = True
 
