@@ -17,9 +17,9 @@ def check_username(username,data):
         if (data[i][1] == username):
             check = 1
     if (check == 0):
-        return True
-    else: #check = 1
         return False
+    else: #check = 1
+        return True
 def checkdelimit(check):
     # mengecek apakah dalam input user terdapat ; dalam input user
     
@@ -30,29 +30,25 @@ def checkdelimit(check):
 		return True
 	else:
 		return False
-def inputkhusus(param,data):
-    # meminta kembali input user yang benar
+def ubahinput(masukan):
+    # meminta input variabel yang bersangkutan kepada pengguna dengan pengulangan input jika input pengguna salah
 
     # kamus lokal
     # masukan : string { jika input user salah, akan dicek kembali }
     # algoritma
-    print("Masukkan", param, "anda : ", end ='')
-    masukan = input()
-
-    if param == "username":
-        while not check_username(masukan,data) or checkdelimit(masukan):
-            print("username tersebut sudah diambil atau salah (╥﹏╥)")
-            masukan = input("berikan nama username yang belum ada dan benar (づ￣ ³￣)づ : ")
-    else:
-        while checkdelimit(masukan):
-            print("masukan anda salah UwU")
-            masukan = input("mohon beri masukan yang benar (9^-^)9 : ")
-    if param == "nama":
-        masukan = masukan.title()
+    while checkdelimit(masukan):
+        masukan = input("\n (9*.*)9: Masukan salah, mohon beri masukan yang benar! :")
     return masukan
 
-    
+def ubahusername(masukan,database):
+    # meminta input username kepada pengguna jika terdapat kesalahan penginputan
 
+    #kamus lokal
+    # masukan : string { jika input user salah, akan dilakukan penginputan ulang }
+    #algoritma
+    while checkdelimit(masukan) or check_username(masukan, database):
+        masukan = input("\n (9*.*)9: Masukan salah, mohon beri masukan yang benar! :")
+    return masukan
 
 def register(databases):
     # Fungsi utama dari register
@@ -74,15 +70,19 @@ def register(databases):
             array_data = databases[user]
             data = array_data[1:]
             print("dilarang menggunakan karakter ; dalam penginputan")
-            nama = inputkhusus("nama",data)
-            username = inputkhusus("username",data)
-            password = inputkhusus("password",data)
-            alamat = inputkhusus("alamat",data)
+            nama = input("Masukkan nama anda     : ")
+            nama=(ubahinput(nama)).title()
+            username = input("Masukkan username anda : ")
+            username = ubahusername(username,databases[user])
+            password = input("Masukkan password anda : ")
+            password = ubahinput(password)
+            alamat = input("Masukkan alamat anda   : ")
+            alamat = ubahinput(alamat)
             Id = str(len(data) +1)
             role = "User"
             new_data = [Id,username,nama,alamat,password,role]
             databases[user].append(new_data)
-            print("User", username, "telah berhasil register ke dalam Kantong Ajaib")
+            print("\nUser", username, "telah berhasil register ke dalam Kantong Ajaib")
         else:
             print("maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini (anda bukanlah Admin) 〒_〒")
     else:
