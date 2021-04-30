@@ -28,21 +28,20 @@ def nama_gadget_id(database,id):
             return database[data][1]
 def printdata(nama_user,nama_gadget,database):
     # mengoutput data yang bersangkutan
-    print("ID Peminjaman:", database[0])
-    print("Nama Pengambil:", nama_user)
-    print("Nama Gadget:", nama_gadget)
-    print("Tanggal Peminjaman:", database[3])
-    print("Jumlah:", database[4])
+    print("\nID Peminjaman      : ", database[0])
+    print("Nama Pengambil     : ", nama_user)
+    print("Nama Gadget        : ", nama_gadget)
+    print("Tanggal Peminjaman : ", database[3])
+    print("Jumlah             : ", database[4])
 
 def riwayatpinjam(databases):
     # menampilkan data pada "gadget_borrow_history.csv" secara berurutan berdasarkan tanggal
     isLoggedIn = cek_active_account(databases)
     if isLoggedIn:
-        if databases[active_account][5] == "User" :
-            print("maafkan saya", databases[active_account][2] + "-san", "saya tidak dapat mengizinkan anda menggunakan command ini")
+        if databases[active_account][5] != "Admin" :
+            print("(;-;) : Maafkan saya", databases[active_account][2] + "-san", "saya tidak dapat mengizinkan anda menggunakan command ini (anda bukan Admin).")
         else:
-            print("selamat datang", databases[active_account][2] + "-san", "berikut adalah data riwayat peminjaman gadget")
-            print()
+            print("(^.^)/ : Berikut adalah data riwayat peminjaman gadget : ")
             sorted_history = sortMaxMinTanggal(databases[gadget_borrow_history][1:],3)
             db_gadget = databases[gadget]
             db_user = databases[user]
@@ -56,21 +55,17 @@ def riwayatpinjam(databases):
                         nama_user = nama_user_id(db_user, sorted_history[data][1])
                         nama_gadget = nama_gadget_id(db_gadget, sorted_history[data][2])
                         printdata(nama_user,nama_gadget,sorted_history[data])
-                        print()
                     awal = akhir
                     akhir += 5
-                    repeat = input("Apakah anda ingin melihat halaman selanjutnya? (Y/N): ")
-                    print()
+                    repeat = input("(^.^) : Apakah anda ingin melihat halaman selanjutnya? (Y/N): ")
                     while (not (repeat in "YyNn") and len(repeat)!=1):
-                        repeat = input("input", username+"-san salah mohon masukkan input yang benar (Y/N): ")
-                        print()
+                        repeat = input("(-.-') : Input", username+"-san salah mohon masukkan input yang benar. (Y/N): ")
                 elif akhir >= len(sorted_history):
                     for data in range(awal,len(sorted_history)):
                         nama_user = nama_user_id(db_user, sorted_history[data][1])
                         nama_gadget = nama_gadget_id(db_gadget, sorted_history[data][2])
                         printdata(nama_user,nama_gadget,sorted_history[data])
-                        print()
                     repeat = "N"
     else:
-        print("anda belum login 0_0")
+        print("(0_0): Anda belum login.")
     return databases

@@ -1,4 +1,4 @@
-from constant import gadget
+from constant import gadget,active_account
 from login import cek_active_account
 
 def printdata(data):
@@ -6,12 +6,11 @@ def printdata(data):
 
     # kamus
     # data : array of string and integer { array data yang ingin ditampilkan }
-    print("Nama: ", data[1])
-    print("Deskripsi: ", data[2])
-    print("Jumlah: ", data[3], "buah")
-    print("Rarity: ", data[4])
-    print("Tahun Ditemukan: ", data[5])
-    print()
+    print("\nNama            : ", data[1])
+    print("Deskripsi       : ", data[2])
+    print("Jumlah          : ", data[3], "buah")
+    print("Rarity          : ", data[4])
+    print("Tahun Ditemukan : ", data[5])
 
 def carirarity(database):
     # meng-output data berdasarkan rarity yang dipilih
@@ -25,16 +24,19 @@ def carirarity(database):
     # algoritma
     isLoggedIn = cek_active_account(database)
     if isLoggedIn:
+        username = database[active_account][2]
         array_data = database[1]
-        rarity = input("Masukkan rarity: ")
+        rarity = input("Masukkan rarity : ")
+        while rarity not in "CBAScbas" or len(rarity) != 1:
+            rarity = input("Masukkan rarity dengan benar! :")
         rarity = rarity.title()
-        print("\n" + "Hasil pencarian: " + "\n")
+        print("\nHasil pencarian : ")
         if len(array_data) == 1:
-            print("Tidak ada data pada gadget.csv, maafkan admin hu-hu~")
+            print("Tidak ada data pada gadget.csv, maafkan admin!")
         else:
             for data in range(len(array_data)):
                 if (array_data[data-1][4] == rarity):
                     printdata(array_data[data-1])
     else:
-        print("Anda belum login \(>_<)/")
+        print("\(>_<)/ : Anda belum login.")
     return database

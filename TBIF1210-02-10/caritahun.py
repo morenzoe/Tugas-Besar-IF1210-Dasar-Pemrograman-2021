@@ -7,12 +7,11 @@ def printdata(data):
 
     # kamus
     # data : array of string and integer { array data yang ingin ditampilkan }
-    print("Nama: ", data[1])
-    print("Deskripsi: ", data[2])
-    print("Jumlah: ", data[3], "buah")
-    print("Rarity: ", data[4])
-    print("Tahun Ditemukan: ", data[5])
-    print()
+    print("\nNama            : ", data[1])
+    print("Deskripsi       : ", data[2])
+    print("Jumlah          : ", data[3], "buah")
+    print("Rarity          : ", data[4])
+    print("Tahun Ditemukan : ", data[5])
 
 def caritahun(database):
     # meng-output data gadget berdasarkan tahun ditemukannya
@@ -28,9 +27,9 @@ def caritahun(database):
     isLoggedIn = cek_active_account(database)
     if isLoggedIn:
         array_data = database[gadget]
-        tahun = int(input("Masukkan tahun: "))
-        kategori =  (input("Masukkan kategori: ")) # input user berupa ">" , "<" , "=" , "<=" , ">="
-        print("\n" + "Hasil pencarian: " + "\n")
+        tahun = int(input("Masukkan tahun    : "))
+        kategori =  (input("Masukkan kategori : ")) # input user berupa ">" , "<" , "=" , "<=" , ">="
+        print("\nHasil pencarian :")
         if (kategori == ">"):
             for data in range(1,len(array_data)):
                 if (int(array_data[data][5]) > tahun) :
@@ -52,5 +51,5 @@ def caritahun(database):
                 if (int(array_data[data][5]) <= tahun) :
                     printdata(array_data[data])
     else:
-        print("Anda belum login @_@")
+        print("(+.+) : Anda belum login.")
     return database

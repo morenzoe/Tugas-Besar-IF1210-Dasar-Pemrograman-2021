@@ -37,7 +37,7 @@ def ubahinput(masukan):
     # masukan : string { jika input user salah, akan dicek kembali }
     # algoritma
     while checkdelimit(masukan):
-        masukan = input("\n (9*.*)9: Masukan salah, mohon beri masukan yang benar! :")
+        masukan = input("\n (9*.*)9 : Masukan salah, mohon beri masukan yang benar! :")
     return masukan
 
 def ubahusername(masukan,database):
@@ -47,7 +47,7 @@ def ubahusername(masukan,database):
     # masukan : string { jika input user salah, akan dilakukan penginputan ulang }
     #algoritma
     while checkdelimit(masukan) or check_username(masukan, database):
-        masukan = input("\n (9*.*)9: Masukan salah, mohon beri masukan yang benar! :")
+        masukan = input("\n (9'.')9 : Masukan salah, mohon beri masukan yang benar! :")
     return masukan
 
 def register(databases):
@@ -69,7 +69,7 @@ def register(databases):
         if role == "Admin":
             array_data = databases[user]
             data = array_data[1:]
-            print("dilarang menggunakan karakter ; dalam penginputan")
+            print("\(>_<)/ : dilarang menggunakan karakter ; dalam penginputan")
             nama = input("Masukkan nama anda     : ")
             nama=(ubahinput(nama)).title()
             username = input("Masukkan username anda : ")
@@ -82,11 +82,10 @@ def register(databases):
             role = "User"
             new_data = [Id,username,nama,alamat,password,role]
             databases[user].append(new_data)
-            print("\nUser", username, "telah berhasil register ke dalam Kantong Ajaib")
+            print("\n \('3')/ : User", username, "telah berhasil register ke dalam Kantong Ajaib.")
         else:
-            print("maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini (anda bukanlah Admin) 〒_〒")
+            print("(Q.Q) : maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini (anda bukan Admin).")
     else:
-        print("Maaf tapi anda belum login 〒_〒")
+        print(" <('.')> : Maaf, anda belum login.")
     return databases
-
 #python kantongajaib.py CSVs
