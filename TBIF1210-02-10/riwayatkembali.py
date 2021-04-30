@@ -134,10 +134,10 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
 
 # ALGORITMA PROGRAM UTAMA
 def riwayatkembali(databases):
-    # Memvalidasi user sudah login
+    # Memvalidasi pengguna sudah login
     isLoggedIn = cek_active_account(databases)
     if not isLoggedIn:
-        # User belum login, terminate prosedur riwayatkembali
+        # Pengguna belum login, terminate prosedur riwayatkembali
         print("^.^ : Silahkan login terlebih dahulu.")
         return databases
     
