@@ -102,17 +102,18 @@ while True:
 			print()
 			if save_option in "YyNn" and len(save_option)==1:
 				break
-			print("m(><)m : Input tidak sesuai. Ulangi! \n")
+			print("\nInput tidak sesuai. Ulangi! \n")
 		if save_option in "Yy":
 			dict_program['save'](databases)
-		print("(^O^)/ : Sampai jumpa!")
+			break
+		print("\n(^O^)/ : Sampai jumpa!")
 		break
         
 	elif command!='exit':
 		try:
 			databases = dict_program[command](databases)
 		except KeyError:
-			print("O_o : Perintah salah! Ketik help dan tekan enter untuk menampilkan petunjuk.")
+			print("Perintah salah! Ketik help dan tekan enter untuk menampilkan petunjuk.")
 		
 
 '''

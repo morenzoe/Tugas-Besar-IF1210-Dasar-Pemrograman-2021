@@ -150,5 +150,5 @@ def save(databases):
         array_to_csv(csv, folder_path, databases[i])
 
     # Penyimpanan selesai, menampilkan pesan konfirmasi
-    print("\n( >_<)b : Data telah disimpan pada folder", folder_save + "!\n")
+    print("\n( >_<)b : Data telah disimpan pada folder", folder_save + "!")
     return databases
