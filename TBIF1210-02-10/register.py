@@ -30,15 +30,25 @@ def checkdelimit(check):
 		return True
 	else:
 		return False
-def ubahinput(masukan):
+def inputkhusus(param,data):
     # meminta kembali input user yang benar
 
     # kamus lokal
     # masukan : string { jika input user salah, akan dicek kembali }
     # algoritma
-    while checkdelimit(masukan):
-        print("masukan anda salah UwU")
-        masukan = input("mohon beri masukan yang benar (9^-^)9 : ")
+    print("Masukkan", param, "anda : ", end ='')
+    masukan = input()
+
+    if param == "username":
+        while not check_username(masukan,data) or checkdelimit(masukan):
+            print("username tersebut sudah diambil atau salah (╥﹏╥)")
+            masukan = input("berikan nama username yang belum ada dan benar (づ￣ ³￣)づ : ")
+    else:
+        while checkdelimit(masukan):
+            print("masukan anda salah UwU")
+            masukan = input("mohon beri masukan yang benar (9^-^)9 : ")
+    if param == "nama":
+        masukan = masukan.title()
     return masukan
 
     
@@ -64,24 +74,19 @@ def register(databases):
             array_data = databases[user]
             data = array_data[1:]
             print("dilarang menggunakan karakter ; dalam penginputan")
-            nama = input("Masukkan nama: ")
-            nama = ubahinput(nama)
-            nama = nama.title()
-            username = input("Masukkan username: ")
-            while ((check_username(username,data) == False) or (checkdelimit(username))):
-                print("username sudah diambil atau salah")
-                username = input("Masukkan username: ")
-            password = input("Masukkan password: ")
-            password = ubahinput(password)
-            alamat = input("Masukkan alamat: ")
-            alamat = ubahinput(alamat)
+            nama = inputkhusus("nama",data)
+            username = inputkhusus("username",data)
+            password = inputkhusus("password",data)
+            alamat = inputkhusus("alamat",data)
             Id = str(len(data) +1)
             role = "User"
             new_data = [Id,username,nama,alamat,password,role]
             databases[user].append(new_data)
             print("User", username, "telah berhasil register ke dalam Kantong Ajaib")
         else:
-            print("maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini")
+            print("maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini (anda bukanlah Admin) 〒_〒")
     else:
-        print("Maaf tapi anda belum login")
+        print("Maaf tapi anda belum login 〒_〒")
     return databases
+
+#python kantongajaib.py CSVs
