@@ -16,7 +16,7 @@ from login import cek_active_account
 from riwayatpinjam import sortMaxMinTanggal, nama_user_id, nama_gadget_id
 from constant import user, gadget, gadget_borrow_history, \
     gadget_return_history, active_account
-    
+
 # Daftar konstanta
 # user : int
 # gadget : int
@@ -140,20 +140,20 @@ def riwayatkembali(databases):
         # Pengguna belum login, terminate prosedur riwayatkembali
         print("^.^ : Silahkan login terlebih dahulu.")
         return databases
-    
+
     # Pengguna sudah login, mendapatkan data terkait pengguna
     username = databases[active_account][1]
     role = databases[active_account][5]
-    
+
     # Memvalidasi role pengguna
     if role != "Admin":
-            # Role pengguna bukan admin, terminate prosedur riwayatkembali
-            print(
-                "=^.^= : Role " +
-                username +
-                " bukan Admin, silahkan login akun Admin.")
-            return databases
-    
+        # Role pengguna bukan admin, terminate prosedur riwayatkembali
+        print(
+            "=^.^= : Role "
+            + username
+            + " bukan Admin, silahkan login akun Admin.")
+        return databases
+
     # Role pengguna adalah admin, jalankan prosedur riwayatkembali
     # Membuat list untuk tiap data yang dibutuhkan
     db_kembali = databases[gadget_return_history][1:]

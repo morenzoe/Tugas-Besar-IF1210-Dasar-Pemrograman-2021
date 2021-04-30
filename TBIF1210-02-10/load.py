@@ -1,4 +1,15 @@
-# import library standar
+"""Program F14 - Load Data
+Fungsi ini akan membaca semua data dalam enam file dengan ekstensi 
+.csv, mengubah tipe data setiap kolom tertentu, dan menggabungkannya 
+dalam satu list databases.  Fungsi kemudian menambahkan satu list 
+kosong pada akhir list databases untuk diisi data login.  Fungsi 
+mengembalikan list databases tersebut.
+
+Akses : -
+"""
+
+# KAMUS
+# Daftar library standar
 import os
 import sys
 

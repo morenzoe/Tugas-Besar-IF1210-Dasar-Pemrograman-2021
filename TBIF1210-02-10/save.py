@@ -86,6 +86,8 @@ def array_to_csv(csv, folder_path, database):
     f.close()
 
 # ALGORITMA PROGRAM UTAMA
+
+
 def save(databases):
     # Memvalidasi pengguna sudah login
     isLoggedIn = cek_active_account(databases)
@@ -93,21 +95,21 @@ def save(databases):
         # Pengguna belum login, terminate prosedur riwayatkembali
         print("^.^ : Silahkan login terlebih dahulu.")
         return databases
-    
+
     # Pengguna sudah login, mendapatkan data terkait pengguna
     username = databases[active_account][1]
     role = databases[active_account][5]
-    
+
     # Memvalidasi role pengguna
     if role != "Admin" and role != "User":
-            # Role pengguna bukan admin atau user, terminate prosedur save
-            print(
-                "=^.^= : Role "
-                + username
-                + " bukan Admin atau User, silahkan login akun Admin atau "
-                + "User.")
-            return databases
-    
+        # Role pengguna bukan admin atau user, terminate prosedur save
+        print(
+            "=^.^= : Role "
+            + username
+            + " bukan Admin atau User, silahkan login akun Admin atau "
+            + "User.")
+        return databases
+
     # Role pengguna adalah admin atau user, jalankan prosedur save
     karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
     isValid = True
