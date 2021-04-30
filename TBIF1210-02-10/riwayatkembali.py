@@ -74,9 +74,9 @@ def tampilan(list_tampilan, username):
             # Memvalidasi input dari user
             while True:
                 lanjut = input(
-                    "^( '-' )^ : Apakah " +
-                    username +
-                    " mau melihat riwayat berikutnya? (Y/N) ")
+                    "^( '-' )^ : Apakah "
+                    + username
+                    + " mau melihat riwayat berikutnya? (Y/N) ")
 
                 # Input valid, salah satu huruf Y/y/N/n
                 if lanjut in "YyNn" and len(lanjut) == 1:
