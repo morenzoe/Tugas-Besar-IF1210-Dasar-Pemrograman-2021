@@ -83,7 +83,7 @@ def tampilan(list_tampilan, username):
                     break
                 # Input tidak valid, pengisian diulang
                 elif lanjut not in "YyNn" or len(lanjut) != 1:
-                    print("(>‘o’)> : Input tidak sesuai. Ulangi!")
+                    print("\n(>‘o’)> : Input tidak sesuai. Ulangi!")
                     print()
 
             # Tidak melanjutkan penampilan data berikutnya, terminasi loop
@@ -136,42 +136,40 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
 def riwayatkembali(databases):
     # Memvalidasi user sudah login
     isLoggedIn = cek_active_account(databases)
-
-    # User sudah login, memvalidasi role
-    if isLoggedIn:
-        # Mendapatkan data terkait user
-        username = databases[active_account][1]
-        role = databases[active_account][5]
-
-        # Role user adalah admin, jalankan prosedur riwayatkembali
-        if role == "Admin":
-            # Membuat list untuk tiap data yang dibutuhkan
-            db_kembali = databases[gadget_return_history][1:]
-            db_pinjam = databases[gadget_borrow_history]
-            db_gadget = databases[gadget]
-            db_user = databases[user]
-
-            # Mengurutkan data pengembalian menurun berdasarkan tanggal
-            sorted_db_kembali = sortMaxMinTanggal(db_kembali, 2)
-
-            # Mencari data yang sesuai dan membuat list baru untuk ditampilkan
-            list_tampilan = buat_list_tampilan(sorted_db_kembali, db_pinjam,
-                                               db_user, db_gadget)
-
-            # Menampilkan data yang sesuai dengan tampilan yang rapih
-            tampilan(list_tampilan, username)
-
-            # Mengembalikan databases yang sudah digunakan
-            return databases
-
-        # Role user bukan admin, terminate prosedur riwayatkembali
-        else:
+    if not isLoggedIn:
+        # User belum login, terminate prosedur riwayatkembali
+        print("^.^ : Silahkan login terlebih dahulu.")
+        return databases
+    
+    # Pengguna sudah login, mendapatkan data terkait pengguna
+    username = databases[active_account][1]
+    role = databases[active_account][5]
+    
+    # Memvalidasi role pengguna
+    if role != "Admin":
+            # Role pengguna bukan admin, terminate prosedur riwayatkembali
             print(
                 "=^.^= : Role " +
                 username +
                 " bukan Admin, silahkan login akun Admin.")
             return databases
-    # User belum login, terminate prosedur riwayatkembali
-    else:
-        print("^.^ : Silahkan login terlebih dahulu.")
-        return databases
+    
+    # Role pengguna adalah admin, jalankan prosedur riwayatkembali
+    # Membuat list untuk tiap data yang dibutuhkan
+    db_kembali = databases[gadget_return_history][1:]
+    db_pinjam = databases[gadget_borrow_history]
+    db_gadget = databases[gadget]
+    db_user = databases[user]
+
+    # Mengurutkan data pengembalian menurun berdasarkan tanggal
+    sorted_db_kembali = sortMaxMinTanggal(db_kembali, 2)
+
+    # Mencari data yang sesuai dan membuat list baru untuk ditampilkan
+    list_tampilan = buat_list_tampilan(sorted_db_kembali, db_pinjam,
+                                       db_user, db_gadget)
+
+    # Menampilkan data yang sesuai dengan tampilan yang rapih
+    tampilan(list_tampilan, username)
+
+    # Mengembalikan databases yang sudah digunakan
+    return databases
