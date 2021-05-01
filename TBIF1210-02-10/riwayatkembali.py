@@ -2,7 +2,7 @@
 Fungsi ini akan menampilkan riwayat pengembalian gadget berisi data
 ID Pengambil, Nama Pengambil, Nama Gadget, dan Tanggal Pengambilan.
 Kemudian fungsi menampilkan riwayat pengembalian yang terurut menurun
-dari yang paling terbaru.  Fungsi menampilkan tiap lima data sekali.
+dari yang paling terbaru.  Fungsi menampilkan tiap lima entri sekali.
 
 Akses : Admin
 """
@@ -25,15 +25,16 @@ from constant import user, gadget, gadget_borrow_history, \
 # active_account : int
 
 # Daftar variabel
+# databases : array of array of array
 # isLoggedIn : bool
 # username, role, : str
 # db_gadget, db_kembali, db_pinjam : array of array
 # db_user, sorted_db_kembali : array of array
 # list_tampilan : array of array
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def print_baris(row):
-    """Prosedur ini akan menampilkan data pada array sesuai dengan
+    """Prosedur ini akan menampilkan entri pada array sesuai dengan
     tampilan berupa:
     ID Pengambilan      :
     Nama Pengambil      :
@@ -42,7 +43,7 @@ def print_baris(row):
     """
 
     # KAMUS LOKAL
-    # -
+    # row : array of str and int
 
     # ALGORITMA
     print("ID Pengambilan      :", row[0])
@@ -52,26 +53,27 @@ def print_baris(row):
 
 
 def tampilan(list_tampilan, username):
-    """Prosedur ini akan membaca array of array berisi data yang
+    """Prosedur ini akan membaca array of array berisi entri yang
     akan ditampilkan per lima baris dan akan dilanjutkan sesuai
-    keinginan user.
+    keinginan pengguna.
     """
 
     # KAMUS LOKAL
-    # lanjut : str
+    # list_tampilan : array of array
+    # username, lanjut : str
 
     # ALGORITMA
-    # Menampilkan sebanyak data pada array tampilan
+    # Menampilkan sebanyak entri pada array tampilan
     for i in range(len(list_tampilan)):
         print_baris(list_tampilan[i])
 
-        # Menampilkan baris kosong sebagai pemisah antar data
+        # Menampilkan baris kosong sebagai pemisah antar entri
         if i != len(list_tampilan) - 1:
             print()
 
-        # Setelah menampilkan lima data, user memilih lanjut atau tidak
+        # Setelah menampilkan lima entri, pengguna memilih lanjut atau tidak
         if (i + 1) % 5 == 0 and i != len(list_tampilan) - 1:
-            # Memvalidasi input dari user
+            # Memvalidasi input dari pengguna
             while True:
                 lanjut = input(
                     "^( '-' )^ : Apakah "
@@ -82,28 +84,27 @@ def tampilan(list_tampilan, username):
                 if lanjut in "YyNn" and len(lanjut) == 1:
                     break
                 # Input tidak valid, pengisian diulang
-                elif lanjut not in "YyNn" or len(lanjut) != 1:
-                    print("\n(>‘o’)> : Input tidak sesuai. Ulangi!\n")
+                print("\n(>‘o’)> : Input tidak sesuai. Ulangi!\n")
 
-            # Tidak melanjutkan penampilan data berikutnya, terminasi loop
+            # Tidak melanjutkan penampilan entri berikutnya, terminasi loop
             if lanjut in "Nn":
                 break
-            # Melanjutkan penampilan lima data berikutnya
+            # Melanjutkan penampilan lima entri berikutnya
             elif lanjut in "Yy":
                 print()
 
 
 def buat_list_tampilan(kembali, pinjam, user, gadget):
-    """Fungsi ini akan menerima input array berisi data pengembalian,
+    """Fungsi ini akan menerima input array berisi entri pengembalian,
     peminjaman, user, dan gadget.  Kemudian fungsi mengembalikan
-    sebuah array berisi data ID Pengambilan, Nama Pengambil, Nama
+    sebuah array berisi entri ID Pengambilan, Nama Pengambil, Nama
     Gadget, dan Tanggal Pengembalian yang sesuai pada tiap
-    data pengembalian.
+    entri pengembalian.
     """
 
     # KAMUS LOKAL
-    # kembali_copy : array of array
-    # row_copy : array of string and int
+    # kembali, pinjam, user, gadget, kembali_copy : array of array
+    # row_copy : array of str and int
     # id_pengambilan, id_peminjam : int
     # nama_pengambil, id_gadget, nama_gadget, tanggal_pengembalian : str
 
@@ -111,7 +112,7 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
     # inisialisasi array kosong
     kembali_copy = []
 
-    # mencari data yang sesuai untuk tiap array pada riwayat pengembalian
+    # Mencari data yang sesuai untuk tiap array pada riwayat pengembalian
     for row in kembali:
         id_pengambilan = row[1]
         id_peminjam = pinjam[id_pengambilan][1]
@@ -120,14 +121,14 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
         nama_gadget = nama_gadget_id(gadget, id_gadget)
         tanggal_pengembalian = row[2]
 
-        # membuat array baru dengan data yang sesuai untuk satu peminjaman
+        # Membuat array baru dengan data yang sesuai untuk satu peminjaman
         row_copy = [id_pengambilan, nama_pengambil,
                     nama_gadget, tanggal_pengembalian]
 
-        # mengumpulkan array dengan data yang sesuai dari tiap peminjaman
+        # Mengumpulkan array dengan data yang sesuai dari tiap peminjaman
         kembali_copy.append(row_copy)
 
-    # mengembalikan array of array dengan data yang akan ditampilkan
+    # Mengembalikan array of array dengan entri yang akan ditampilkan
     return kembali_copy
 
 
@@ -160,14 +161,14 @@ def riwayatkembali(databases):
     db_gadget = databases[gadget]
     db_user = databases[user]
 
-    # Mengurutkan data pengembalian menurun berdasarkan tanggal
+    # Mengurutkan entri pengembalian menurun berdasarkan tanggal
     sorted_db_kembali = sortMaxMinTanggal(db_kembali, 2)
 
     # Mencari data yang sesuai dan membuat array baru untuk ditampilkan
     list_tampilan = buat_list_tampilan(sorted_db_kembali, db_pinjam,
                                        db_user, db_gadget)
 
-    # Menampilkan data yang sesuai dengan tampilan yang rapih
+    # Menampilkan entri yang sesuai dengan tampilan yang rapih
     tampilan(list_tampilan, username)
 
     # Mengembalikan databases yang sudah digunakan
