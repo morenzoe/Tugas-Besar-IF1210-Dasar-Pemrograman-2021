@@ -81,8 +81,11 @@ def tambahitem(databases):
     # Validasi login pengguna
     isLoggedIn = cek_active_account(databases)
     if isLoggedIn:
+        username = databases[active_account][1]
+        role = databases[active_account][5]
+        
         # Validasi role pengguna
-        if databases[active_account][5] == "Admin":
+        if role == "Admin":
             # input ID
             ID = input("Masukan ID             : ")
             pjgID = len(ID)
@@ -334,7 +337,7 @@ def tambahitem(databases):
 
         else:  # role != Admin
             print(
-                "(D_D): Maaf, kamu bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
+                "(D_D): Maaf, role",username,"bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
             return databases
     else:  # not isLoggedIn
         print("(^v^): Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")

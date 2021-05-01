@@ -43,9 +43,9 @@ def cekdelimit(cek):
     # ALGORITMA
     # Mengecek ";"
     if ";" in cek:
-		return True    # Mengembalikan True apabila ";" ditemukan
-	else:
-		return False   # Mengembalikan False apabila ";" ditemukan
+        return True    # Mengembalikan True apabila ";" ditemukan
+    else:
+        return False   # Mengembalikan False apabila ";" ditemukan
 
 
 def ubah(ID,data,jumlah):
@@ -81,7 +81,7 @@ def ubah(ID,data,jumlah):
             print("(=^v^=):",jumlah , (data[idx][1]) , "berhasil ditambahkan. Stok sekarang : ",(data[idx][3]))
         else:
             print()
-            print("(=^v^=):"jumlah , (data[idx][1]) , "berhasil dibuang. Stok sekarang : ",(data[idx][3]))
+            print("(=^v^=):",jumlah , (data[idx][1]) , "berhasil dibuang. Stok sekarang : ",(data[idx][3]))
 
         
 # ALGORITMA PROGRAM UTAMA
@@ -101,8 +101,11 @@ def ubahjumlah(databases):
     # Validasi login pengguna
     isLoggedIn = cek_active_account(databases)
     if isLoggedIn:
+        username = databases[active_account][1]
+        role = databases[active_account][5]
+        
         # Validasi role pengguna
-        if databases[active_account][5] == "Admin":
+        if role == "Admin":
             # input ID gadget atau consumable
             ID = input("Masukan ID    : ")
             pjgID = len(ID)        
@@ -208,7 +211,7 @@ def ubahjumlah(databases):
                     
                 return databases
         else:
-            print("(D_D): Maaf, kamu bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
+            print("(D_D): Maaf, role",username,"bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
             return databases
     else:
         print("(^v^): Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")
