@@ -7,7 +7,7 @@ rarity (C, B, A, S), kemudian akan ditampilkan Gadget dengan rarity tersebut.
 
 # KAMUS
 # Daftar library lokal
-from constant import gadget,active_account
+from constant import gadget, active_account
 from login import cek_active_account
 
 # Variabel dan konstanta
@@ -15,6 +15,7 @@ from login import cek_active_account
 # username              : string
 # array_data            : array of array
 # rarity                : string
+
 
 def printdata(data):
     # meng-output setiap data yang terdapat pada array data
@@ -29,8 +30,10 @@ def printdata(data):
     print("Rarity          : ", data[4])
     print("Tahun Ditemukan : ", data[5])
 
+
 def check_file_tidak_kosong(database):
-    # menghasilkan nilai False jika gadget.csv kosong dan menghasilkan nilai True jika gadget.csv tidak kosong
+    # menghasilkan nilai False jika gadget.csv kosong dan menghasilkan nilai
+    # True jika gadget.csv tidak kosong
 
     # ALGORITMA
     if len(database) == 1:
@@ -50,19 +53,20 @@ def carirarity(database):
             # Terdapat gadget pada file gadget.csv
             rarity = input("Masukkan rarity : ")
 
-            while rarity not in "CBAScbas" or len(rarity) != 1:         # Validasi rarity
+            # Validasi rarity
+            while rarity not in "CBAScbas" or len(rarity) != 1:
                 rarity = input("Masukkan rarity dengan benar! :")
             rarity = rarity.title()
-            
+
             # Memulai Output data
             print("\nHasil pencarian : ")
             for data in range(len(array_data)):
-                if (array_data[data-1][4] == rarity):
-                    printdata(array_data[data-1])
+                if (array_data[data - 1][4] == rarity):
+                    printdata(array_data[data - 1])
         else:
             # Tidak terdapat file gadget pada file gadget.csv
             print("(;_;) : Tidak ada data pada gadget.csv, maafkan admin!")
     else:
         # Pengguna belum login
-        print("\(>_<)/ : Anda belum login.")
+        print("\\(>_<)/ : Anda belum login.")
     return database

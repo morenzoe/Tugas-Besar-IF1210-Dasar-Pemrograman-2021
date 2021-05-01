@@ -29,6 +29,8 @@ from constant import user, gadget, consumable, consumable_history, \
 # isValid : bool
 
 # Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
+
+
 def to_str(array_word_int):
     """Fungsi ini membaca array dan merubah tipe data semua elemen menjadi
     tipe data string.  Kemudian fungsi mengembalikan array of string tersebut.
@@ -91,8 +93,8 @@ def array_to_csv(csv, folder_path, database):
         f.write(row)
     f.close()
 
+
 def validasi_folder(folder_save):
-    
 
     # Inisialisasi validasi nama folder
     karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
@@ -109,6 +111,8 @@ def validasi_folder(folder_save):
         return True
 
 # ALGORITMA PROGRAM UTAMA
+
+
 def save(databases):
     # Memvalidasi pengguna sudah login
     isLoggedIn = cek_active_account(databases)
@@ -139,15 +143,15 @@ def save(databases):
 
         # Memvalidasi nama folder
         isValid = validasi_folder(folder_save)
-        
+
         if isValid:
             break
-        
+
         while True:
             lanjut = input("\n(^-^): Apakah "
                            + username
                            + " ingin melanjutkan penyimpanan? (Y/N) ")
-            
+
             # Input valid, salah satu huruf Y/y/N/n
             if lanjut in "Yy" and len(lanjut) == 1:
                 print()

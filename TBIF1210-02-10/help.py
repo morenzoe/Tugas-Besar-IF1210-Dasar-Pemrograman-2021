@@ -5,8 +5,10 @@ Fungsi ini akan memberikan panduan penggunaan sistem.
 Akses : Admin, User
 """
 
+
 def help(databases):
-	print("""=================================== H E L P ===================================
+    print(
+        """=================================== H E L P ===================================
 register      : untuk melakukan registrasi user baru
 login         : untuk melakukan login ke dalam sistem
 carirariry    : untuk melakukan pencarian gadget dengan rarity tertentu
@@ -22,4 +24,4 @@ riwayatkembali: untuk melihat riwayat pengembalian gadget
 riwayatambil  : untuk melihat riwayat pengembalian consumable
 exit          : untuk keluar dari aplikasi
 ===============================================================================""")
-	return databases
+    return databases

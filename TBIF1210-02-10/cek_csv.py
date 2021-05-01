@@ -22,6 +22,8 @@ from constant import nama_csv
 # csv_found : bool
 
 # Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
+
+
 def cek_argumen(argumen):
     """Fungsi ini membaca list of string yang berisi argumen dari cmd
     kemudian memvalidasi input nama folder penyimpanan.  Fungsi akan

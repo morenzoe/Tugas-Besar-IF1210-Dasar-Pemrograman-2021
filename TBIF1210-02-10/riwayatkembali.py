@@ -33,6 +33,8 @@ from constant import user, gadget, gadget_borrow_history, \
 # list_tampilan : array of array
 
 # Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
+
+
 def print_baris(row):
     """Prosedur ini akan menampilkan entri pada array sesuai dengan
     tampilan berupa:

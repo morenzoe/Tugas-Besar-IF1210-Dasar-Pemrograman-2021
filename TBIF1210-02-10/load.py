@@ -25,6 +25,8 @@ from constant import nama_csv, dikonversi
 # active_account : list
 
 # Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
+
+
 def semicolon_split(row):
     """Fungsi ini membaca string dan menghasilkan list of string tiap
     kata antara titik koma (semicolon). Fungsi kemudian mengembalikan

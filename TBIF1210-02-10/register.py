@@ -1,14 +1,11 @@
-"""
-Program F01 - Register
+"""Program F01 - Register
 Untuk menambahkan data pengguna pada file User.csv, pengguna dapat melakukan register.
 Register hanya dapat diakses oleh Admin.
 """
 
-
-
 # KAMUS
 # Daftar library lokal
-from constant import user,active_account
+from constant import user, active_account
 from login import cek_active_account
 
 # Variabel dan konstanta
@@ -23,7 +20,8 @@ from login import cek_active_account
 # role              : string
 # new_data          : array of string
 
-def check_username(username,data):
+
+def check_username(username, data):
     # Mengecek apakah username input sudah ada atau belum pada data
 
     # KAMUS LOKAL
@@ -38,43 +36,56 @@ def check_username(username,data):
             check = 1
     if (check == 0):
         return False
-    else: #check = 1
+    else:  # check = 1
         return True
+
+
 def checkdelimit(check):
     # Mengecek apakah dalam input pengguna terdapat ;.
-    
+
     # KAMUS LOKAL
     # check            : string { yang ingin dicek }
 
     # ALGORITMA
-	if ";" in check:
-		return True
-	else:
-		return False
+    if ";" in check:
+        return True
+    else:
+        return False
+
+
 def ubahinput(masukan):
-    # meminta input variabel yang bersangkutan kepada pengguna dengan pengulangan input jika input pengguna salah
+    # meminta input variabel yang bersangkutan kepada pengguna dengan
+    # pengulangan input jika input pengguna salah
 
     # KAMUS LOKAL
-    # masukan           : string { jika input pengguna salah, akan dicek kembali }
-    
+    # masukan           : string { jika input pengguna salah, akan dicek
+    # kembali }
+
     # ALGORITMA
     while checkdelimit(masukan):
-        masukan = input("(9*.*)9 : Masukan salah, mohon beri masukan yang benar! : ")
+        masukan = input(
+            "(9*.*)9 : Masukan salah, mohon beri masukan yang benar! : ")
     return masukan
 
-def ubahusername(masukan,database):
-    # meminta input username kepada pengguna jika terdapat kesalahan penginputan
 
-    #KAMUS LOKAL
-    # masukan           : string { jika input pengguna salah, akan dilakukan penginputan ulang }
-    
-    #ALGORITMA
+def ubahusername(masukan, database):
+    # meminta input username kepada pengguna jika terdapat kesalahan
+    # penginputan
+
+    # KAMUS LOKAL
+    # masukan           : string { jika input pengguna salah, akan dilakukan
+    # penginputan ulang }
+
+    # ALGORITMA
     while checkdelimit(masukan) or check_username(masukan, database):
-        if check_username(masukan,database):
-            masukan = input("(9'.')9 : username sudah diambil, mohon beri masukan username yang lain! : ")
+        if check_username(masukan, database):
+            masukan = input(
+                "\n(9'.')9 : username sudah diambil, mohon beri masukan username yang lain! : ")
         else:
-            masukan = input("(9'.')9 : Masukan salah, mohon beri masukan yang benar! : ")
+            masukan = input(
+                "(9'.')9 : Masukan salah, mohon beri masukan yang benar! : ")
     return masukan
+
 
 def register(databases):
     # Me-register akun pengguna
@@ -87,37 +98,42 @@ def register(databases):
             data = databases[user][1:]
 
             # Memulai penginputan
-            print("\(>_<)/ : Dilarang menggunakan karakter ; dalam penginputan!\n")
+            print("\\(>_<)/ : Dilarang menggunakan karakter ; dalam penginputan!\n")
 
             # Input nama
-            nama = input("Masukkan nama anda     : ")
-            nama=(ubahinput(nama)).title()
+            nama = input("Masukkan nama anda    : ")
+            nama = (ubahinput(nama)).title()
 
             # Input username
-            username = input("Masukkan username anda : ")
-            username = ubahusername(username,databases[user])
+            username = input("Masukkan username anda: ")
+            username = ubahusername(username, databases[user])
 
             # Input password
-            password = input("Masukkan password anda : ")
+            password = input("Masukkan password anda: ")
             password = ubahinput(password)
 
             # Input alamat
-            alamat = input("Masukkan alamat anda   : ")
+            alamat = input("Masukkan alamat anda  : ")
             alamat = ubahinput(alamat)
 
-            # Penetapan Id dan role secara otomatis dari sistem 
-            Id = str(len(data) +1)
+            # Penetapan Id dan role secara otomatis dari sistem
+            Id = str(len(data) + 1)
             role = "User"
 
-            # Menggabungkan data menjadi array baru dan menggabungkannya dengan databases
-            new_data = [Id,username,nama,alamat,password,role]
+            # Menggabungkan data menjadi array baru dan menggabungkannya dengan
+            # databases
+            new_data = [Id, username, nama, alamat, password, role]
             databases[user].append(new_data)
-            print("\n \('3')/ : User", username, "telah berhasil register ke dalam Kantong Ajaib.")
+            print("\n\\('3')/ : User", username,
+                  "telah berhasil register ke dalam Kantong Ajaib.")
         else:
             # Pengguna bukan Admin
-            print("(Q.Q) : Maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini (anda bukan Admin).")
+            print(
+                "(Q.Q) : Maafkan saya",
+                databases[6][1] +
+                "-san, tetapi anda tidak berhak mengakses command ini (anda bukan Admin).")
     else:
         # Pengguna belum login
         print(" <('.')> : Maaf, anda belum login.")
     return databases
-#python kantongajaib.py CSVs
+# python kantongajaib.py CSVs

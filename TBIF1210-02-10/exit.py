@@ -21,6 +21,8 @@ from constant import active_account
 # save_option : str
 
 # ALGORITMA
+
+
 def exit(databases):
     # Mendapatkan data terkait pengguna
     try:
