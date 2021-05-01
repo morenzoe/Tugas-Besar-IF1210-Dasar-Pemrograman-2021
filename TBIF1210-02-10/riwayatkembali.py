@@ -83,8 +83,7 @@ def tampilan(list_tampilan, username):
                     break
                 # Input tidak valid, pengisian diulang
                 elif lanjut not in "YyNn" or len(lanjut) != 1:
-                    print("\n(>‘o’)> : Input tidak sesuai. Ulangi!")
-                    print()
+                    print("\n(>‘o’)> : Input tidak sesuai. Ulangi!\n")
 
             # Tidak melanjutkan penampilan data berikutnya, terminasi loop
             if lanjut in "Nn":

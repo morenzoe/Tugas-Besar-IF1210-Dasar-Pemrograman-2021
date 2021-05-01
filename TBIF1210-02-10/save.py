@@ -119,10 +119,10 @@ def save(databases):
 
     # Memvalidasi input nama folder
     if len(folder_save) == 0:
-        print("\nm/(>.<)\\m : nama folder tidak boleh kosong!")
+        print("\nm/(>.<)\\m : Nama folder tidak boleh kosong!")
         isValid = False
     elif any(item in folder_save for item in karakter_eror):
-        print("\nm/(>.<)\\m : nama folder tidak boleh mengandung karakter "
+        print("\nm/(>.<)\\m : Nama folder tidak boleh mengandung karakter "
               + 'sebagai berikut: \\ / : * & ? " < > |')
         isValid = False
 
@@ -140,7 +140,7 @@ def save(databases):
             os.makedirs(folder_path)
         except OSError:
             print("\n(╥_╥) : Data tidak berhasil disimpan, terjadi eror "
-                  + "terkait sistem")
+                  + "terkait sistem.")
             return databases
 
     # Folder ada, simpan semua data dalam file berekstensi .csv
