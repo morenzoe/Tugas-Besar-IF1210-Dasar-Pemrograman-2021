@@ -13,7 +13,7 @@ from constant import user, active_account
 # isLoggedIn   : bool
 # username     : str
 # password     : str
-# file         : list of list
+# file         : array of array
 # find_username: bool
 # find_password: bool
 

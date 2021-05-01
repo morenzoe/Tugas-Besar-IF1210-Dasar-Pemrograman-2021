@@ -15,8 +15,8 @@ from constant import gadget, consumable, active_account
 from login import cek_active_account
 
 # Daftar variabel dan konstanta
-# db_gadget, db_consumable    : list of list
-# file_gadget, file_consumable: list of list
+# db_gadget, db_consumable    : array of array
+# file_gadget, file_consumable: array of array
 # isLoggedIn                  : bool
 # pjgID                       : int
 # ID                          : chr+int
