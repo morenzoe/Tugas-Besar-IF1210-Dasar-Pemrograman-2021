@@ -145,7 +145,7 @@ def ubahjumlah(databases):
                         # Memastikan bahwa ID tersedia
                         if cekid(ID,file_gadget):
                             # Input jumlah
-                            jumlah = input("Masukan Jumlah : ")
+                            jumlah = input("Masukan Jumlah: ")
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
@@ -188,7 +188,7 @@ def ubahjumlah(databases):
                     
                         # Memastikan bahwa ID tersedia
                         if cekid(ID,file_consumable):
-                            jumlah = input("Masukan Jumlah : ")
+                            jumlah = input("Masukan Jumlah: ")
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
