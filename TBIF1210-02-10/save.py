@@ -2,7 +2,7 @@
 Fungsi ini akan  menyimpan tiap array di dalam array yang diterima
 sebagai file dengan ekstensi .csv yang dipisahkan semicolon.
 Fungsi akan meminta input nama folder sebagai lokasi penyimpanan.
-
+data
 Akses : Admin, User
 """
 
@@ -18,28 +18,24 @@ from constant import user, gadget, consumable, consumable_history, \
     active_account, nama_csv
 
 # Daftar konstanta
-# user : int
-# gadget : int
-# consumable : int
-# consumable_history : int
-# gadget_borrow_history : int
-# gadget_return_history : int
-# active_account : int
+# user, gadget, consumable, consumable_history, gadget_borrow_history : int
+# gadget_return_history, active_account : int
 # nama_csv : array of str
 # karakter_eror : array of str
 
 # Daftar variabel
+# databases : array of array of array
 # folder_save, folder_path, workspace, csv : str
 # isValid : bool
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def to_str(array_word_int):
     """Fungsi ini membaca array dan merubah tipe data semua elemen menjadi
     tipe data string.  Kemudian fungsi mengembalikan array of string tersebut.
     """
 
     # KAMUS LOKAL
-    # Variabel
+    # array_word_int : array of str and int
     # array_word : array of str
 
     # ALGORITMA
@@ -54,6 +50,7 @@ def array_word_to_row(array_word):
     """
 
     # KAMUS LOKAL
+    # array_word : array of str
     # row : str
 
     # ALGORITMA
@@ -62,24 +59,33 @@ def array_word_to_row(array_word):
 
 
 def array_to_csv(csv, folder_path, database):
-    """Prosedur menerima nama file dengan ekstensi .csv, directory
-    penyimpanan, dan array of array yang akan disimpan.  Prosedur
+    """Prosedur ini menerima nama file dengan ekstensi .csv, directory
+    penyimpanan, dan array of array yang akan disimpan.  Prosedur 
     menulis tiap array sebagai satu baris dalam file.
     """
 
     # KAMUS LOKAL
+    # database : array of array
     # save_csv : array of str
     # array_word : array of array of str
-    # row, csv_path : str
+    # row, csv, csv_path, folder_path : str
     # f : file
 
     # ALGORITMA
+    # Inisialisasi variabel array yang akan disimpan
     save_csv = []
+    
+    # Gabungkan semua array dalam database
     for array_word_int in database:
+        # Mengubah isi array menjadi string dan menggabungkan semuanya
         array_word = to_str(array_word_int)
         row = ";".join(array_word) + "\n"
         save_csv.append(row)
+        
+    # Membuat path directory penyimpanan
     csv_path = os.path.join(folder_path, csv)
+    
+    # Menulis semua entri pada array save_csv
     f = open(csv_path, "w")
     for row in save_csv:
         f.write(row)
@@ -109,12 +115,13 @@ def save(databases):
         return databases
 
     # Role pengguna adalah admin atau user, jalankan prosedur save
-    karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
-    isValid = True
-
     # Meminta nama folder untuk penyimpanan data
     folder_save = input("(~ ^v^)~ : Masukkan nama folder penyimpanan: ")
 
+    # Inisialisasi validasi nama folder
+    karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
+    isValid = True
+    
     # Memvalidasi input nama folder
     if len(folder_save) == 0:
         print("\nm/(>.<)\\m : Nama folder tidak boleh kosong!")
@@ -148,5 +155,5 @@ def save(databases):
         array_to_csv(csv, folder_path, databases[i])
 
     # Penyimpanan selesai, menampilkan pesan konfirmasi
-    print("\n( >_<)b : Data telah disimpan pada folder", folder_save + "!\n")
+    print("\n( >_<)b : Data telah disimpan di folder", folder_save + "!\n")
     return databases
