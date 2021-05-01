@@ -27,13 +27,13 @@ from constant import user, gadget, gadget_borrow_history, \
 # Daftar variabel
 # isLoggedIn : bool
 # username, role, : str
-# db_gadget, db_kembali, db_pinjam : list of list
-# db_user, sorted_db_kembali : list of list
-# list_tampilan : list of list
+# db_gadget, db_kembali, db_pinjam : array of array
+# db_user, sorted_db_kembali : array of array
+# list_tampilan : array of array
 
 
 def print_baris(row):
-    """Prosedur ini akan menampilkan data pada list sesuai dengan
+    """Prosedur ini akan menampilkan data pada array sesuai dengan
     tampilan berupa:
     ID Pengambilan      :
     Nama Pengambil      :
@@ -52,7 +52,7 @@ def print_baris(row):
 
 
 def tampilan(list_tampilan, username):
-    """Prosedur ini akan membaca list of list berisi data yang
+    """Prosedur ini akan membaca array of array berisi data yang
     akan ditampilkan per lima baris dan akan dilanjutkan sesuai
     keinginan user.
     """
@@ -61,7 +61,7 @@ def tampilan(list_tampilan, username):
     # lanjut : str
 
     # ALGORITMA
-    # Menampilkan sebanyak data pada list tampilan
+    # Menampilkan sebanyak data pada array tampilan
     for i in range(len(list_tampilan)):
         print_baris(list_tampilan[i])
 
@@ -94,24 +94,24 @@ def tampilan(list_tampilan, username):
 
 
 def buat_list_tampilan(kembali, pinjam, user, gadget):
-    """Fungsi ini akan menerima input list berisi data pengembalian,
+    """Fungsi ini akan menerima input array berisi data pengembalian,
     peminjaman, user, dan gadget.  Kemudian fungsi mengembalikan
-    sebuah list berisi data ID Pengambilan, Nama Pengambil, Nama
+    sebuah array berisi data ID Pengambilan, Nama Pengambil, Nama
     Gadget, dan Tanggal Pengembalian yang sesuai pada tiap
     data pengembalian.
     """
 
     # KAMUS LOKAL
-    # kembali_copy : list of list
-    # row_copy : list of string and int
+    # kembali_copy : array of array
+    # row_copy : array of string and int
     # id_pengambilan, id_peminjam : int
     # nama_pengambil, id_gadget, nama_gadget, tanggal_pengembalian : str
 
     # ALGORITMA
-    # inisialisasi list kosong
+    # inisialisasi array kosong
     kembali_copy = []
 
-    # mencari data yang sesuai untuk tiap list pada riwayat pengembalian
+    # mencari data yang sesuai untuk tiap array pada riwayat pengembalian
     for row in kembali:
         id_pengambilan = row[1]
         id_peminjam = pinjam[id_pengambilan][1]
@@ -120,14 +120,14 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
         nama_gadget = nama_gadget_id(gadget, id_gadget)
         tanggal_pengembalian = row[2]
 
-        # membuat list baru dengan data yang sesuai untuk satu peminjaman
+        # membuat array baru dengan data yang sesuai untuk satu peminjaman
         row_copy = [id_pengambilan, nama_pengambil,
                     nama_gadget, tanggal_pengembalian]
 
-        # mengumpulkan list dengan data yang sesuai dari tiap peminjaman
+        # mengumpulkan array dengan data yang sesuai dari tiap peminjaman
         kembali_copy.append(row_copy)
 
-    # mengembalikan list of list dengan data yang akan ditampilkan
+    # mengembalikan array of array dengan data yang akan ditampilkan
     return kembali_copy
 
 
@@ -154,7 +154,7 @@ def riwayatkembali(databases):
         return databases
 
     # Role pengguna adalah admin, jalankan prosedur riwayatkembali
-    # Membuat list untuk tiap data yang dibutuhkan
+    # Membuat array untuk tiap data yang dibutuhkan
     db_kembali = databases[gadget_return_history][1:]
     db_pinjam = databases[gadget_borrow_history]
     db_gadget = databases[gadget]
@@ -163,7 +163,7 @@ def riwayatkembali(databases):
     # Mengurutkan data pengembalian menurun berdasarkan tanggal
     sorted_db_kembali = sortMaxMinTanggal(db_kembali, 2)
 
-    # Mencari data yang sesuai dan membuat list baru untuk ditampilkan
+    # Mencari data yang sesuai dan membuat array baru untuk ditampilkan
     list_tampilan = buat_list_tampilan(sorted_db_kembali, db_pinjam,
                                        db_user, db_gadget)
 
