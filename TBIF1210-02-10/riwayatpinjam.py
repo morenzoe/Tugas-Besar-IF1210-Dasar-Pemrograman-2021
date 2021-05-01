@@ -106,7 +106,7 @@ def riwayatpinjam(databases):
                 repeat = "y"
 
                 # Mulai Output
-                print("(^.^)/ : Berikut adalah data riwayat peminjaman gadget : ")
+                print("(^.^)/ : Di bawah ini adalah data riwayat peminjaman gadget!")
                 while (repeat == "Y") or (repeat == "y"):
                     if akhir < len(sorted_history):
                         # Jika data yang tersisa lebih dari 5
@@ -120,10 +120,10 @@ def riwayatpinjam(databases):
                         awal = akhir
                         akhir += 5
                         repeat = input(
-                            "(^.^) : Apakah anda ingin melihat halaman selanjutnya? (Y/N): ")
+                            "\n(^.^) : Apakah anda ingin melihat halaman selanjutnya? (Y/N): ")
                         while (not (repeat in "YyNn") or len(repeat) != 1):
                             repeat = input(
-                                "(-.-') : Input salah mohon. Masukkan input yang benar. (Y/N): ")
+                                "\n(-.-') : Input salah mohon. Masukkan input yang benar. (Y/N): ")
 
                     elif akhir >= len(sorted_history):
                         # Jika data yang tersisa kurang dari sama dengan 5
