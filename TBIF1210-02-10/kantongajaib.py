@@ -9,6 +9,7 @@ import sys
 from carirarity import carirarity
 from caritahun import caritahun
 from cek_csv import cek_csv
+from exit import exit
 from hapusitem import hapusitem
 from help import help
 from kembalikan import kembalikan
@@ -62,21 +63,22 @@ databases = load(csv_path)
 
 # Inisialisasi variabel dictionary untuk pemanggilan fungsi
 dict_program = {
-	'register': register,
-    'login': login,
-    'carirarity': carirarity,
-    'caritahun': caritahun,
-    'tambahitem': tambahitem,
-    'hapusitem': hapusitem,
-    'ubahjumlah': ubahjumlah,
-    'pinjam': pinjam,
-    'kembalikan': kembalikan,
-    'minta': minta,
-    'riwayatpinjam': riwayatpinjam,
-    'riwayatkembali': riwayatkembali,
-    'riwayatambil': riwayatambil,
-    'save': save,
-    'help': help,
+	"register": register,
+    "login" : login,
+    "carirarity" : carirarity,
+    "caritahun" : caritahun,
+    "exit" :exit,
+    "tambahitem" : tambahitem,
+    "hapusitem" : hapusitem,
+    "ubahjumlah" : ubahjumlah,
+    "pinjam" : pinjam,
+    "kembalikan" : kembalikan,
+    "minta" : minta,
+    "riwayatpinjam" : riwayatpinjam,
+    "riwayatkembali" : riwayatkembali,
+    "riwayatambil" : riwayatambil,
+    "save" : save,
+    "help" : help,
     }
 
 # Menampilkan pesan selamat datang
@@ -96,7 +98,8 @@ while True:
         for i in range(len(nama_csv)):
             print(nama_csv[i])
             for row in databases[i]:
-                print(row+"\n")
+                print(row)
+                print()
         print("active_account")
         for row in databases[active_account]:
             print(row)
@@ -106,31 +109,8 @@ while True:
     command = input("\n>>> ")
     print()
     
-    # Input fungsi adalah exit, ajukan save data
-    if command == 'exit':
-        # Memvalidasi input dari pengguna
-        while True:
-            save_option = input("Apakah Anda mau melakukan penyimpanan file "
-                                + "yang sudah diubah? (Y/N) ")
-            print()
-            
-            # Input valid, salah satu huruf Y/y/N/n
-            if save_option in "YyNn" and len(save_option)==1:
-                break
-            # Input tidak valid, pengisian diulang
-            print("m(><)m : Input tidak sesuai. Ulangi! \n")
-        
-        # Pengguna ingin menyimpan data, melakukan fungsi save
-        if save_option in "Yy":
-            dict_program['save'](databases)
-        
-        # Program selesai, terminasi loop program utama
-        print("(^O^)/ : Sampai jumpa!")
-        break
-    
-    # Input fungsi bukan exit, panggil fungsi sesuai 
-    elif command!='exit':
-        try:
-            databases = dict_program[command](databases)
-        except KeyError:
-            print("(O_o): Perintah salah! Ketik help dan tekan enter untuk menampilkan petunjuk.")
+    # Memanggil fungsi sesuai input
+    try:
+        databases = dict_program[command](databases)
+    except KeyError:
+        print("(O_o): Perintah salah! Ketik help dan tekan enter untuk menampilkan petunjuk.")
