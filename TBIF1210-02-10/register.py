@@ -37,7 +37,7 @@ def ubahinput(masukan):
     # masukan : string { jika input user salah, akan dicek kembali }
     # algoritma
     while checkdelimit(masukan):
-        masukan = input("\n (9*.*)9 : Masukan salah, mohon beri masukan yang benar! :")
+        masukan = input("(9*.*)9 : Masukan salah, mohon beri masukan yang benar! : ")
     return masukan
 
 def ubahusername(masukan,database):
@@ -47,7 +47,10 @@ def ubahusername(masukan,database):
     # masukan : string { jika input user salah, akan dilakukan penginputan ulang }
     #algoritma
     while checkdelimit(masukan) or check_username(masukan, database):
-        masukan = input("\n (9'.')9 : Masukan salah, mohon beri masukan yang benar! :")
+        if check_username(masukan,database):
+            masukan = input("(9'.')9 : username sudah diambil, mohon beri masukan username yang lain! : ")
+        else:
+            masukan = input("(9'.')9 : Masukan salah, mohon beri masukan yang benar! : ")
     return masukan
 
 def register(databases):
@@ -69,7 +72,7 @@ def register(databases):
         if role == "Admin":
             array_data = databases[user]
             data = array_data[1:]
-            print("\(>_<)/ : dilarang menggunakan karakter ; dalam penginputan")
+            print("\(>_<)/ : Dilarang menggunakan karakter ; dalam penginputan!\n")
             nama = input("Masukkan nama anda     : ")
             nama=(ubahinput(nama)).title()
             username = input("Masukkan username anda : ")
@@ -84,7 +87,7 @@ def register(databases):
             databases[user].append(new_data)
             print("\n \('3')/ : User", username, "telah berhasil register ke dalam Kantong Ajaib.")
         else:
-            print("(Q.Q) : maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini (anda bukan Admin).")
+            print("(Q.Q) : Maafkan saya", databases[6][1] + "-san, tetapi anda tidak berhak mengakses command ini (anda bukan Admin).")
     else:
         print(" <('.')> : Maaf, anda belum login.")
     return databases

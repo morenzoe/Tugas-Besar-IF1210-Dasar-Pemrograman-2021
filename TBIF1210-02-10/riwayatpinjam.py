@@ -58,8 +58,8 @@ def riwayatpinjam(databases):
                     awal = akhir
                     akhir += 5
                     repeat = input("(^.^) : Apakah anda ingin melihat halaman selanjutnya? (Y/N): ")
-                    while (not (repeat in "YyNn") and len(repeat)!=1):
-                        repeat = input("(-.-') : Input", username+"-san salah mohon masukkan input yang benar. (Y/N): ")
+                    while (not (repeat in "YyNn") or len(repeat)!=1):
+                        repeat = input("(-.-') : Input salah mohon. Masukkan input yang benar. (Y/N): ")
                 elif akhir >= len(sorted_history):
                     for data in range(awal,len(sorted_history)):
                         nama_user = nama_user_id(db_user, sorted_history[data][1])

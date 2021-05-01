@@ -23,7 +23,7 @@ def riwayatambil(databases):
     isLoggedIn = cek_active_account(databases)
     if isLoggedIn:
         if databases[active_account][5] != "Admin" :
-            print("Maafkan saya", databases[active_account][2] + "-san", "saya tidak dapat mengizinkan anda menggunakan command ini (anda bukan Admin).")
+            print("(;-;) : Maafkan saya", databases[active_account][2] + "-san", "saya tidak dapat mengizinkan anda menggunakan command ini (anda bukan Admin).")
         else:
             print("(^.^)/ : Berikut adalah data riwayat peminjaman consumeable: ")
             sorted_history = sortMaxMinTanggal(databases[consumable_history][1:],3)
@@ -42,8 +42,8 @@ def riwayatambil(databases):
                     awal = akhir
                     akhir += 5
                     repeat = input("('.') : Apakah anda ingin melihat halaman selanjutnya? (Y/N): ")
-                    while (not (repeat in "YyNn") and len(repeat)!=1):
-                        repeat = input("(-.-') : Input", username+"-san salah mohon masukkan input yang benar (Y/N)!: ")
+                    while (not (repeat in "YyNn") or len(repeat)!=1):
+                        repeat = input("(-.-') : Input salah mohon. Masukkan input yang benar. (Y/N): ")
                 elif akhir >= len(sorted_history):
                     for data in range(awal,len(sorted_history)):
                         nama_user = nama_user_id(db_user, sorted_history[data][1])
