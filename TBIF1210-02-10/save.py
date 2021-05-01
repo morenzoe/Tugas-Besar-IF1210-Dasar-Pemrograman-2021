@@ -60,7 +60,7 @@ def array_word_to_row(array_word):
 
 def array_to_csv(csv, folder_path, database):
     """Prosedur ini menerima nama file dengan ekstensi .csv, directory
-    penyimpanan, dan array of array yang akan disimpan.  Prosedur 
+    penyimpanan, dan array of array yang akan disimpan.  Prosedur
     menulis tiap array sebagai satu baris dalam file.
     """
 
@@ -74,22 +74,39 @@ def array_to_csv(csv, folder_path, database):
     # ALGORITMA
     # Inisialisasi variabel array yang akan disimpan
     save_csv = []
-    
+
     # Gabungkan semua array dalam database
     for array_word_int in database:
         # Mengubah isi array menjadi string dan menggabungkan semuanya
         array_word = to_str(array_word_int)
         row = ";".join(array_word) + "\n"
         save_csv.append(row)
-        
+
     # Membuat path directory penyimpanan
     csv_path = os.path.join(folder_path, csv)
-    
+
     # Menulis semua entri pada array save_csv
     f = open(csv_path, "w")
     for row in save_csv:
         f.write(row)
     f.close()
+
+def validasi_folder(folder_save):
+    
+
+    # Inisialisasi validasi nama folder
+    karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
+
+    # Memvalidasi input nama folder
+    if len(folder_save) == 0:
+        print("\nm/(>.<)\\m: Nama folder tidak boleh kosong!")
+        return False
+    elif any(item in folder_save for item in karakter_eror):
+        print("\nm/(>.<)\\m: Nama folder tidak boleh mengandung karakter "
+              + 'sebagai berikut: \\ / : * & ? " < > |')
+        return False
+    else:
+        return True
 
 # ALGORITMA PROGRAM UTAMA
 def save(databases):
@@ -97,7 +114,7 @@ def save(databases):
     isLoggedIn = cek_active_account(databases)
     if not isLoggedIn:
         # Pengguna belum login, terminate prosedur riwayatkembali
-        print("^.^ : Silahkan login terlebih dahulu.")
+        print("(^.^): Silahkan login terlebih dahulu.")
         return databases
 
     # Pengguna sudah login, mendapatkan data terkait pengguna
@@ -108,32 +125,38 @@ def save(databases):
     if role != "Admin" and role != "User":
         # Role pengguna bukan admin atau user, terminate prosedur save
         print(
-            "=^.^= : Role "
+            "=(^.^)=: Role "
             + username
             + " bukan Admin atau User, silahkan login akun Admin atau "
             + "User.")
         return databases
 
     # Role pengguna adalah admin atau user, jalankan prosedur save
-    # Meminta nama folder untuk penyimpanan data
-    folder_save = input("(~ ^v^)~ : Masukkan nama folder penyimpanan: ")
-
-    # Inisialisasi validasi nama folder
-    karakter_eror = ['\\', '/', ':', '*', '&', '?', '"', '<', '>', '|']
-    isValid = True
-    
     # Memvalidasi input nama folder
-    if len(folder_save) == 0:
-        print("\nm/(>.<)\\m : Nama folder tidak boleh kosong!")
-        isValid = False
-    elif any(item in folder_save for item in karakter_eror):
-        print("\nm/(>.<)\\m : Nama folder tidak boleh mengandung karakter "
-              + 'sebagai berikut: \\ / : * & ? " < > |')
-        isValid = False
+    while True:
+        # Meminta nama folder untuk penyimpanan data
+        folder_save = input("(~ ^v^)~: Masukkan nama folder penyimpanan: ")
 
-    # Nama folder tidak valid, terminasi fungsi
-    if not isValid:
-        return databases
+        # Memvalidasi nama folder
+        isValid = validasi_folder(folder_save)
+        
+        if isValid:
+            break
+        
+        while True:
+            lanjut = input("\n(^-^): Apakah "
+                           + username
+                           + " ingin melanjutkan penyimpanan? (Y/N) ")
+            
+            # Input valid, salah satu huruf Y/y/N/n
+            if lanjut in "Yy" and len(lanjut) == 1:
+                print()
+                break
+            elif lanjut in "Nn" and len(lanjut) == 1:
+                return databases
+            # Input tidak valid, pengisian diulang
+            else:
+                print("\nm(><)m: Input tidak sesuai. Ulangi! \n")
 
     # Memeriksa ada tidaknya folder tersebut dalam workspace
     folder_path, workspace = cek_folder(folder_save)
@@ -144,16 +167,16 @@ def save(databases):
         try:
             os.makedirs(folder_path)
         except OSError:
-            print("\n(╥_╥) : Data tidak berhasil disimpan, terjadi eror "
+            print("\n(╥_╥): Data tidak berhasil disimpan, terjadi eror "
                   + "terkait sistem.")
             return databases
 
     # Folder ada, simpan semua data dalam file berekstensi .csv
-    print("\n( o _o) : Saving...")
+    print("\n( o _o): Saving...")
     for i in range(len(databases) - 1):
         csv = nama_csv[i]
         array_to_csv(csv, folder_path, databases[i])
 
     # Penyimpanan selesai, menampilkan pesan konfirmasi
-    print("\n( >_<)b : Data telah disimpan di folder", folder_save + "!\n")
+    print("\n( >_<)b: Data telah disimpan di folder", folder_save + "!")
     return databases
