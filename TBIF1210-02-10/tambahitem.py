@@ -116,27 +116,27 @@ def tambahitem(databases):
                     if pjgID == 1:
                         # Beritahu pengguna bahwa ID tidak valid
                         print(
-                            "\n(;^_^): Gagal menambah item karena ID gadget tidak valid.")
+                            "\n(;^_^) : Gagal menambah item karena ID gadget tidak valid.")
                         print(
-                            "\n(/'O'): Format ID gadget yang valid adalah (G<angka>)")
+                            "\n(/'O') : Format ID gadget yang valid adalah (G<angka>)")
                     else:
                         Id = ID[1:]
                         try:
                             Id = int(Id)
                         except BaseException:
                             print(
-                                "\n(;^_^): Gagal menambah item karena ID gadget tidak valid.")
+                                "\n(;^_^) : Gagal menambah item karena ID gadget tidak valid.")
                             print(
-                                "\n(/'O'): Format ID gadget yang valid adalah (G<angka>)")
+                                "\n(/'O') : Format ID gadget yang valid adalah (G<angka>)")
                             return databases
 
                         if Id <= 0:
                             print()
                             print(
-                                "(;^_^): Gagal menambah item karena ID gadget tidak valid.")
+                                "(;^_^) : Gagal menambah item karena ID gadget tidak valid.")
                             print()
                             print(
-                                "(/'O'): Format ID gadget yang valid adalah (G<angka>)")
+                                "(/'O') : Format ID gadget yang valid adalah (G<angka>)")
                             return databases
 
                         # Memastikan ID tidak sama dengan ID gadget yang sudah
@@ -146,24 +146,24 @@ def tambahitem(databases):
                             nama = input("Masukan Nama            : ")
                             if len(nama) == 0:
                                 print(
-                                    "\n(/'O'): Nama tidak boleh kosong!")
+                                    "\n(/'O') : Nama tidak boleh kosong!")
                                 return databases
                             else:
                                 if cekdelimit(nama):
                                     print(
-                                        "\n(/'O'): Nama tidak valid. Jangan gunakan ';' pada nama.")
+                                        "\n(/'O') : Nama tidak valid. Jangan gunakan ';' pada nama.")
                                     return databases
 
                             # Input deksripsi
                             deskripsi = input("Masukan Deskripsi       : ")
                             if len(deskripsi) == 0:
                                 print(
-                                    "\n(/'O'): Deskripsi tidak boleh kosong!")
+                                    "\n(/'O') : Deskripsi tidak boleh kosong!")
                                 return databases
                             else:
                                 if cekdelimit(deskripsi):
                                     print(
-                                        "\n(/'O'): Deskripsi tidak valid. Jangan gunakan ';' pada deksripsi.")
+                                        "\n(/'O') : Deskripsi tidak valid. Jangan gunakan ';' pada deksripsi.")
                                     return databases
 
                             # Input jumlah
@@ -172,11 +172,11 @@ def tambahitem(databases):
                                 jumlah = int(jumlah)
                             except BaseException:
                                 print(
-                                    "\n(/'O'): Jumlah harus berupa bilangan bulat positif.")
+                                    "\n(/'O') : Jumlah harus berupa bilangan bulat positif.")
                                 return databases
                             if jumlah <= 0:
                                 print(
-                                    "\n(/'O'): Jumlah harus berupa bilangan bulat positif.")
+                                    "\n(/'O') : Jumlah harus berupa bilangan bulat positif.")
                                 return databases
 
                             # Input rarity
@@ -187,7 +187,7 @@ def tambahitem(databases):
                                     break
                                 else:
                                     print(
-                                        "\n(/'O'): Rarity tidak valid. Rarity hanya berupa 'C','B','A', dan 'S'.")
+                                        "\n(/'O') : Rarity tidak valid. Rarity hanya berupa 'C','B','A', dan 'S'.")
                                     return databases
 
                             # Input tahun ditemukannya gadget
@@ -197,14 +197,14 @@ def tambahitem(databases):
                                 tahun = int(tahun)
                             except BaseException:
                                 print(
-                                    "\n(/'O'): Tahun tidak valid. Tahun harus berupa angka dalam format YYYY.")
+                                    "\n(/'O') : Tahun tidak valid. Tahun harus berupa angka dalam format YYYY.")
                                 return databases
                             while True:
                                 if thn == 4 and tahun > 0:
                                     break
                                 else:
                                     print(
-                                        "\n(/'O'): Tahun tidak valid. Tahun harus dalam format YYYY.")
+                                        "\n(/'O') : Tahun tidak valid. Tahun harus dalam format YYYY.")
                                     return databases
 
                             # Menambahkan gadget ke database
@@ -214,42 +214,42 @@ def tambahitem(databases):
                             databases[gadget] = file_gadget
 
                             print(
-                                "\n(b^_^)b: Item telah berhasil ditambahkan ke database.")
+                                "\n(b^_^)b : Item telah berhasil ditambahkan ke database.")
 
                         else:  # ID gadget sudah ada di database
                             # Beritahu pengguna bahwa ID gadget tidak dapat
                             # digunakan
                             print(
-                                "\n(;^_^): Gagal menambahkan gadget, karena ID sudah ada.")
+                                "\n(;^_^) : Gagal menambahkan gadget, karena ID sudah ada.")
                             print(
-                                "\n(/^o^): Gunakan ID lain. Format ID gadget yang valid adalah (G<angka>)")
+                                "\n(/^o^) : Gunakan ID lain. Format ID gadget yang valid adalah (G<angka>)")
 
                 # Identifikasi consumable
                 elif ID[0] == "C":
                     if pjgID == 1:
                         # Beritahu pengguna bahwa ID tidak valid
                         print(
-                            "\n(;^_^): Gagal menambah item karena ID consumable tidak valid.")
+                            "\n(;^_^) : Gagal menambah item karena ID consumable tidak valid.")
                         print(
-                            "\n(/'O'): Format ID consumable yang valid adalah (C<angka>)")
+                            "\n(/'O') : Format ID consumable yang valid adalah (C<angka>)")
                     else:
                         Id = ID[1:]
                         try:
                             Id = int(Id)
                         except BaseException:
                             print(
-                                "\n(;^_^): Gagal menambah item karena ID consumable tidak valid.")
+                                "\n(;^_^) : Gagal menambah item karena ID consumable tidak valid.")
                             print(
-                                "\n(/'O'): Format ID consumable yang valid adalah (C<angka>)")
+                                "\n(/'O') : Format ID consumable yang valid adalah (C<angka>)")
                             return databases
 
                         if Id <= 0:
                             print()
                             print(
-                                "(;^_^): Gagal menambah item karena ID gadget tidak valid.")
+                                "(;^_^) : Gagal menambah item karena ID gadget tidak valid.")
                             print()
                             print(
-                                "(/'O'): Format ID consumable yang valid adalah (C<angka>)")
+                                "(/'O') : Format ID consumable yang valid adalah (C<angka>)")
                             return databases
 
                         # Memastikan bahwa ID tidak sama dengan ID yang telah
@@ -259,24 +259,24 @@ def tambahitem(databases):
                             nama = input("Masukan Nama            : ")
                             if len(nama) == 0:
                                 print(
-                                    "\n(/'O'): Nama tidak boleh kosong!")
+                                    "\n(/'O') : Nama tidak boleh kosong!")
                                 return databases
                             else:
                                 if cekdelimit(nama):
                                     print(
-                                        "\n(/'O'): Nama tidak valid. Jangan gunakan ';' pada nama.")
+                                        "\n(/'O') : Nama tidak valid. Jangan gunakan ';' pada nama.")
                                     return databases
 
                             # Input deksripsi
                             deskripsi = input("Masukan Deskripsi       : ")
                             if len(deskripsi) == 0:
                                 print(
-                                    "\n(/'O'): Deskripsi tidak boleh kosong!")
+                                    "\n(/'O') : Deskripsi tidak boleh kosong!")
                                 return databases
                             else:
                                 if cekdelimit(deskripsi):
                                     print(
-                                        "\n(/'O'): Deskripsi tidak valid. Jangan gunakan ';' pada deksripsi.")
+                                        "\n(/'O') : Deskripsi tidak valid. Jangan gunakan ';' pada deksripsi.")
                                     return databases
 
                             # Input jumlah
@@ -285,11 +285,11 @@ def tambahitem(databases):
                                 jumlah = int(jumlah)
                             except BaseException:
                                 print(
-                                    "\n(/'O'): Jumlah harus berupa bilangan bulat positif.")
+                                    "\n(/'O') : Jumlah harus berupa bilangan bulat positif.")
                                 return databases
                             if jumlah <= 0:
                                 print(
-                                    "\n(/'O'): Jumlah harus berupa bilangan bulat positif.")
+                                    "\n(/'O') : Jumlah harus berupa bilangan bulat positif.")
                                 return databases
 
                             # Input rarity
@@ -300,7 +300,7 @@ def tambahitem(databases):
                                     break
                                 else:
                                     print(
-                                        "\n(/'O'): Rarity tidak valid. Rarity hanya berupa 'C','B','A', dan 'S'.")
+                                        "\n(/'O') : Rarity tidak valid. Rarity hanya berupa 'C','B','A', dan 'S'.")
                                     return databases
 
                             # Menambahkan consumable ke database
@@ -309,29 +309,29 @@ def tambahitem(databases):
                             file_consumable.append(new_consumable)
                             databases[consumable] = file_consumable
                             print(
-                                "\n(b^_^)b: Item telah berhasil ditambahkan ke database.")
+                                "\n(b^_^)b : Item telah berhasil ditambahkan ke database.")
 
                         else:
                             # Beritahu pengguna bahwa ID tidak dapat digunakan
                             print(
-                                "\n(;^_^): Gagal menambahkan consumable karena ID sudah ada.")
+                                "\n(;^_^) : Gagal menambahkan consumable karena ID sudah ada.")
                             print(
-                                "\n(/^O^): Format ID consumable yang valid adalah (C<angka>)")
+                                "\n(/^O^) : Format ID consumable yang valid adalah (C<angka>)")
 
                 else:
                     print(
-                        "\n(;^_^): Gagal menambahkan item karena ID tidak valid.")
+                        "\n(;^_^) : Gagal menambahkan item karena ID tidak valid.")
                     print(
-                        "\n(/'O'): Format ID gadget yang valid adalah (G<angka>)")
-                    print("(/'O'): Format ID consumable yang valid adalah (C<angka>)")
+                        "\n(/'O') : Format ID gadget yang valid adalah (G<angka>)")
+                    print("(/'O') : Format ID consumable yang valid adalah (C<angka>)")
 
         else:  # role != Admin
             print(
-                "\n(D_D): Maaf, role" +
+                "\n(D_D) : Maaf, role" +
                 username +
                 "bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
             return databases
     else:  # not isLoggedIn
-        print("(^v^): Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")
+        print("(^v^) : Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")
 
     return databases
