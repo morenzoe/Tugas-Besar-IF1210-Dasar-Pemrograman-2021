@@ -69,26 +69,26 @@ def register(databases):
             print("\\(>_<)/ : Dilarang menggunakan karakter ; dalam penginputan!\n")
 
             # Input nama
-            nama = input("Masukkan nama anda     : ")
+            nama = input("Masukkan nama     : ")
             if checkdelimit(nama) or nama == "":
                 print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
             nama = nama.title()
 
             # Input username
-            username = input("Masukkan username anda : ")
+            username = input("Masukkan username : ")
             if checkdelimit(username) or check_username(username, data) or username == "":
                 print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
             # Input password
-            password = input("Masukkan password anda : ")
+            password = input("Masukkan password : ")
             if checkdelimit(password) or password == "":
                 print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
             # Input alamat
-            alamat = input("Masukkan alamat anda   : ")
+            alamat = input("Masukkan alamat   : ")
             if checkdelimit(alamat) or alamat == "":
                 print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
