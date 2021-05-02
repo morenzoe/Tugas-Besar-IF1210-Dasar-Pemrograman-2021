@@ -54,14 +54,14 @@ csv_path = cek_csv(argumen)
 
 # Csv tidak lengkap, terminasi seluruh program
 if csv_path == 'csv tidak ada':
-    sys.exit("\n(0.0): File CSV tidak sesuai!\n"
-             + "\n(^.^): File CSV yang diperlukan adalah user.csv, "
+    sys.exit("\n(0.0) : File CSV tidak sesuai!\n"
+             + "\n(^.^) : File CSV yang diperlukan adalah user.csv, "
              + "gadget.csv, consumable.csv, consumable_history.csv, "
              + "gadget_borrow_history.csv, gadget_return_history.csv")
 
 # Folder tidak ada, terminasi seluruh program
 elif csv_path == 'folder tidak ada':
-    sys.exit("\n(O.o): Folder tidak ada!")
+    sys.exit("\n(O.o) : Folder tidak ada!")
 
 # Folder ada dan csv lengkap, membaca seluruh csv ke dalam satu array
 databases = load(csv_path)
@@ -87,7 +87,7 @@ dict_program = {
 }
 
 # Menampilkan pesan selamat datang
-print("\n(*^*)/: Selamat datang di sistem inventarisasi Doraemonangis")
+print("\n(*^*)/ : Selamat datang di sistem inventarisasi Doraemonangis")
 
 # Membuat infinite loop untuk program utama
 while True:
@@ -118,5 +118,5 @@ while True:
     try:
         databases = dict_program[command](databases)
     except KeyError:
-        print("(O_o): Perintah salah! Ketik help dan tekan enter untuk "
+        print("(O_o) : Perintah salah! Ketik help dan tekan enter untuk "
               + "menampilkan petunjuk.")

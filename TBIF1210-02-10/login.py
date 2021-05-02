@@ -41,8 +41,8 @@ def login(databases):
     isLoggedIn = cek_active_account(databases)
     if not isLoggedIn:
         # Pengguna belum login, input username dan password
-        username = input("Ketik username: ")
-        password = input("Ketik password: ")
+        username = input("Ketik username : ")
+        password = input("Ketik password : ")
 
         # List dari user.csv
         file = databases[user]
@@ -75,7 +75,7 @@ def login(databases):
 
             # Beritahu pengguna bahwa telah berhasil login
             print(
-                "\n(=^.^=): Selamat, "
+                "\n(=^.^=) : Selamat, "
                 + username
                 + " berhasil login!")
 
@@ -83,11 +83,11 @@ def login(databases):
         elif find_username == False:
             # Beritahu pengguna bahwa username tidak ditemukan dan gagal login
             print(
-                "\n('_'): Maaf, kamu belum berhasil login! Username kamu tidak ditemukan.")
+                "\n('_') : Maaf, kamu belum berhasil login! Username kamu tidak ditemukan.")
 
         else:  # find_password == False
             # Beritahu pengguna bahwa masukan password salah
-            print("\n('_'): Maaf, kamu belum berhasil login! Password kamu salah.")
+            print("\n('_') : Maaf, kamu belum berhasil login! Password kamu salah.")
 
     else:  # isLoggedIn
         # Membaca username dari active_account
