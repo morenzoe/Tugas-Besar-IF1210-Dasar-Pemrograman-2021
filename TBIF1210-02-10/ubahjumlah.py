@@ -1,5 +1,4 @@
-"""
-Program F07 - Mengubah Jumlah Gadget atau Consumable pada Inventory
+"""Program F07 - Mengubah Jumlah Gadget atau Consumable pada Inventory
 Program ini akan menambah atau mengurangi jumlah gadget atau consumable
 sesuai dengan input Admin.
 
@@ -11,12 +10,18 @@ Akses : Admin
 from constant import gadget, consumable, active_account
 from login import cek_active_account
 
-# Daftar variabel dan konstanta
-# db_gadget, db_consumable    : list of list
-# file_gadget, file_consumable: list of list
+# Daftar konstanta
+# gadget        : int
+# consumable    : int
+# active_account: int
+
+# Daftar variabel
+# databases                   : array of array of array
+# db_gadget, db_consumable    : array of array
+# file_gadget, file_consumable: array of array
 # isLoggedIn                  : bool
-# pjg ID                      :int
-# ID                          : chr+int
+# pjg ID                      : int
+# ID                          : str
 # jumlah                      : int
 
 
@@ -27,13 +32,17 @@ def cekid(ID, data):
     # ALGORITMA
     # Inisialisasi awal cek
     cek = 0
-    for i in range(len(data)):  # Membaca panjang data
+    # Membaca panjang data
+    for i in range(len(data)):
+        # ID ditemukan di database
         if data[i][0] == ID:
-            cek = 1             # ID ditemukan di database
+            cek = 1
     if cek == 1:
-        return True             # Mengembalikan True apabila ID ditemukan
-    else:
-        return False            # Mengembalikan False apabila ID tidak ditemukan
+        # Mengembalikan True apabila ID ditemukan
+        return True
+    else: # cek == 0
+        # Mengembalikan False apabila ID tidak ditemukan
+        return False
 
 
 def cekdelimit(cek):
@@ -43,9 +52,11 @@ def cekdelimit(cek):
     # ALGORITMA
     # Mengecek ";"
     if ";" in cek:
-        return True    # Mengembalikan True apabila ";" ditemukan
+        # Mengembalikan True apabila ";" ditemukan
+        return True
     else:
-        return False   # Mengembalikan False apabila ";" ditemukan
+        # Mengembalikan False apabila ";" ditemukan
+        return False
 
 
 def ubah(ID, data, jumlah):
@@ -72,31 +83,28 @@ def ubah(ID, data, jumlah):
     # Memastikan bahwa jumlah akhir lebih >= 0
     if stok < 0:
         # Beritahu pengguna gagal mengubah jumlah
-        print()
         print(
-            "(/^-^)/:",
-            jumlah,
-            data[idx][1],
-            "gagal dibuang karena stok kurang. Stok sekarang : ",
-            (data[idx][3]))
+            "\n(/^-^)/:"
+            + jumlah
+            + data[idx][1]
+            + "gagal dibuang karena stok kurang. Stok sekarang : "
+            + (data[idx][3]))
     else:  # stok >= 0
         # Beritahu pengguna telah berhasil mengubah jumlah
         if jumlah >= 0:
-            print()
             print(
-                "(=^v^=):",
-                jumlah,
-                (data[idx][1]),
-                "berhasil ditambahkan. Stok sekarang : ",
-                (data[idx][3]))
+                "\n(=^v^=):"
+                + jumlah
+                + (data[idx][1])
+                + "berhasil ditambahkan. Stok sekarang : "
+                + (data[idx][3]))
         else:
-            print()
             print(
-                "(=^v^=):",
-                jumlah,
-                (data[idx][1]),
-                "berhasil dibuang. Stok sekarang : ",
-                (data[idx][3]))
+                "\n(=^v^=):"
+                + jumlah,
+                + (data[idx][1])
+                + "berhasil dibuang. Stok sekarang : "
+                + (data[idx][3]))
 
 
 # ALGORITMA PROGRAM UTAMA
@@ -121,48 +129,41 @@ def ubahjumlah(databases):
 
         # Validasi role pengguna
         if role == "Admin":
-            # input ID gadget atau consumable
+            # Input ID gadget atau consumable
             ID = input("Masukan ID    : ")
             pjgID = len(ID)
             if pjgID == 0:
-                print()
-                print("(/'o')/: Gagal mengubah jumlah karena ID tidak valid.")
-                print()
                 print(
-                    "(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
+                    "\n(/'o')/: Gagal mengubah jumlah karena ID tidak valid.")
+                print(
+                    "\n(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                 print(
                     "(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
             else:
                 # Identifikasi ID gadget
                 if ID[0] == "G":
                     if pjgID == 1:
-                        print()
                         print(
-                            "(/'o')/: Gagal mengubah jumlah karena ID gadget tidak valid.")
-                        print()
+                            "\n(/'o')/: Gagal mengubah jumlah karena ID gadget tidak valid.")
                         print(
-                            "(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
+                            "\n(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                         return databases
                     else:
                         Id = ID[1:]
                         try:
                             Id = int(Id)
                         except BaseException:
-                            print()
                             print(
-                                "(/'o')/: Gagal mengubah jumlah karena ID gadget tidak valid.")
-                            print()
+                                "\n(/'o')/: Gagal mengubah jumlah karena ID gadget tidak valid.")
                             print(
-                                "(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
+                                "\n(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                             return databases
 
                         if(Id <= 0):
-                            print()
                             print(
-                                "(/'o')/: Gagal mengubah jumlah karena ID gadget tidak valid.")
-                            print()
+                                "\n(/'o')/: Gagal mengubah jumlah karena ID gadget tidak valid.")
                             print(
-                                "(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
+                                "\n(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                             return databases
 
                         # Memastikan bahwa ID tersedia
@@ -172,50 +173,41 @@ def ubahjumlah(databases):
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
-                                print()
                                 print(
-                                    "(^.~)/: Jumlah tidak valid. Jumlah harus berupa bilangan bulat.")
+                                    "\n(^.~)/: Jumlah tidak valid. Jumlah harus berupa bilangan bulat.")
                                 return databases
                             ubah(ID, file_gadget, jumlah)
                         else:
-                            print()
                             print(
-                                "(/'o')/: Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
-                            print()
+                                "\n(/'o')/: Gagal mengubah jumlah karena ID gadget tidak ditemukan.")
                             print(
-                                "(^.~)/: Pastikan gadget yang dimaksud sudah tersedia di database.")
+                                "\n(^.~)/: Pastikan gadget yang dimaksud sudah tersedia di database.")
                             return databases
 
                 # Identifikasi ID consumable
                 elif ID[0] == "C":
                     if pjgID == 1:
-                        print()
                         print(
-                            "(/'o')/: Gagal mengubah jumlah karena ID consumable tidak valid.")
-                        print()
+                            "\n(/'o')/: Gagal mengubah jumlah karena ID consumable tidak valid.")
                         print(
-                            "(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
+                            "\n(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
                         return databases
                     else:
                         Id = ID[1:]
                         try:
                             Id = int(Id)
                         except BaseException:
-                            print()
                             print(
-                                "(/'o')/: Gagal mengubah jumlah karena ID consumable tidak valid.")
-                            print()
+                                "\n(/'o')/: Gagal mengubah jumlah karena ID consumable tidak valid.")
                             print(
-                                "(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
+                                "\n(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
                             return databases
 
                         if(Id <= 0):
-                            print()
                             print(
-                                "(/'o')/: Gagal mengubah jumlah karena ID consumable tidak valid.")
-                            print()
+                                "\n(/'o')/: Gagal mengubah jumlah karena ID consumable tidak valid.")
                             print(
-                                "(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
+                                "\n(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
                             return databases
 
                         # Memastikan bahwa ID tersedia
@@ -224,36 +216,33 @@ def ubahjumlah(databases):
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
-                                print()
                                 print(
-                                    "(^.~)/: Jumlah tidak valid. Jumlah harus bilangan bulat.")
+                                    "\n(^.~)/: Jumlah tidak valid. Jumlah harus bilangan bulat.")
                             ubah(ID, file_consumable, jumlah)
                         else:
-                            print()
                             print(
-                                "(/'o')/: Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
-                            print()
+                                "\n(/'o')/: Gagal mengubah jumlah karena ID consumable tidak ditemukan.")
                             print(
-                                "(^.~)/: Pastikan bahwa consumable yang dimaksud sudah tersedia di database.")
+                                "\n(^.~)/: Pastikan bahwa consumable yang dimaksud sudah tersedia di database.")
                             return databases
 
                 else:
-                    print()
-                    print("(/'o')/: Gagal mengubah jumlah karena ID tidak valid.")
-                    print()
                     print(
-                        "(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
+                        "\n(/'o')/: Gagal mengubah jumlah karena ID tidak valid.")
+                    print(
+                        "\n(^.~)/: Gadget yang tersedia hanya memiliki ID dengan format (G<angka>)")
                     print(
                         "(^.~)/: Consumable yang tersedia hanya memiliki ID dengan format (C<angka>)")
 
                 return databases
         else:
             print(
-                "(D_D): Maaf, role",
-                username,
-                "bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
+                "\n(D_D): Maaf, role"
+                + username
+                + "bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
             return databases
     else:
-        print("(^v^): Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")
+        print(
+            "\n(^v^): Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")
 
     return databases
