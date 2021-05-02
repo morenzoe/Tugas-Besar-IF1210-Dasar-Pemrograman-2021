@@ -27,7 +27,7 @@ def cek_role(databases):
     jika active_account adalah admin, dan
     False jika user.
     """
-    
+
     # KAMUS LOKAL
     # role : str
 
@@ -40,11 +40,11 @@ def cek_role(databases):
 
 
 def db_cek(databases, type):
-    """Fungsi ini akan menghasilkan databases[gadget] 
-    apabila type “gadget”, dan menghasilkan 
+    """Fungsi ini akan menghasilkan databases[gadget]
+    apabila type “gadget”, dan menghasilkan
     databases[consumable] apabila type “consumable”
     """
-    
+
     # KAMUS LOKAL
     # db_gadget     : array of array
     # db_consumable : array of array
@@ -59,52 +59,52 @@ def db_cek(databases, type):
 
 
 def cek_id(id, databases, type):
-    """Fungsi ini akan enghasilkan 
-    True apabila id type terdapat 
+    """Fungsi ini akan enghasilkan
+    True apabila id type terdapat
     pada databases[type]
     """
-    
+
     # KAMUS LOKAL
     # db  : array of array
     # row : int
-    
+
     # ALGORITMA
     db = db_cek(databases, type)
     for row in range(len(db)):
         if id == db[row][0]:
             return True
     return False
-    
-    
+
+
 def cek_idx(id, databases, type):
-    """Fungsi ini akan menghasilkan 
-    index baris dari databases[type] 
+    """Fungsi ini akan menghasilkan
+    index baris dari databases[type]
     yang memuat id yang sama
     """
-    
+
     # KAMUS LOKAL
     # db  : array of array
     # row : int
     # idx : int
-    
+
     # ALGORITMA
     db = db_cek(databases, type)
     for row in range(len(db)):
         if id == db[row][0]:
             idx = row
     return idx
-    
+
 
 def cek_user_borrow_history(gadget_id, databases):
-    """Fungsi ini akan menghasilkan true 
-    apabila terdapat gadget_id pada 
+    """Fungsi ini akan menghasilkan true
+    apabila terdapat gadget_id pada
     databases[gadget_borrow_history]
     """
-    
+
     # KAMUS LOKAL
     # db  : array of array
     # row : int
-    
+
     # ALGORITMA
     db = databases[gadget_borrow_history]
     if len(db) > 1:
@@ -113,16 +113,16 @@ def cek_user_borrow_history(gadget_id, databases):
                 return True
     return False
 
-# ALGORITMA PROGRAM UTAMA    
+# ALGORITMA PROGRAM UTAMA
 def hapusitem(databases):
     isLoggedIn = cek_active_account(databases)
     # Validasi login
-    if isLoggedIn:        
+    if isLoggedIn:
         # Validasi role
         if cek_role(databases):
             id = input("Masukan ID item : ")
             # Validasi id
-            if len(id) <= 1 :
+            if len(id) <= 1:
                 print("\n┐(´д`)┌ : Maaf, input id tidak valid!")
                 return databases
             else:
@@ -138,30 +138,35 @@ def hapusitem(databases):
             # Pengecekan keberadaan id pada data
             if cek_id(id, databases, type):
                 if type == "gadget" and cek_user_borrow_history(id, databases):
-                    print("\n┐(´д`)┌ : Maaf, item sedang dipinjam oleh user. Tidak dapat menghapus item!")
+                    print(
+                        "\n┐(´д`)┌ : Maaf, item sedang dipinjam oleh user. Tidak dapat menghapus item!")
                 else:
                     idx = cek_idx(id, databases, type)
                     name = data[idx][1]
                     # Meminta validasi yes no untuk penghapusan
                     while True:
-                        validation = input("\n(/_\) : Apakah anda yakin ingin menghapus "+name+" yang berharga ini? (Y/N) ")
-                        if validation in "YyNn" and len(validation) == 1 :
+                        validation = input(
+                            "\n(/_\\) : Apakah anda yakin ingin menghapus " +
+                            name +
+                            " yang berharga ini? (Y/N) ")
+                        if validation in "YyNn" and len(validation) == 1:
                             break
                         else:
-                            print("(^_^) : Maaf, silahkan masukan Y/y untuk yes dan N/n untuk no!")
+                            print(
+                                "(^_^) : Maaf, silahkan masukan Y/y untuk yes dan N/n untuk no!")
                     if validation in "Yy":
-                        
+
                         # Proses menghapus entri id pada database[type]
                         del data[idx]
                         print("\n(>_<) : Item telah dihapus dari databases!")
-                    
+
                     else:
-                        print("\n\(^ω^)/ : Penghapusan item dibatalkan!")
+                        print("\n\\(^ω^)/ : Penghapusan item dibatalkan!")
             else:
                 print("\n┐(´д`)┌ : Maaf, tidak ada item dengan ID tersebut!")
         else:
             print("(^_^) : Maaf, perintah ini hanya dapat diakses oleh Admin!")
     else:
         print("(^_^) : Silahkan login terlebih dahulu!")
-    
+
     return databases
