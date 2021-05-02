@@ -28,7 +28,7 @@ from carirarity import check_file_tidak_kosong
 # nama_user             : string
 # nama_gadget           : string
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def sortMaxMinTanggal(array, idx_tanggal):
     # mengurutkan array dari tanggal terbesar menuju tanggal terkecil
 
@@ -82,6 +82,7 @@ def printdata(nama_user, nama_gadget, database):
     print("Jumlah             : ", database[4])
 
 
+# ALGORITMA PROGRAM UTAMA
 def riwayatpinjam(databases):
     # menampilkan data pada "gadget_borrow_history.csv" secara berurutan
     # berdasarkan tanggal
