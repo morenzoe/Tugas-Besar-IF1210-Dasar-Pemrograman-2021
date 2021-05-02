@@ -160,15 +160,15 @@ def riwayatkembali(databases):
     db_pinjam = databases[gadget_borrow_history]
     db_gadget = databases[gadget]
     db_user = databases[user]
-    
+
     # Menangani kasus tidak ada entri riwayat kembali
-    if len(db_kembali)==0:
+    if len(db_kembali) == 0:
         print("(O.o)? : Tidak ada riwayat pengembalian gadget!")
         return databases
-    
+
     # Mengurutkan entri pengembalian menurun berdasarkan tanggal
     sorted_db_kembali = sortMaxMinTanggal(db_kembali, 2)
-    
+
     # Mencari data yang sesuai dan membuat array baru untuk ditampilkan
     list_tampilan = buat_list_tampilan(sorted_db_kembali, db_pinjam,
                                        db_user, db_gadget)
