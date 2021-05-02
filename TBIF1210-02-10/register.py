@@ -1,6 +1,8 @@
 """Program F01 - Register
 Untuk menambahkan data pengguna pada file User.csv, pengguna dapat melakukan register.
 Register hanya dapat diakses oleh Admin.
+
+Akses : Admin
 """
 
 # KAMUS

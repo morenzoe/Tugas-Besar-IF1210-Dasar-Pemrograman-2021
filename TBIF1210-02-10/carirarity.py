@@ -3,16 +3,17 @@ Program F03 - Pencarian gadget berdasarkan rarity
 Dapat diakses oleh Admin dan User.
 Pengguna dapat mencari gadget dengan rarity tertentu. Pengguna akan memasukkan
 rarity (C, B, A, S), kemudian akan ditampilkan Gadget dengan rarity tersebut.
+
+Akses : Admin, User
 """
 
 # KAMUS
 # Daftar library lokal
-from constant import gadget, active_account
+from constant import gadget
 from login import cek_active_account
 
 # Variabel dan konstanta
 # isLoggedIn            : boolean
-# username              : string
 # array_data            : array of array
 # rarity                : string
 
@@ -57,7 +58,6 @@ def carirarity(database):
     isLoggedIn = cek_active_account(database)
     if isLoggedIn:
         # Pengguna sudah login
-        username = database[active_account][2]
         array_data = database[1]
         if check_file_tidak_kosong(array_data):
             # Terdapat gadget pada file gadget.csv

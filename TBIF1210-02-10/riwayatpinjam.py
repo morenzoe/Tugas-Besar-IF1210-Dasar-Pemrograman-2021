@@ -5,6 +5,8 @@ Digunakan oleh Admin sebagai bantuan untuk melihat riwayat peminjaman gadget.
 Data bisa dibaca dari file yang tersedia. Bila terdapat lebih dari 5 entry, keluarkan
 5 entry paling baru, dan pengguna dapat mengeluarkan 5 entry tambahan bila diinginkan.
 Harus sorted descending berdasarkan tanggal
+
+Akses : Admin
 """
 
 # KAMUS
@@ -16,11 +18,10 @@ from constant import user, gadget, active_account, gadget_borrow_history
 from login import cek_active_account
 from carirarity import check_file_tidak_kosong
 # Variabel dan konstanta
-# isLoggedIn            : string
+# isLoggedIn            : boolean
 # sorted_history        : array of array
 # db_gadget             : array of array
 # db_user               : array of array
-# username              : string
 # awal                  : integer
 # akhir                 : integer
 # repeat                : string
@@ -100,7 +101,6 @@ def riwayatpinjam(databases):
                     databases[gadget_borrow_history][1:], 3)
                 db_gadget = databases[gadget]
                 db_user = databases[user]
-                username = databases[active_account][1]
                 awal = 0
                 akhir = 5
                 repeat = "y"

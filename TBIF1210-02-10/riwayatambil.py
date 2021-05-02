@@ -5,6 +5,8 @@ Digunakan oleh Admin sebagai bantuan untuk melihat riwayat pengambilan consumabl
 Data bisa dibaca dari file yang tersedia. Bila terdapat lebih dari 5 entry, keluarkan
 5 entry paling baru, dan pengguna dapat mengeluarkan 5 entry tambahan bila diinginkan.
 Harus sorted descending berdasarkan tanggal
+
+Akses : Admin
 """
 
 # KAMUS

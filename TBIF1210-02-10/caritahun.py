@@ -3,6 +3,8 @@ Program F04 - Pencarian gadget berdasarkan tahun ditemukan
 Dapat diakses oleh Admin dan User.
 Pengguna dan admin dapat melakukan pencarian gadget berdasarakan tahun ditemukan.
 pengguna memasukkan sebuah tahun, misalnya yyyy,dan kategori pencarian yaitu [=,<,>,<=,>=].
+
+Akses : Admin, User
 """
 
 # KAMUS
@@ -75,23 +77,23 @@ def caritahun(database):
             print("\nHasil pencarian :")
             if (kategori == ">"):
                 for data in range(1, len(array_data)):
-                    if (int(array_data[data][5]) > tahun):
+                    if (array_data[data][5] > tahun):
                         printdata(array_data[data])
             elif (kategori == "="):
                 for data in range(1, len(array_data)):
-                    if (int(array_data[data][5]) == tahun):
+                    if (array_data[data][5] == tahun):
                         printdata(array_data[data])
             elif (kategori == "<"):
                 for data in range(1, len(array_data)):
-                    if (int(array_data[data][5]) < tahun):
+                    if (array_data[data][5] < tahun):
                         printdata(array_data[data])
             elif (kategori == ">="):
                 for data in range(1, len(array_data)):
-                    if (int(array_data[data][5]) >= tahun):
+                    if (array_data[data][5] >= tahun):
                         printdata(array_data[data])
             elif (kategori == "<="):
                 for data in range(1, len(array_data)):
-                    if (int(array_data[data][5]) <= tahun):
+                    if (array_data[data][5] <= tahun):
                         printdata(array_data[data])
         else:
             # Tidak terdapat gadget pada file gadget.csv
