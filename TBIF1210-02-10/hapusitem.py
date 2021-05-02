@@ -52,7 +52,7 @@ def hapusitem(databases):
     
     if isLoggedin:        
         if cek_role(databases):
-            id = input("Masukan ID item: ")
+            id = input("Masukan ID item : ")
             if len(id) == 0 :
                 print("\n┐(´д`)┌ : Maaf, input id tidak valid!")
                 return databases

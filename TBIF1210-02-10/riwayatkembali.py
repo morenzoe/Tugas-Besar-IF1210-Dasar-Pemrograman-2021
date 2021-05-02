@@ -46,10 +46,10 @@ def print_baris(row):
     # row : array of str and int
 
     # ALGORITMA
-    print("ID Pengembilan      :", row[0])
-    print("Nama Pengambil      :", row[1])
-    print("Nama Gadget         :", row[2])
-    print("Tanggal Pengembalian:", row[3])
+    print("ID Pengembilan       :", row[0])
+    print("Nama Pengambil       :", row[1])
+    print("Nama Gadget          :", row[2])
+    print("Tanggal Pengembalian :", row[3])
 
 
 def tampilan(list_tampilan, username):
