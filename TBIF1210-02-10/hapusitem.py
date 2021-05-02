@@ -40,9 +40,10 @@ def cek_idx(id, data, type):
 
 def cek_user_borrow_history(gadget_id, data): #mengecek apakah gadget sedang dipinjam oleh user , menghasilkan true jika sedang dipinjam
     f = data[gadget_borrow_history]
-    for row in range(len(f)):
-        if gadget_id == f[row][2] and f[row][5] == "False":
-            return True
+    if len(f) > 1:
+        for row in range(len(f)):
+            if gadget_id == f[row][2] and f[row][5] == "False":
+                return True
     return False
 
     

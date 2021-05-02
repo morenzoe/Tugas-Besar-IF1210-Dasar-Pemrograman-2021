@@ -6,9 +6,10 @@ from minta import input_tanggal
 def find_gadget_name(id_peminjaman, data):
     f = data[gadget]
     id_gadget = data[gadget_borrow_history][id_peminjaman][2]
-    for row in range(len(f)):
-        if id_gadget == f[row][0]:
-            name = f[row][1]
+    if len(f) != 0:
+        for row in range(len(f)):
+            if id_gadget == f[row][0]:
+                name = f[row][1]
     return name
 
 
@@ -16,9 +17,10 @@ def cek_riwayat_peminjaman(data): #Mengecek apakah user pernah meminjam gadget a
     f = data[gadget_borrow_history]
     id = data[active_account][0]
     cek = 0
-    for row in range(len(f)):
-        if int(id) == f[row][1] and f[row][5] == "False":
-            cek = 1
+    if len(f) > 1:
+        for row in range(len(f)):
+            if int(id) == f[row][1] and f[row][5] == "False":
+                cek = 1
     if cek == 0:
         return False
     elif cek == 1:

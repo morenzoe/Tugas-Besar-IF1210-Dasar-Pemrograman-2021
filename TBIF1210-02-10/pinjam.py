@@ -6,9 +6,10 @@ from login import cek_active_account
 def cek_borrow_history(gadget_id, data): #mengecek apakah user pernah meminjam gadget yg sama, menghasilkan true jika sudah pernah meminjam
     id = data[active_account][0]
     f = data[gadget_borrow_history]
-    for row in range(len(f)):
-        if int(id) == f[row][1] and gadget_id == f[row][2] and f[row][5] == "False":
-            return True
+    if len(f) > 1:
+        for row in range(len(f)):
+            if int(id) == f[row][1] and gadget_id == f[row][2] and f[row][5] == "False":
+                return True
     return False
     
     
