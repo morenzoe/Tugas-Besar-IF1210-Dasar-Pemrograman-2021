@@ -23,6 +23,7 @@ from login import cek_active_account
 # new_data          : array of string
 
 
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def check_username(username, data):
     # Mengecek apakah username input sudah ada atau belum pada data
 
@@ -55,6 +56,7 @@ def checkdelimit(check):
         return False
 
 
+# ALGORITMA PROGRAM UTAMA
 def register(databases):
     # Me-register akun pengguna
     isLoggedIn = cek_active_account(databases)
@@ -77,7 +79,8 @@ def register(databases):
 
             # Input username
             username = input("Masukkan username : ")
-            if checkdelimit(username) or check_username(username, data) or username == "":
+            if checkdelimit(username) or check_username(
+                    username, data) or username == "":
                 print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
