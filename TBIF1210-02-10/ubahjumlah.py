@@ -24,7 +24,7 @@ from login import cek_active_account
 # ID                          : str
 # jumlah                      : int
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def cekid(ID, data):
     # KAMUS LOKAL
     # cek : int
