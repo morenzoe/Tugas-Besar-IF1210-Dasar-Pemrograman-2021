@@ -65,7 +65,7 @@ def carirarity(database):
 
             # Validasi rarity
             while rarity not in "CBAScbas" or len(rarity) != 1:
-                rarity = input("\nMasukkan rarity dengan benar! : ")
+                rarity = input("\n(9*.*)9 : Masukkan rarity dengan benar! : ")
             rarity = rarity.title()
 
             # Memulai Output data
