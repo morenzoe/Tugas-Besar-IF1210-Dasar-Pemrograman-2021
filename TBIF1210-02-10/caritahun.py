@@ -24,20 +24,23 @@ def ubahtahun(tahun_str):
     # diminta kembali dari input user
 
     # KAMUS LOKAL
-    # check             : integer
+    # check : int
 
     # ALOGRITMA
     check = 0
     while check == 0:
         if len(tahun_str) == 4:
-            # Panjang array adalah 4
-            for i in range(len(tahun_str)):
-                if tahun_str[i] in "0123456789":
-                    # tahun_str[i] merupakan angka
-                    check = 1
+            check = 1
+            try:
+                tahun_int = int(tahun_str)
+            except:
+                # Jika tidak bisa dilakukan proses diatas
+                check = 0
+                tahun_str = input("Masukan salah! Masukkan kategori dengan benar! (YYYY): ")
         else:
-            tahun_str = input("Masukan salah! Masukkan tahun dengan benar! (YYYY) : ")
-    return int(tahun_str)
+            check = 0
+            tahun_str = input("Masukan salah! Masukkan kategori dengan benar! (YYYY): ")
+    return tahun_int
 
 
 def ubahkategori(kategori):
