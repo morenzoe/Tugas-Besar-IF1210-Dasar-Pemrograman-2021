@@ -28,7 +28,17 @@ def printdata(data):
     print("Deskripsi       : ", data[2])
     print("Jumlah          : ", data[3], "buah")
     print("Rarity          : ", data[4])
-    print("Tahun Ditemukan : ", data[5])
+    print("Tahun Ditemukan : ", tahun_int_to_str(data[5]))
+
+
+def tahun_int_to_str(tahun):
+    # Menghasilkan tahun dalam bentuk string
+    
+    # ALGORITMA
+    tahun_str = str(tahun)
+    while len(tahun_str) < 4:
+        tahun_str = "0" + tahun_str
+    return tahun_str
 
 
 def check_file_tidak_kosong(database):
