@@ -31,7 +31,7 @@ def kembalikan(databases):
     history = databases[gadget_return_history]
     db_gadget = databases[gadget]
     type = "gadget"
-    
+
     if isLoggedin:
         user = databases[active_account]
         id = user[0]
@@ -45,7 +45,7 @@ def kembalikan(databases):
                     if int(id) == data[row][1] and data[row][5] == "False":
                         num = num + 1
                         name = find_gadget_name(row, databases)
-                        print(str(num)+".", name)
+                        print(str(num)+". "+name)
                 print()
                 # Input no peminjaman
                 try:
@@ -54,7 +54,7 @@ def kembalikan(databases):
                     print("\n┐(´д`)┌ : Maaf, input tidak valid!")
                     return databases
                 if number < 0 or number > num :
-                    print("\n┐(´д`)┌ : Maaf, nomor peminjaman di luar pilihan!")
+                    print("\n┐(´д`)┌ : Maaf, nomor peminjaman di luar pilihan!")             
                 else:
                     idx_found = 0
                     row = 0
