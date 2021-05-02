@@ -30,7 +30,7 @@ from login import cek_active_account
 # jumlah, tahun               : int
 # rarity                      : chr
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def cekid(ID, data):
     # KAMUS LOKAL
     # cek : int
