@@ -17,7 +17,7 @@ from login import cek_active_account
 # array_data            : array of array
 # rarity                : string
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def printdata(data):
     # meng-output setiap data yang terdapat pada array data
 
@@ -34,7 +34,7 @@ def printdata(data):
 
 def tahun_int_to_str(tahun):
     # Menghasilkan tahun dalam bentuk string
-    
+
     # ALGORITMA
     tahun_str = str(tahun)
     while len(tahun_str) < 4:
@@ -53,6 +53,7 @@ def check_file_tidak_kosong(database):
         return True
 
 
+# ALGORITMA PROGRAM UTAMA
 def carirarity(database):
     # meng-output data berdasarkan rarity yang dipilih
     isLoggedIn = cek_active_account(database)
