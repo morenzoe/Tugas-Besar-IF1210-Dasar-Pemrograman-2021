@@ -2,7 +2,7 @@
 Fungsi ini akan menampilkan riwayat peminjaman gadget oleh
 id active_account. Lalum meminta input nomor peminjaman dan tanggal.
 Pengembalian berhasil jika input valid. Setelah melakukan
-pengembalian, status pengembalian pada riwayat pinjam akan berubah. 
+pengembalian, status pengembalian pada riwayat pinjam akan berubah.
 Kemudian, jumlah pada file gadget akan dikembalikan.
 Lalu, dibuat entri baru pada file riwayat pengembalian.
 
@@ -22,22 +22,22 @@ from pinjam import input_tanggal
 # data          : array of array
 # history		: array of array
 # isLoggedIn	: bool
-# type          : str			 
-# id            : str		
+# type          : str
+# id            : str
 # name          : str
 # id_peminjaman	: str
-# idx           : int				
+# idx           : int
 # id_return 	: int
 # user          : array
-# new_history	: array 
+# new_history	: array
 
-# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur 
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def find_gadget_name(id_peminjaman, databases):
-    """Fungsi ini akan menghasilkan 
-    nama gadget yang dipinjam dari 
+    """Fungsi ini akan menghasilkan
+    nama gadget yang dipinjam dari
     id_peminjaman pada riwayat pinjam.
     """
-    
+
     # KAMUS LOKAL
     # db        : array of array
     # id_gadget : str
@@ -53,12 +53,14 @@ def find_gadget_name(id_peminjaman, databases):
     return name
 
 
-def cek_riwayat(databases): #Mengecek apakah user pernah meminjam gadget atau tidak, true jika sudah, false jika belum
-    """Fungsi ini akan menghasilkan 
-    true jika user pernah meminjam 
+# Mengecek apakah user pernah meminjam gadget atau tidak, true jika sudah,
+# false jika belum
+def cek_riwayat(databases):
+    """Fungsi ini akan menghasilkan
+    true jika user pernah meminjam
     gadget apapun.
     """
-    
+
     # KAMUS LOKAL
     # db : array of array
     # id : str
@@ -70,7 +72,7 @@ def cek_riwayat(databases): #Mengecek apakah user pernah meminjam gadget atau ti
         for row in range(len(db)):
             if int(id) == db[row][1] and db[row][5] == "False":
                 return True
-    return False      
+    return False
 
 # ALGORITMA PROGRAM UTAMA
 def kembalikan(databases):
@@ -94,16 +96,16 @@ def kembalikan(databases):
                     if int(id) == data[row][1] and data[row][5] == "False":
                         num = num + 1
                         name = find_gadget_name(row, databases)
-                        print(str(num)+". "+name)
+                        print(str(num) + ". " + name)
                 print()
                 # validasi no peminjaman
                 try:
                     number = int(input("Masukan nomor        : "))
-                except:
+                except BaseException:
                     print("\n┐(´д`)┌ : Maaf, input tidak valid!")
                     return databases
-                if number <= 0 or number > num :
-                    print("\n┐(´д`)┌ : Maaf, nomor peminjaman di luar pilihan!")             
+                if number <= 0 or number > num:
+                    print("\n┐(´д`)┌ : Maaf, nomor peminjaman di luar pilihan!")
                 else:
                     idx_found = 0
                     row = 0
@@ -119,28 +121,35 @@ def kembalikan(databases):
                     if tanggal != 0:
                         # Proses
                         borrow_history = data[idx_row]
-                        id_peminjaman = borrow_history[0] # mencari id peminjaman
-                        id_gadget = borrow_history[2] # mencari id gadget
-                        jumlah = borrow_history[4] # mencari jumlah peminjaman
-                        idx = cek_idx(id_gadget, databases, type) # mencari idx gadget di db_gadget
+                        # mencari id peminjaman
+                        id_peminjaman = borrow_history[0]
+                        id_gadget = borrow_history[2]  # mencari id gadget
+                        jumlah = borrow_history[4]  # mencari jumlah peminjaman
+                        # mencari idx gadget di db_gadget
+                        idx = cek_idx(id_gadget, databases, type)
                         borrowed_gadget = db_gadget[idx]
                         gadget_name = borrowed_gadget[1]
-                        
+
                         # Prsoses rewrite db_gadget
                         borrowed_gadget[3] = borrowed_gadget[3] + jumlah
-                        
+
                         # Proses rewrite borrow_history
                         borrow_history[5] = "True"
-                        
+
                         # Proses append return_history
                         id_return = len(history)
-                        new_data = [str(id_return), int(id_peminjaman), tanggal]
+                        new_data = [
+                            str(id_return), int(id_peminjaman), tanggal]
                         history.append(new_data)
-                        
-                        #output
-                        print("\n\(^ω^)/ : Item", gadget_name, "("+str(jumlah)+") telah dikembalikan!")
+
+                        # output
+                        print(
+                            "\n\\(^ω^)/ : Item",
+                            gadget_name,
+                            "(" + str(jumlah) + ") telah dikembalikan!")
                     else:
-                        print("\n┐(´д`)┌ : Maaf, input tanggal tidak sesuai format dd/mm/yyyy!")
+                        print(
+                            "\n┐(´д`)┌ : Maaf, input tanggal tidak sesuai format dd/mm/yyyy!")
             else:
                 print("(^o^) : Anda sedang tidak meminjam gadget apapun!")
     else:
