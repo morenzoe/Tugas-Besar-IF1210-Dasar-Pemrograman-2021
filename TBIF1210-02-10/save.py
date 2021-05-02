@@ -13,6 +13,7 @@ import os
 # Daftar library lokal
 from login import cek_active_account
 from cek_csv import cek_folder
+from carirarity import tahun_int_to_str
 from constant import user, gadget, consumable, consumable_history, \
     gadget_borrow_history, gadget_return_history, \
     active_account, nama_csv
@@ -79,8 +80,18 @@ def array_to_csv(csv, folder_path, database):
 
     # Gabungkan semua array dalam database
     for array_word_int in database:
+        # Melengkapi format tahun YYYY untuk data gadget
+        if csv == "gadget.csv":
+            # Konversi hanya untuk baris dengan tipe data integer
+            print(array_word_int)
+            if type(array_word_int[5]) == int:
+                array_word_int[5] = tahun_int_to_str(array_word_int[5])
+                print(array_word_int)
+        
         # Mengubah isi array menjadi string dan menggabungkan semuanya
         array_word = to_str(array_word_int)
+        
+        # Menggabungkan tiap baris menjadi satu string
         row = ";".join(array_word) + "\n"
         save_csv.append(row)
 
