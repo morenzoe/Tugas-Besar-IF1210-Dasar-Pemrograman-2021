@@ -20,6 +20,7 @@ from login import cek_active_account
 # active_account: int
 
 # Daftar variabel
+# databases                   : array of array of array
 # db_gadget, db_consumable    : array of array
 # file_gadget, file_consumable: array of array
 # isLoggedIn                  : bool
