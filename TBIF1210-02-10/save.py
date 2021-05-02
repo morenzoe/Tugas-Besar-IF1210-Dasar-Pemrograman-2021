@@ -81,12 +81,12 @@ def array_to_csv(csv, folder_path, database):
         # Melengkapi format tahun YYYY untuk data gadget
         if csv == "gadget.csv":
             # Konversi hanya untuk baris dengan tipe data integer
-            if type(array_word_int[5]) == int:
+            if isinstance(array_word_int[5], int):
                 array_word_int[5] = tahun_int_to_str(array_word_int[5])
-        
+
         # Mengubah isi array menjadi string dan menggabungkan semuanya
         array_word = to_str(array_word_int)
-        
+
         # Menggabungkan tiap baris menjadi satu string
         row = ";".join(array_word) + "\n"
         save_csv.append(row)
@@ -118,8 +118,6 @@ def validasi_folder(folder_save):
         return True
 
 # ALGORITMA PROGRAM UTAMA
-
-
 def save(databases):
     # Memvalidasi pengguna sudah login
     isLoggedIn = cek_active_account(databases)
@@ -168,16 +166,16 @@ def save(databases):
             # Input tidak valid, pengisian diulang
             else:
                 print("\nm(><)m : Input tidak sesuai. Ulangi! \n")
-    
+
     # Mendapatkan nama folder workspace
     folder_workspace, cwd = get_cwd_folder_name()
-    
+
     # Memeriksa memeriksa kelengkapan file csv dalam folder workspace
     if folder_save == folder_workspace:
         csv_found = cek_file_csv(cwd)
         if csv_found:
             folder_path = cwd
-    
+
     else:
         # Memeriksa ada tidaknya folder tersebut dalam workspace
         folder_path, workspace = cek_folder(folder_save)
