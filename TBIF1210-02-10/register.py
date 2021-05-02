@@ -69,26 +69,26 @@ def register(databases):
             # Input nama
             nama = input("Masukkan nama anda     : ")
             if checkdelimit(nama) or nama == "":
-                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
             nama = nama.title()
 
             # Input username
             username = input("Masukkan username anda : ")
             if checkdelimit(username) or check_username(username, data) or username == "":
-                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
             # Input password
             password = input("Masukkan password anda : ")
             if checkdelimit(password) or password == "":
-                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
             # Input alamat
             alamat = input("Masukkan alamat anda   : ")
             if checkdelimit(alamat) or alamat == "":
-                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                print("\n(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
             # Penetapan Id dan role secara otomatis dari sistem
@@ -109,6 +109,6 @@ def register(databases):
                 "-san, anda bukan Admin.")
     else:
         # Pengguna belum login
-        print(" <('.')> : Maaf, anda belum login.")
+        print("\n<('.')> : Maaf, anda belum login.")
     return databases
 # python kantongajaib.py CSVs
