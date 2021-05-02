@@ -9,6 +9,15 @@ Akses : Admin, User
 from constant import user, active_account
 from login import cek_active_account
 
+# Daftar konstanta
+# user           : int
+# active_account : int
+
+# Daftar variabel
+# databases  : array of array of array
+# isLoggedIn : boolean
+# role       : string
+
 
 def help(databases):
     isLoggedIn = cek_active_account(databases)
