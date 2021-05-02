@@ -91,8 +91,8 @@ def riwayatpinjam(databases):
             # Pengguna bukan Admin
             print(
                 "(;-;) : Maafkan saya",
-                databases[active_account][2] + "-san",
-                "saya tidak dapat mengizinkan anda menggunakan command ini (anda bukan Admin).")
+                databases[active_account][1] + "-san",
+                "Anda bukan Admin).")
         else:
             # Pengguna adalah Admin
             if check_file_tidak_kosong(databases[gadget_borrow_history]):
