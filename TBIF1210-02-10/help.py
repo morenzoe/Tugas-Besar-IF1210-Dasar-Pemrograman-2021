@@ -1,5 +1,4 @@
-"""
-Program F16 - Help
+"""Program F16 - Help
 Fungsi ini akan memberikan panduan penggunaan sistem.
 
 Akses : Admin, User
@@ -7,6 +6,7 @@ Akses : Admin, User
 
 
 def help(databases):
+    # Menampilkan panduan penggunaan sistem
     print(
         """=================================== H E L P ===================================
 register      : untuk melakukan registrasi user baru
