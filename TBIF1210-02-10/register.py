@@ -53,21 +53,6 @@ def checkdelimit(check):
         return False
 
 
-def ubahinput(masukan):
-    # meminta input variabel yang bersangkutan kepada pengguna dengan
-    # pengulangan input jika input pengguna salah
-
-    # KAMUS LOKAL
-    # masukan           : string { jika input pengguna salah, akan dicek
-    # kembali }
-
-    # ALGORITMA
-    while checkdelimit(masukan):
-        masukan = input(
-            "(9*.*)9 : Masukan salah, mohon beri masukan yang benar! : ")
-    return masukan
-
-
 def ubahusername(masukan, database):
     # meminta input username kepada pengguna jika terdapat kesalahan
     # penginputan
@@ -77,13 +62,9 @@ def ubahusername(masukan, database):
     # penginputan ulang }
 
     # ALGORITMA
-    while checkdelimit(masukan) or check_username(masukan, database):
-        if check_username(masukan, database):
-            masukan = input(
-                "\n(9'.')9 : username sudah diambil, mohon beri masukan username yang lain! : ")
-        else:
-            masukan = input(
-                "(9'.')9 : Masukan salah, mohon beri masukan yang benar! : ")
+    while check_username(masukan, database):
+        masukan = input(
+            "\n(9'.')9 : username sudah diambil, mohon beri masukan username yang lain! : ")
     return masukan
 
 
@@ -101,20 +82,30 @@ def register(databases):
             print("\\(>_<)/ : Dilarang menggunakan karakter ; dalam penginputan!\n")
 
             # Input nama
-            nama = input("Masukkan nama anda    : ")
-            nama = (ubahinput(nama)).title()
+            nama = input("Masukkan nama anda     : ")
+            if checkdelimit(nama):
+                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                return databases
+            nama = nama.title()
 
             # Input username
-            username = input("Masukkan username anda: ")
+            username = input("Masukkan username anda : ")
             username = ubahusername(username, databases[user])
+            if checkdelimit(username):
+                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                return databases
 
             # Input password
-            password = input("Masukkan password anda: ")
-            password = ubahinput(password)
+            password = input("Masukkan password anda : ")
+            if checkdelimit(password):
+                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                return databases
 
             # Input alamat
-            alamat = input("Masukkan alamat anda  : ")
-            alamat = ubahinput(alamat)
+            alamat = input("Masukkan alamat anda   : ")
+            if checkdelimit(alamat):
+                print("(*.*) : Kesalahan input, terminasi fungsi.")
+                return databases
 
             # Penetapan Id dan role secara otomatis dari sistem
             Id = str(len(data) + 1)
@@ -131,7 +122,7 @@ def register(databases):
             print(
                 "(Q.Q) : Maafkan saya",
                 databases[6][1] +
-                "-san, tetapi anda tidak berhak mengakses command ini (anda bukan Admin).")
+                "-san, anda bukan Admin.")
     else:
         # Pengguna belum login
         print(" <('.')> : Maaf, anda belum login.")

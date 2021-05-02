@@ -67,8 +67,8 @@ def riwayatambil(databases):
             # Pengguna bukan admin
             print(
                 "(;-;) : Maafkan saya",
-                databases[active_account][2] + "-san",
-                "saya tidak dapat mengizinkan anda menggunakan command ini (anda bukan Admin).")
+                databases[active_account][1] + "-san",
+                "anda bukan Admin.")
         else:
             # Pengguna adalah admin
             if check_file_tidak_kosong(databases[consumable_history]):
