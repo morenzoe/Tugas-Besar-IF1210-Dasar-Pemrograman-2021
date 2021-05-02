@@ -12,7 +12,7 @@ import os
 
 # Daftar library lokal
 from login import cek_active_account
-from cek_csv import cek_folder
+from cek_csv import cek_folder, get_cwd_folder_name, cek_file_csv
 from carirarity import tahun_int_to_str
 from constant import user, gadget, consumable, consumable_history, \
     gadget_borrow_history, gadget_return_history, \
@@ -127,7 +127,7 @@ def save(databases):
     isLoggedIn = cek_active_account(databases)
     if not isLoggedIn:
         # Pengguna belum login, terminate prosedur riwayatkembali
-        print("(^.^): Silahkan login terlebih dahulu.")
+        print("(^.^) : Silahkan login terlebih dahulu.")
         return databases
 
     # Pengguna sudah login, mendapatkan data terkait pengguna
@@ -148,7 +148,7 @@ def save(databases):
     # Memvalidasi input nama folder
     while True:
         # Meminta nama folder untuk penyimpanan data
-        folder_save = input("(~ ^v^)~: Masukkan nama folder penyimpanan: ")
+        folder_save = input("(~ ^v^)~ : Masukkan nama folder penyimpanan : ")
 
         # Memvalidasi nama folder
         isValid = validasi_folder(folder_save)
@@ -170,19 +170,29 @@ def save(databases):
             # Input tidak valid, pengisian diulang
             else:
                 print("\nm(><)m : Input tidak sesuai. Ulangi! \n")
+    
+    # Mendapatkan nama folder workspace
+    folder_workspace, cwd = get_cwd_folder_name()
+    
+    # Memeriksa memeriksa kelengkapan file csv dalam folder workspace
+    if folder_save == folder_workspace:
+        csv_found = cek_file_csv(cwd)
+        if csv_found:
+            folder_path = cwd
+    
+    else:
+        # Memeriksa ada tidaknya folder tersebut dalam workspace
+        folder_path, workspace = cek_folder(folder_save)
 
-    # Memeriksa ada tidaknya folder tersebut dalam workspace
-    folder_path, workspace = cek_folder(folder_save)
-
-    # Folder tidak ada, membuat folder baru dengan nama sesuai input
-    if folder_path == 'folder tidak ada':
-        folder_path = os.path.join(workspace, folder_save)
-        try:
-            os.makedirs(folder_path)
-        except OSError:
-            print("\n(╥_╥) : Data tidak berhasil disimpan, terjadi eror "
-                  + "terkait sistem.")
-            return databases
+        # Folder tidak ada, membuat folder baru dengan nama sesuai input
+        if folder_path == 'folder tidak ada':
+            folder_path = os.path.join(workspace, folder_save)
+            try:
+                os.makedirs(folder_path)
+            except OSError:
+                print("\n(╥_╥) : Data tidak berhasil disimpan, terjadi eror "
+                      + "terkait sistem.")
+                return databases
 
     # Folder ada, simpan semua data dalam file berekstensi .csv
     print("\n( o _o) : Saving...")

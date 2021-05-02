@@ -92,11 +92,11 @@ def ubah(ID, data, jumlah):
         if jumlah >= 0:
             print(
                 "\n(=^v^=) :", jumlah, (data[idx][1])
-                + "berhasil ditambahkan. Stok sekarang :", (data[idx][3]))
+                + " berhasil ditambahkan. Stok sekarang :", (data[idx][3]))
         else:
             print(
                 "\n(=^v^=) :", jumlah, (data[idx][1])
-                + "berhasil dibuang. Stok sekarang :", (data[idx][3]))
+                + " berhasil dibuang. Stok sekarang :", (data[idx][3]))
 
 
 # ALGORITMA PROGRAM UTAMA

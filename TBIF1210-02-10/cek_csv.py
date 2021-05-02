@@ -89,21 +89,46 @@ def cek_folder(nama_folder_tujuan):
             return 'folder tidak ada', workspace
 
 
+def cek_file_csv(path):
+    files = os.listdir(path)
+    return all(item in files for item in nama_csv)
+
+def get_cwd_folder_name():
+    # Mendapatkan path current working directory
+    cwd = os.getcwd()
+    
+    # Mendapatkan nama folder workspace dari belakang cwd
+    for i in range(len(cwd)-1,0,-1):
+        if cwd[i]=='\\':
+            cwd_idx = i+1
+            break
+    folder_workspace = cwd[cwd_idx:]
+    return folder_workspace, cwd
+
 # ALGORITMA PROGRAM UTAMA
 def cek_csv(argumen):
     # Memvalidasi nama folder dari argumen cmd
     nama_folder_tujuan = cek_argumen(argumen)
+    
+    # Mendapatkan nama folder workspace
+    folder_workspace, cwd = get_cwd_folder_name()
+    
+    # Memeriksa memeriksa kelengkapan file csv dalam folder workspace
+    if nama_folder_tujuan == folder_workspace:
+        csv_found = cek_file_csv(cwd)
+        if csv_found:
+            folder_tujuan_dir = cwd
+        
+    else:
+        # Memvalidasi keberadaan nama folder
+        folder_tujuan_dir, workspace = cek_folder(nama_folder_tujuan)
 
-    # Memvalidasi keberadaan nama folder
-    folder_tujuan_dir, workspace = cek_folder(nama_folder_tujuan)
+        # Folder tidak ditemukan, mengembalikan pesan eror
+        if folder_tujuan_dir == 'folder tidak ada':
+            return folder_tujuan_dir
 
-    # Folder tidak ditemukan, mengembalikan pesan eror
-    if folder_tujuan_dir == 'folder tidak ada':
-        return folder_tujuan_dir
-
-    # Folder ditemukan, memeriksa kelengkapan file csv
-    files = os.listdir(folder_tujuan_dir)
-    csv_found = all(item in files for item in nama_csv)
+        # Folder ditemukan, memeriksa kelengkapan file csv
+        csv_found = cek_file_csv(folder_tujuan_dir)
 
     # Semua file csv lengkap, mengembalikan path directory folder
     if csv_found:

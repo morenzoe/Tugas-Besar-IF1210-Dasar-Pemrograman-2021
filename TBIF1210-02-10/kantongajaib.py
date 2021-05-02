@@ -92,23 +92,23 @@ print("\n(*^*)/ : Selamat datang di sistem inventarisasi Doraemonangis")
 # Membuat infinite loop untuk program utama
 while True:
 
-    # debugging
-    print("\nMode debugging:")
-    printSemua = input("Print databases sebagai array? (Y/N) ")
-    if printSemua in "Yy":
-        print(databases)
-        print()
-    printSebagian = input("Print databases per baris? (Y/N) ")
-    if printSebagian in "Yy":
-        for i in range(len(nama_csv)):
-            print(nama_csv[i])
-            for row in databases[i]:
-                print(row)
-                print()
-        print("active_account")
-        for row in databases[active_account]:
-            print(row)
-    # debugging
+    # # debugging
+    # print("\nMode debugging:")
+    # printSemua = input("Print databases sebagai array? (Y/N) ")
+    # if printSemua in "Yy":
+        # print(databases)
+        # print()
+    # printSebagian = input("Print databases per baris? (Y/N) ")
+    # if printSebagian in "Yy":
+        # for i in range(len(nama_csv)):
+            # print(nama_csv[i])
+            # for row in databases[i]:
+                # print(row)
+                # print()
+        # print("active_account")
+        # for row in databases[active_account]:
+            # print(row)
+    # # debugging
 
     # Menerima input perintah fungsi
     command = input("\n>>> ")
