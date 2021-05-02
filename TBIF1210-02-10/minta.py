@@ -1,60 +1,53 @@
-from datetime import datetime as dtm
+"""Program F10 - Mengambil Consumable
+Fungsi ini akan mengambil input id consumable yang ingin diminta,
+input jumlah dan tanggal. Pengambilan berhasil jika semua input
+valid. Setelah melakukan pengambilan, jumlah id tersebut pada file 
+consumable akan diubah. Lalu, dibuat entri baru pada file riwayat consumable.
+
+Akses : User
+"""
+
+# KAMUS
+# Daftar library lokal
 from constant import consumable, consumable_history, active_account
-from hapusitem import cek_role, cek_id, cek_idx, db_cek
+from hapusitem import cek_role, cek_id, cek_idx
+from pinjam import input_jumlah, input_tanggal
 from login import cek_active_account
 
-def cek_jumlah(id, type, jumlah, data):
-    db = db_cek(data, type)
-    if cek_id(id, data, type):
-        idx = cek_idx(id, data, type)
-        if jumlah <= db[idx][3]:
-            return True
-        else:
-            return False
+# Daftar variabel
+# databases     : array of array of array
+# data          : array of array
+# history	    : array of array
+# isLoggedIn	: bool
+# type          : str
+# id            : str		
+# name          : str
+# id_pengambil	: str
+# idx           : int				
+# id_ambil      : int
+# stock			: int
+# user          : array
+# new_history	: array 
 
-    
-def input_tanggal(transaksi):
-    date_input = input("Tanggal "+transaksi+" : ")
-    try:
-        tanggal = dtm.strptime(date_input , '%d/%m/%Y' )
-        return date_input
-    except:
-        return 0
- 
- 
-def input_jumlah(id, data, type):
-    while True:
-        count_input = input("Jumlah               : ")
-        try:
-            count = int(count_input)
-        except:
-            return 0
-        if count > 0:
-            if cek_jumlah(id, type, count, data):
-                break
-            else:
-                print("Maaf, jumlah melebihi persediaan")
-        else:
-            print("Jumlah harus lebih besar dari 0!")
-    return count
-
-
+# ALGORITMA PROGRAM UTAMA
 def minta(databases):
-    isLoggedin = cek_active_account(databases) 
+    isLoggedIn = cek_active_account(databases) 
+    type = "consumable"    
     data = databases[consumable]
     history = databases[consumable_history]
-    type = "consumable"
-    
-    if isLoggedin:
+    # Validasi login
+    if isLoggedIn:
         user = databases[active_account]
+        # Validasi role
         if cek_role(databases):
             print("(^_^) : Maaf, perintah ini hanya dapat diakses oleh User!")
         else:
             id = input("Masukan ID item      : ")
-            if (len(id)) == 0 :
+            # Validasi id
+            if (len(id)) <= 1:
                 print("\n┐(´д`)┌ : Maaf, input id tidak valid!")
             else:
-                if id[0] == "C" and len(id) != 1:
+                if id[0] == "C":
                     if cek_id(id, databases, type):
                         idx = cek_idx(id, databases, type)
                         stock = data[idx][3]
@@ -64,15 +57,17 @@ def minta(databases):
                             if jumlah != 0:
                                 tanggal = input_tanggal("permintaan  ")
                                 if tanggal != 0:
-                                    #proses rewrite consumable                                    
+                                    # Proses rewrite consumable                                    
                                     stock = stock - jumlah
                                     data[idx][3] = stock
-                                    #proses write consumable_history
+                                    
+                                    # Proses write consumable_history
                                     id_ambil = len(history)
                                     id_pengambil = user[0]
                                     new_history = [str(id_ambil), int(id_pengambil), id, tanggal, jumlah]
                                     history.append(new_history)
-                                    #output
+                                    
+                                    # Output
                                     print("\n\(^ω^)/ : Item", name, "("+str(jumlah)+") telah berhasil diambil!")
                                 else:
                                     print("\n┐(´д`)┌ : Maaf, input tanggal tidak sesuai format dd/mm/yyyy!")
