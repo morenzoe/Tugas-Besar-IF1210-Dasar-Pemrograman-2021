@@ -1,7 +1,7 @@
 """Program F10 - Mengambil Consumable
 Fungsi ini akan mengambil input id consumable yang ingin diminta,
 input jumlah dan tanggal. Pengambilan berhasil jika semua input
-valid. Setelah melakukan pengambilan, jumlah id tersebut pada file 
+valid. Setelah melakukan pengambilan, jumlah id tersebut pada file
 consumable akan diubah. Lalu, dibuat entri baru pada file riwayat consumable.
 
 Akses : User
@@ -20,19 +20,19 @@ from login import cek_active_account
 # history	    : array of array
 # isLoggedIn	: bool
 # type          : str
-# id            : str		
+# id            : str
 # name          : str
 # id_pengambil	: str
-# idx           : int				
+# idx           : int
 # id_ambil      : int
 # stock			: int
 # user          : array
-# new_history	: array 
+# new_history	: array
 
-# ALGORITMA PROGRAM UTAMA
+# ALGORITMA
 def minta(databases):
-    isLoggedIn = cek_active_account(databases) 
-    type = "consumable"    
+    isLoggedIn = cek_active_account(databases)
+    type = "consumable"
     data = databases[consumable]
     history = databases[consumable_history]
     # Validasi login
@@ -57,20 +57,25 @@ def minta(databases):
                             if jumlah != 0:
                                 tanggal = input_tanggal("permintaan  ")
                                 if tanggal != 0:
-                                    # Proses rewrite consumable                                    
+                                    # Proses rewrite consumable
                                     stock = stock - jumlah
                                     data[idx][3] = stock
-                                    
+
                                     # Proses write consumable_history
                                     id_ambil = len(history)
                                     id_pengambil = user[0]
-                                    new_history = [str(id_ambil), int(id_pengambil), id, tanggal, jumlah]
+                                    new_history = [
+                                        str(id_ambil), int(id_pengambil), id, tanggal, jumlah]
                                     history.append(new_history)
-                                    
+
                                     # Output
-                                    print("\n\(^ω^)/ : Item", name, "("+str(jumlah)+") telah berhasil diambil!")
+                                    print(
+                                        "\n\\(^ω^)/ : Item",
+                                        name,
+                                        "(" + str(jumlah) + ") telah berhasil diambil!")
                                 else:
-                                    print("\n┐(´д`)┌ : Maaf, input tanggal tidak sesuai format dd/mm/yyyy!")
+                                    print(
+                                        "\n┐(´д`)┌ : Maaf, input tanggal tidak sesuai format dd/mm/yyyy!")
                             else:
                                 print("\n┐(´д`)┌ : Maaf, input jumlah tidak valid!")
                         else:
@@ -81,5 +86,5 @@ def minta(databases):
                     print("\n┐(´д`)┌ : Maaf, input id tidak valid!")
     else:
         print("(^_^) : Silahkan login terlebih dahulu!")
-    
+
     return databases
