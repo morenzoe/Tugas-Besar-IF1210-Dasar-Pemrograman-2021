@@ -50,7 +50,7 @@ def printdata(nama_user, nama_consumeable, database):
     # Mengoutput data yang bersangkutan
 
     # ALGORITMA
-    print("\nID Peminjaman       : ", database[0])
+    print("\nID Pengambilan      : ", database[0])
     print("Nama Pengambil      : ", nama_user)
     print("Nama consumeable    : ", nama_consumeable)
     print("Tanggal Pengambilan : ", database[3])

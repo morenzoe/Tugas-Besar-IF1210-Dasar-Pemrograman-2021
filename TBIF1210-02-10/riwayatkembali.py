@@ -1,6 +1,6 @@
 """Program F12 - Melihat Riwayat Pengembalian Gadget
 Fungsi ini akan menampilkan riwayat pengembalian gadget berisi data
-ID Pengambil, Nama Pengambil, Nama Gadget, dan Tanggal Pengambilan.
+ID Pengambil, Nama Pengambil, Nama Gadget, dan Tanggal Pengembalian.
 Kemudian fungsi menampilkan riwayat pengembalian yang terurut menurun
 dari yang paling terbaru.  Fungsi menampilkan tiap lima entri sekali.
 
@@ -36,7 +36,7 @@ from constant import user, gadget, gadget_borrow_history, \
 def print_baris(row):
     """Prosedur ini akan menampilkan entri pada array sesuai dengan
     tampilan berupa:
-    ID Pengambilan      :
+    ID Pengembilan      :
     Nama Pengambil      :
     Nama Gadget         :
     Tanggal Pengembalian:
@@ -46,7 +46,7 @@ def print_baris(row):
     # row : array of str and int
 
     # ALGORITMA
-    print("ID Pengambilan      :", row[0])
+    print("ID Pengembilan      :", row[0])
     print("Nama Pengambil      :", row[1])
     print("Nama Gadget         :", row[2])
     print("Tanggal Pengembalian:", row[3])
@@ -97,7 +97,7 @@ def tampilan(list_tampilan, username):
 def buat_list_tampilan(kembali, pinjam, user, gadget):
     """Fungsi ini akan menerima input array berisi entri pengembalian,
     peminjaman, user, dan gadget.  Kemudian fungsi mengembalikan
-    sebuah array berisi entri ID Pengambilan, Nama Pengambil, Nama
+    sebuah array berisi entri ID Pengembalian, Nama Pengambil, Nama
     Gadget, dan Tanggal Pengembalian yang sesuai pada tiap
     entri pengembalian.
     """
@@ -105,7 +105,7 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
     # KAMUS LOKAL
     # kembali, pinjam, user, gadget, kembali_copy : array of array
     # row_copy : array of str and int
-    # id_pengambilan, id_peminjam : int
+    # id_pengembalian, id_peminjam : int
     # nama_pengambil, id_gadget, nama_gadget, tanggal_pengembalian : str
 
     # ALGORITMA
@@ -114,15 +114,15 @@ def buat_list_tampilan(kembali, pinjam, user, gadget):
 
     # Mencari data yang sesuai untuk tiap array pada riwayat pengembalian
     for row in kembali:
-        id_pengambilan = row[1]
-        id_peminjam = pinjam[id_pengambilan][1]
+        id_pengembalian = row[1]
+        id_peminjam = pinjam[id_pengembalian][1]
         nama_pengambil = nama_user_id(user, id_peminjam)
-        id_gadget = pinjam[id_pengambilan][2]
+        id_gadget = pinjam[id_pengembalian][2]
         nama_gadget = nama_gadget_id(gadget, id_gadget)
         tanggal_pengembalian = row[2]
 
         # Membuat array baru dengan data yang sesuai untuk satu peminjaman
-        row_copy = [id_pengambilan, nama_pengambil,
+        row_copy = [id_pengembalian, nama_pengambil,
                     nama_gadget, tanggal_pengembalian]
 
         # Mengumpulkan array dengan data yang sesuai dari tiap peminjaman
