@@ -149,7 +149,6 @@ def csv_to_array(path, csv, konversi):
         database.append(clean_array_word)
     return database
 
-
 # ALGORITMA PROGRAM UTAMA
 def load(path):
     # Inisialisasi array penyimpanan
