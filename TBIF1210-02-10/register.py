@@ -68,26 +68,26 @@ def register(databases):
 
             # Input nama
             nama = input("Masukkan nama anda     : ")
-            if checkdelimit(nama):
+            if checkdelimit(nama) or nama == "":
                 print("(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
             nama = nama.title()
 
             # Input username
             username = input("Masukkan username anda : ")
-            if checkdelimit(username) or check_username(username, data):
+            if checkdelimit(username) or check_username(username, data) or username == "":
                 print("(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
             # Input password
             password = input("Masukkan password anda : ")
-            if checkdelimit(password):
+            if checkdelimit(password) or password == "":
                 print("(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
             # Input alamat
             alamat = input("Masukkan alamat anda   : ")
-            if checkdelimit(alamat):
+            if checkdelimit(alamat) or alamat == "":
                 print("(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
