@@ -36,10 +36,10 @@ def ubahtahun(tahun_str):
             except:
                 # Jika tidak bisa dilakukan proses diatas
                 check = 0
-                tahun_str = input("Masukan salah! Masukkan kategori dengan benar! (YYYY): ")
+                tahun_str = input("\n(9*.*)9 : Masukan salah! Masukkan tahun dengan benar! (YYYY): ")
         else:
             check = 0
-            tahun_str = input("Masukan salah! Masukkan kategori dengan benar! (YYYY): ")
+            tahun_str = input("\n(9*.*)9 : Masukan salah! Masukkan tahun dengan benar! (YYYY): ")
     return tahun_int
 
 
@@ -49,7 +49,7 @@ def ubahkategori(kategori):
     # ALGORITMA
     while not(kategori == ">" or kategori == "<" or kategori ==
               "=" or kategori == ">=" or kategori == "<="):
-        kategori = input("Masukan salah! Masukkan kategori dengan benar! [>,<,=,>=,<=] : ")
+        kategori = input("\n(9*.*)9 : Masukan salah! Masukkan kategori dengan benar! [>,<,=,>=,<=] : ")
     return kategori
 
 
