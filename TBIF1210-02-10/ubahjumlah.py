@@ -40,7 +40,7 @@ def cekid(ID, data):
     if cek == 1:
         # Mengembalikan True apabila ID ditemukan
         return True
-    else: # cek == 0
+    else:  # cek == 0
         # Mengembalikan False apabila ID tidak ditemukan
         return False
 
@@ -229,9 +229,9 @@ def ubahjumlah(databases):
                 return databases
         else:
             print(
-                "\n(D_D): Maaf, role"
-                + username
-                + "bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
+                "\n(D_D): Maaf, role" +
+                username +
+                "bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
             return databases
     else:
         print(

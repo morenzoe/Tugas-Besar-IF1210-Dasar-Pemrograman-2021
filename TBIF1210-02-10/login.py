@@ -56,7 +56,7 @@ def login(databases):
             if row[1] == username:
                 # username ditemukan, lanjutkan program
                 find_username = True
-                if row[4] == password: 
+                if row[4] == password:
                     # password ditemukan, lanjutkan program
                     find_password = True
                     break
@@ -95,14 +95,14 @@ def login(databases):
 
         # Beritahu pengguna mengenai akun yang sedang aktif
         print(
-            "\n\(>.<)/ : Saat ini kamu sedang login sebagai "
+            "\n\\(>.<)/: Saat ini kamu sedang login sebagai "
             + username
             + ".")
 
         # Minta pengguna untuk melakukan exit terlebih dahulu apabila ingin
         # menggunakan akun lain
         print(
-            "\n\(>.<)/ : Silakan exit terlebih dahulu apabila ingin login dengan akun lain.")
+            "\n\\(>.<)/: Silakan exit terlebih dahulu apabila ingin login dengan akun lain.")
         return databases
 
     return databases
