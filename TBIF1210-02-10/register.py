@@ -53,21 +53,6 @@ def checkdelimit(check):
         return False
 
 
-def ubahusername(masukan, database):
-    # meminta input username kepada pengguna jika terdapat kesalahan
-    # penginputan
-
-    # KAMUS LOKAL
-    # masukan           : string { jika input pengguna salah, akan dilakukan
-    # penginputan ulang }
-
-    # ALGORITMA
-    while check_username(masukan, database):
-        masukan = input(
-            "\n(9'.')9 : username sudah diambil, mohon beri masukan username yang lain! : ")
-    return masukan
-
-
 def register(databases):
     # Me-register akun pengguna
     isLoggedIn = cek_active_account(databases)
@@ -90,8 +75,7 @@ def register(databases):
 
             # Input username
             username = input("Masukkan username anda : ")
-            username = ubahusername(username, databases[user])
-            if checkdelimit(username):
+            if checkdelimit(username) or check_username(username, data):
                 print("(*.*) : Kesalahan input, terminasi fungsi.")
                 return databases
 
