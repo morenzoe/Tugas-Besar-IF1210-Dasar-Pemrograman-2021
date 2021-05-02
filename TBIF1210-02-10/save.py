@@ -30,8 +30,6 @@ from constant import user, gadget, consumable, consumable_history, \
 # isValid : bool
 
 # Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
-
-
 def to_str(array_word_int):
     """Fungsi ini membaca array dan merubah tipe data semua elemen menjadi
     tipe data string.  Kemudian fungsi mengembalikan array of string tersebut.

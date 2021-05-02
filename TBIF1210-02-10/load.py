@@ -18,15 +18,14 @@ from constant import nama_csv, dikonversi
 # Daftar konstanta
 # nama_csv : array of str
 # dikonversi : array of array of bool
+# active_account : array of string
 
 # Daftar variabel
 # databases : array of array of array
 # database : array of array
-# active_account : list
+
 
 # Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
-
-
 def semicolon_split(row):
     """Fungsi ini membaca string dan menghasilkan list of string tiap
     kata antara titik koma (semicolon). Fungsi kemudian mengembalikan
@@ -117,9 +116,9 @@ def csv_to_array(path, csv, konversi):
     # path, csv : str
     # konversi : array of array of bool
     # f : file
-    # rows, array_word : array of string
-    # array_word_int : array of string and int
-    # database : array of array of string and int
+    # rows, array_word : array of str
+    # array_word_int : array of str and int
+    # database : array of array of str and int
 
     # ALGORITMA
     # Membuat path directory penyimpanan
