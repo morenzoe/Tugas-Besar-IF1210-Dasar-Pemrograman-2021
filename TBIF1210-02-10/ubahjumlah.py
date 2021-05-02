@@ -84,27 +84,19 @@ def ubah(ID, data, jumlah):
     if stok < 0:
         # Beritahu pengguna gagal mengubah jumlah
         print(
-            "\n(/^-^)/:"
-            + jumlah
-            + data[idx][1]
+            "\n(/^-^)/ :", jumlah, data[idx][1]
             + "gagal dibuang karena stok kurang. Stok sekarang : "
             + (data[idx][3]))
     else:  # stok >= 0
         # Beritahu pengguna telah berhasil mengubah jumlah
         if jumlah >= 0:
             print(
-                "\n(=^v^=):"
-                + jumlah
-                + (data[idx][1])
-                + "berhasil ditambahkan. Stok sekarang : "
-                + (data[idx][3]))
+                "\n(=^v^=) :", jumlah, (data[idx][1])
+                + "berhasil ditambahkan. Stok sekarang :", (data[idx][3]))
         else:
             print(
-                "\n(=^v^=):"
-                + jumlah,
-                + (data[idx][1])
-                + "berhasil dibuang. Stok sekarang : "
-                + (data[idx][3]))
+                "\n(=^v^=) :", jumlah, (data[idx][1])
+                + "berhasil dibuang. Stok sekarang :", (data[idx][3]))
 
 
 # ALGORITMA PROGRAM UTAMA
