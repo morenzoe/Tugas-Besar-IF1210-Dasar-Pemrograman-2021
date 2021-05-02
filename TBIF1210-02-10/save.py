@@ -83,10 +83,8 @@ def array_to_csv(csv, folder_path, database):
         # Melengkapi format tahun YYYY untuk data gadget
         if csv == "gadget.csv":
             # Konversi hanya untuk baris dengan tipe data integer
-            print(array_word_int)
             if type(array_word_int[5]) == int:
                 array_word_int[5] = tahun_int_to_str(array_word_int[5])
-                print(array_word_int)
         
         # Mengubah isi array menjadi string dan menggabungkan semuanya
         array_word = to_str(array_word_int)
