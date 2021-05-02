@@ -24,7 +24,7 @@ from login import cek_active_account
 # file_gadget, file_consumable: array of array
 # isLoggedIn                  : bool
 # pjgID                       : int
-# ID                          : chr+int
+# ID                          : str
 # nama, deskripsi             : str
 # jumlah, tahun               : int
 # rarity                      : chr
