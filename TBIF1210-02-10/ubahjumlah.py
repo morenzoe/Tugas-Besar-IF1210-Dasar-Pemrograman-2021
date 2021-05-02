@@ -122,7 +122,7 @@ def ubahjumlah(databases):
         # Validasi role pengguna
         if role == "Admin":
             # Input ID gadget atau consumable
-            ID = input("Masukan ID    : ")
+            ID = input("Masukan ID     : ")
             pjgID = len(ID)
             if pjgID == 0:
                 print(
@@ -161,7 +161,7 @@ def ubahjumlah(databases):
                         # Memastikan bahwa ID tersedia
                         if cekid(ID, file_gadget):
                             # Input jumlah
-                            jumlah = input("Masukan Jumlah: ")
+                            jumlah = input("Masukan Jumlah : ")
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
@@ -204,7 +204,7 @@ def ubahjumlah(databases):
 
                         # Memastikan bahwa ID tersedia
                         if cekid(ID, file_consumable):
-                            jumlah = input("Masukan Jumlah: ")
+                            jumlah = input("Masukan Jumlah : ")
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
