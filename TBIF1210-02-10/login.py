@@ -21,7 +21,7 @@ from constant import user, active_account
 # find_username: bool
 # find_password: bool
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def cek_active_account(databases):
     # KAMUS LOKAL
     # jumlah_data : int
