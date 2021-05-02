@@ -14,7 +14,6 @@ import datetime
 # Daftar library lokal
 from login import cek_active_account
 from riwayatpinjam import sortMaxMinTanggal, nama_user_id, nama_gadget_id
-from carirarity import tahun_int_to_str
 from constant import user, gadget, gadget_borrow_history, \
     gadget_return_history, active_account
 
