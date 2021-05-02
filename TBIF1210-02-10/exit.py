@@ -32,7 +32,7 @@ def exit(databases):
 
     # Memvalidasi input dari pengguna
     while True:
-        save_option = input("(^.^): Apakah "
+        save_option = input("(^.^) : Apakah "
                             + username
                             + " mau melakukan penyimpanan file "
                             + "yang sudah diubah? (Y/N) ")
@@ -42,7 +42,7 @@ def exit(databases):
             break
 
         # Input tidak valid, pengisian diulang
-        print("\nm(>.<)m: Input tidak sesuai. Ulangi! \n")
+        print("\nm(>.<)m : Input tidak sesuai. Ulangi! \n")
 
     # Pengguna ingin menyimpan data, melakukan fungsi save
     if save_option in "Yy":
@@ -50,4 +50,4 @@ def exit(databases):
         save(databases)
 
     # Program selesai, terminasi loop program utama
-    sys.exit("\n(^O^)/: Sampai jumpa!")
+    sys.exit("\n(^O^)/ : Sampai jumpa!")

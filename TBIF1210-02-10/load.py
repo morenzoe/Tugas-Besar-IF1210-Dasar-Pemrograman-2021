@@ -157,7 +157,7 @@ def load(path):
     databases = []
 
     # Menampilkan pesan proses pembacaan
-    print("\n(o.O): Loading...")
+    print("\n(o.O) : Loading...")
 
     # Membaca dan mengolah semua file csv
     for i in range(len(nama_csv)):

@@ -101,10 +101,10 @@ def validasi_folder(folder_save):
 
     # Memvalidasi input nama folder
     if len(folder_save) == 0:
-        print("\nm/(>.<)\\m: Nama folder tidak boleh kosong!")
+        print("\nm/(>.<)\\m : Nama folder tidak boleh kosong!")
         return False
     elif any(item in folder_save for item in karakter_eror):
-        print("\nm/(>.<)\\m: Nama folder tidak boleh mengandung karakter "
+        print("\nm/(>.<)\\m : Nama folder tidak boleh mengandung karakter "
               + 'sebagai berikut: \\ / : * & ? " < > |')
         return False
     else:
@@ -129,7 +129,7 @@ def save(databases):
     if role != "Admin" and role != "User":
         # Role pengguna bukan admin atau user, terminate prosedur save
         print(
-            "=(^.^)=: Role "
+            "=(^.^)= : Role "
             + username
             + " bukan Admin atau User, silahkan login akun Admin atau "
             + "User.")
@@ -148,7 +148,7 @@ def save(databases):
             break
 
         while True:
-            lanjut = input("\n(^-^): Apakah "
+            lanjut = input("\n(^-^) : Apakah "
                            + username
                            + " ingin melanjutkan penyimpanan? (Y/N) ")
 
@@ -160,7 +160,7 @@ def save(databases):
                 return databases
             # Input tidak valid, pengisian diulang
             else:
-                print("\nm(><)m: Input tidak sesuai. Ulangi! \n")
+                print("\nm(><)m : Input tidak sesuai. Ulangi! \n")
 
     # Memeriksa ada tidaknya folder tersebut dalam workspace
     folder_path, workspace = cek_folder(folder_save)
@@ -171,16 +171,16 @@ def save(databases):
         try:
             os.makedirs(folder_path)
         except OSError:
-            print("\n(╥_╥): Data tidak berhasil disimpan, terjadi eror "
+            print("\n(╥_╥) : Data tidak berhasil disimpan, terjadi eror "
                   + "terkait sistem.")
             return databases
 
     # Folder ada, simpan semua data dalam file berekstensi .csv
-    print("\n( o _o): Saving...")
+    print("\n( o _o) : Saving...")
     for i in range(len(databases) - 1):
         csv = nama_csv[i]
         array_to_csv(csv, folder_path, databases[i])
 
     # Penyimpanan selesai, menampilkan pesan konfirmasi
-    print("\n( >_<)b: Data telah disimpan di folder", folder_save + "!")
+    print("\n( >_<)b : Data telah disimpan di folder", folder_save + "!")
     return databases
