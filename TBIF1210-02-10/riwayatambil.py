@@ -32,6 +32,7 @@ from carirarity import check_file_tidak_kosong
 # nama_consumeable      : string
 
 
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def nama_user_id(database, id):
     # Menghasilkan nama dari user dari id tersebut
 
@@ -59,6 +60,7 @@ def printdata(nama_user, nama_consumeable, database):
     print("Jumlah              : ", database[4])
 
 
+# ALGORITMA PROGRAM UTAMA
 def riwayatambil(databases):
     # Menampilkan data pada "consumeable_borrow_history.csv" secara berurutan
     # berdasarkan tanggal
