@@ -18,7 +18,7 @@ from login import cek_active_account
 # isLoggedIn : boolean
 # role       : string
 
-
+# ALGORITMA
 def help(databases):
     isLoggedIn = cek_active_account(databases)
     if not isLoggedIn:
@@ -68,6 +68,6 @@ kembalikan : untuk melakukan pengembalian gadget
 minta      : untuk meminta consumable yang tersedia
 save       : untuk menyimpan data ke dalam file
 exit       : untuk keluar dari aplikasi
-===============================================================================""") 
+===============================================================================""")
 
-    return databases            
+    return databases
