@@ -18,6 +18,7 @@ tidak  akan  menyimpan perubahan data yang telah dilakukan.
 
 # Desain Kamus Data
 1.File User (user.csv)
+
  a. id: string
  b. username : string
  c. nama     : string
