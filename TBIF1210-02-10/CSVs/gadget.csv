@@ -1,6 +1,6 @@
 id;nama;deskripsi;jumlah;rarity;tahun_ditemukan
-G1;Kalung Kucing;Kalung untuk berubah menjadi kucing.;12;A;1256
-G2;Scratch Post;Pengabul keinginan dengan dicakar.;2;S;1527
+G1;Kalung Kucing;Kalung untuk berubah menjadi kucing.;22;A;1256
+G2;Scratch Post;Pengabul keinginan dengan dicakar.;1;S;1527
 G3;Cakar Kucing;Sarung tangan cakar kucing.;26;C;1870
 G4;Kaki Kucing;Berjalan dengan senyap seperti kucing.;14;B;1990
 G5;Ekor Kucing;Menjaga keseimbangan seperti kucing.;55;C;1998
@@ -8,3 +8,4 @@ G6;Cat Paw;Pemukul berbentuk tangan kucing.;100;C;1788
 G7;Lidah Kucing;Pembersih rambut kucing.;107;C;1880
 G8;Wajan Kue Cubit;Wajan untuk membuat kue cubit.;3;A;0976
 G9;Cat Ear;Bando dengan aksesoris telinga kucing. Dapat menerjemahkan suara kucing.;1;S;0241
+G10;Komputer;Untuk ngoding DasPro.;4;S;2021
