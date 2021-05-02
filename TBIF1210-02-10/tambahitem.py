@@ -99,7 +99,7 @@ def tambahitem(databases):
         # Validasi role pengguna
         if role == "Admin":
             # Input ID
-            ID = input("Masukan ID             : ")
+            ID = input("Masukan ID              : ")
             pjgID = len(ID)
 
             # Validasi ID
@@ -143,7 +143,7 @@ def tambahitem(databases):
                         # ada di database
                         if cekid(ID, file_gadget):
                             # Input nama
-                            nama = input("Masukan Nama           : ")
+                            nama = input("Masukan Nama            : ")
                             if len(nama) == 0:
                                 print(
                                     "\n(/'O'): Nama tidak boleh kosong!")
@@ -155,7 +155,7 @@ def tambahitem(databases):
                                     return databases
 
                             # Input deksripsi
-                            deskripsi = input("Masukan Deskripsi      : ")
+                            deskripsi = input("Masukan Deskripsi       : ")
                             if len(deskripsi) == 0:
                                 print(
                                     "\n(/'O'): Deskripsi tidak boleh kosong!")
@@ -167,7 +167,7 @@ def tambahitem(databases):
                                     return databases
 
                             # Input jumlah
-                            jumlah = input("Masukan Jumlah         : ")
+                            jumlah = input("Masukan Jumlah          : ")
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
@@ -180,7 +180,7 @@ def tambahitem(databases):
                                 return databases
 
                             # Input rarity
-                            rarity = input("Masukan Rarity         : ")
+                            rarity = input("Masukan Rarity          : ")
                             pjg = len(rarity)
                             while True:
                                 if pjg == 1 and rarity in "CBAS":
@@ -191,7 +191,7 @@ def tambahitem(databases):
                                     return databases
 
                             # Input tahun ditemukannya gadget
-                            tahun = input("Masukan tahun ditemukan: ")
+                            tahun = input("Masukan tahun ditemukan : ")
                             thn = len(tahun)
                             try:
                                 tahun = int(tahun)
@@ -256,7 +256,7 @@ def tambahitem(databases):
                         # ada sebelumnya
                         if cekid(ID, file_consumable):
                             # Input nama
-                            nama = input("Masukan Nama           : ")
+                            nama = input("Masukan Nama            : ")
                             if len(nama) == 0:
                                 print(
                                     "\n(/'O'): Nama tidak boleh kosong!")
@@ -268,7 +268,7 @@ def tambahitem(databases):
                                     return databases
 
                             # Input deksripsi
-                            deskripsi = input("Masukan Deskripsi      : ")
+                            deskripsi = input("Masukan Deskripsi       : ")
                             if len(deskripsi) == 0:
                                 print(
                                     "\n(/'O'): Deskripsi tidak boleh kosong!")
@@ -280,7 +280,7 @@ def tambahitem(databases):
                                     return databases
 
                             # Input jumlah
-                            jumlah = input("Masukan Jumlah         : ")
+                            jumlah = input("Masukan Jumlah          : ")
                             try:
                                 jumlah = int(jumlah)
                             except BaseException:
@@ -293,7 +293,7 @@ def tambahitem(databases):
                                 return databases
 
                             # Input rarity
-                            rarity = input("Masukan Rarity         : ")
+                            rarity = input("Masukan Rarity          : ")
                             pjg = len(rarity)
                             while True:
                                 if pjg == 1 and rarity in "CBAS":
