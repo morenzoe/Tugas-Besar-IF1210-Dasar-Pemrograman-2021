@@ -44,7 +44,7 @@ def login(databases):
         username = input("Ketik username: ")
         password = input("Ketik password: ")
 
-        # list dari user.csv
+        # List dari user.csv
         file = databases[user]
 
         # Inisialisasi awal untuk mencari username
@@ -70,7 +70,7 @@ def login(databases):
 
         # username dan password cocok dengan database
         if find_username and find_password:
-            # tambahkan data login ke acctive_account
+            # Tambahkan data login ke acctive_account
             databases[active_account] = row
 
             # Beritahu pengguna bahwa telah berhasil login
