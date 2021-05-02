@@ -45,7 +45,7 @@ def cekid(ID, data):
     if cek == 0:
         # Mengembalikan Tue apabila ID tidak ditemukan
         return True
-    else: # cek != 0
+    else:  # cek != 0
         # Mengembalikan False apabila ID ditemukan
         return False
 
@@ -326,9 +326,9 @@ def tambahitem(databases):
 
         else:  # role != Admin
             print(
-                "\n(D_D): Maaf, role"
-                + username
-                + "bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
+                "\n(D_D): Maaf, role" +
+                username +
+                "bukan Admin, silahkan login sebagai Admin untuk mengubah jumlah item.")
             return databases
     else:  # not isLoggedIn
         print("(^v^): Kamu belum login, silahkan login sebagai Admin untuk mengubah jumlah item.")
