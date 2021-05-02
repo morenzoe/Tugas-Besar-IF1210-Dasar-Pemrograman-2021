@@ -20,7 +20,7 @@ from carirarity import check_file_tidak_kosong, printdata
 # tahun_str             : string
 # kategori              : string
 
-
+# Definisi, Spesifikasi, dan Realisasi Fungsi/Prosedur
 def ubahtahun(tahun_str):
     # mengubah input tahun menjadi integer jika bisa, jika tidak bisa akan
     # diminta kembali dari input user
@@ -35,13 +35,15 @@ def ubahtahun(tahun_str):
             check = 1
             try:
                 tahun_int = int(tahun_str)
-            except:
+            except BaseException:
                 # Jika tidak bisa dilakukan proses diatas
                 check = 0
-                tahun_str = input("\n(9*.*)9 : Masukan salah! Masukkan tahun dengan benar! (YYYY): ")
+                tahun_str = input(
+                    "\n(9*.*)9 : Masukan salah! Masukkan tahun dengan benar! (YYYY): ")
         else:
             check = 0
-            tahun_str = input("\n(9*.*)9 : Masukan salah! Masukkan tahun dengan benar! (YYYY): ")
+            tahun_str = input(
+                "\n(9*.*)9 : Masukan salah! Masukkan tahun dengan benar! (YYYY): ")
     return tahun_int
 
 
@@ -51,10 +53,11 @@ def ubahkategori(kategori):
     # ALGORITMA
     while not(kategori == ">" or kategori == "<" or kategori ==
               "=" or kategori == ">=" or kategori == "<="):
-        kategori = input("\n(9*.*)9 : Masukan salah! Masukkan kategori dengan benar! [>,<,=,>=,<=] : ")
+        kategori = input(
+            "\n(9*.*)9 : Masukan salah! Masukkan kategori dengan benar! [>,<,=,>=,<=] : ")
     return kategori
 
-
+# ALGORTIMA PROGRAM UTAMA
 def caritahun(database):
     # Meng-output data gadget berdasarkan tahun ditemukannya
     isLoggedIn = cek_active_account(database)
