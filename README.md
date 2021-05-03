@@ -20,38 +20,69 @@ tidak  akan  menyimpan perubahan data yang telah dilakukan.
 1.File User (user.csv)
 
  a. id: string
+ 
  b. username : string
+ 
  c. nama     : string
+ 
  d. alamat   : string
+ 
  e. password : string
+ 
  f. role     : string
+ 
 
 2.File Gadget (gadget.csv)
+
  a. id              : string
+ 
  b. nama            : string
+ 
  c. deskripsi       : string
+ 
  d. jumlah          : integer
+ 
  e. rarity          : string
+ 
  f. tahun_ditemukan : integer
 
+
 3.File Consumable (consumable.csv)
+
  a. id        : string
+ 
  b. nama      : string
+ 
  c. deskripsi : string
+ 
  d. jumlah    : integer
+ 
  e. rarity    : string
+ 
 
 4.File Pengambilan Consumable(consumable_history.csv)
+
  a. id                  : string
+ 
  b. id_pengambil        : integer
+ 
  c. id_consumable       : string
+ 
  d. tanggal_pengambilan : string
+ 
  e. jumlah              : integer
+ 
 
 5.File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
+
  a. id                 : string
+ 
  b. id_peminjam        : integer
+ 
  c. id_gadget          : string
+ 
  d. tanggal_peminjaman : string
+ 
  e. jumlah             : integer
+ 
  f. is_returned        : boolean
