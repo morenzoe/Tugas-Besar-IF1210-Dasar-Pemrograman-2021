@@ -32,6 +32,7 @@ tidak  akan  menyimpan perubahan data yang telah dilakukan.
  f. role     : string
  
 
+
 2.File Gadget (gadget.csv)
 
  a. id              : string
@@ -47,6 +48,7 @@ tidak  akan  menyimpan perubahan data yang telah dilakukan.
  f. tahun_ditemukan : integer
 
 
+
 3.File Consumable (consumable.csv)
 
  a. id        : string
@@ -58,6 +60,7 @@ tidak  akan  menyimpan perubahan data yang telah dilakukan.
  d. jumlah    : integer
  
  e. rarity    : string
+ 
  
 
 4.File Pengambilan Consumable(consumable_history.csv)
@@ -71,6 +74,7 @@ tidak  akan  menyimpan perubahan data yang telah dilakukan.
  d. tanggal_pengambilan : string
  
  e. jumlah              : integer
+ 
  
 
 5.File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
