@@ -7,14 +7,17 @@ yaitu Admin dan User. Fitur – fitur pada program ini juga terbagi menjadi bebe
 untuk Admin saja adalah registrasi, menambahkan item ke databases, mengubah jumlah item, menghapus item, melihat riwayat peminjaman dan pengembalian gadget, dan 
 melihat riwayat permintaan consumable. Fitur yang hanya boleh diakses oleh User di antaranya fitur peminjaman gadget, pengembalian gadget, dan permintaan consumable. 
 Sedangkan fitur yang dapat diakses oleh keduanya adalah fitur pencarian gadget berdasarkan rarity dan tahun ditemukan, fitur save, fitur help dan exit.
-     
+
+
 Untuk mengakses aplikasi ini, User harus diregistrasikan terlebih dahulu oleh Admin menggunakan fitur registrasi. Setelah diregistrasikan, User harus login terlebih 
 dahulu untuk bisa mengakses fitur user yang tersedia. Setelah berhasil login, baik User ataupun Admin, riwayat login akan ditambahkan ke active_account di database.
-     
+
+
 Setiap fitur pada program akan mengidentifikasi role akun terlebih dahulu melalui riwayat login dari active_account di database. Sehingga pemilik akun tidak akan 
 dapat mengakses fitur yang tidak sesuai dengan role nya. Pada setiap fitur, program akan meminta Admin atau User untuk memasukkan input sesuai dengan kebutuhan pada 
 fitur. Setiap adanya kesalahan input, atau input tidak valid, maka program akan langsung diterminasikan. 
-     
+
+
 Untuk mengakhiri penggunaan program, gunakan fungsi exit. Pada fungsi ini, program akan bertanya pada pemilik akun apakah ingin menyimpan perubahan data yang telah 
 dilakukan, atau tidak. Apabila pemilik akun mengetik “Y” atau “y”, maka program akan menyimpan perubahan. Tetapi, apabila pemilik akun mengetik “N” atau “n”, maka 
 program tidak akan menyimpan perubahan data yang telah dilakukan.
