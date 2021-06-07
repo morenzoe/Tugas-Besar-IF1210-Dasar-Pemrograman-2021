@@ -13,8 +13,7 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
 - - - -
 # Desain Kamus Data
 1. File User (user.csv)
-
-    Variable  | Type
+    Column  | Data Type
     :---: | :---:
     id  | string
     username  | string
@@ -24,7 +23,7 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
     role  | string
 
 2. File Gadget (gadget.csv)
-    Variable  | Type
+    Column  | Data Type
     :---: | :---:
     id  | string
     nama  | string
@@ -34,7 +33,7 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
     tahun_ditemukan  | integer
 
 3. File Consumable (consumable.csv)
-    Variable  | Type
+    Column  | Data Type
     :---: | :---:
     id  | string
     nama  | string
@@ -43,7 +42,7 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
     rarity  | string
 
 4. File Pengambilan Consumable(consumable_history.csv)
-    Variable  | Type
+    Column  | Data Type
     :---: | :---:
     id  | string
     id_pengambil  | integer
@@ -52,7 +51,7 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
     jumlah  | integer
 
 5. File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
-    Variable  | Type
+    Column  | Data Type
     :---: | :---:
     id  | string
     id_peminjam  | integer
