@@ -10,16 +10,18 @@ dahulu untuk bisa mengakses fitur user yang tersedia. Setelah berhasil _login_, 
 
 
 Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu melalui riwayat _login_ dari active_account di database. Sehingga pemilik akun tidak akan dapat mengakses fitur yang tidak sesuai dengan _role_-nya. Pada setiap fitur, program akan meminta Admin atau User untuk memasukkan _input_ sesuai dengan kebutuhan pada fitur. Setiap adanya kesalahan _input_, atau _input_ tidak valid, maka program akan langsung diterminasikan untuk menghindari _program loop_ yang tidak diinginkan. Penggunaan program dapat diakhiri dengan menggunakan fungsi _exit_. Pada fungsi ini, program akan bertanya pada pemilik akun apakah ingin menyimpan perubahan data yang telah dilakukan atau tidak. Program akan melakukan penyimpanan sesuai input pemilik akun.
-
-
+- - - -
 # Desain Kamus Data
 1. File User (user.csv)
-    - id       : string
-    - username : string
-    - nama     : string
-    - alamat   : string
-    - password : string
-    - role     : string
+Variable  | Type
+------------- | -------------
+id  | string
+username  | string
+nama  | string
+alamat  | string
+password  | string
+role  | string
+
  
 2. File Gadget (gadget.csv)
     - id              : string
