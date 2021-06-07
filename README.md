@@ -1,12 +1,8 @@
 # Tugas Besar IF1210 Dasar Pemrograman 2021
-Sistem inventasisasi gadget dan consumables.
+Sistem inventasisasi _gadgets_ dan _consumables_.
 
 # Deskripsi Persoalan
-Program pada tugas besar kali ini merupakan program inventarisasi gadget dan consumable dengan menggunakan bahasa python. Terdapat dua jenis role dalam program ini, 
-yaitu Admin dan User. Fitur – fitur pada program ini juga terbagi menjadi beberapa jenis, yaitu fitur untuk Admin saja, User saja, serta fitur Admin dan User. Fitur 
-untuk Admin saja adalah registrasi, menambahkan item ke databases, mengubah jumlah item, menghapus item, melihat riwayat peminjaman dan pengembalian gadget, dan 
-melihat riwayat permintaan consumable. Fitur yang hanya boleh diakses oleh User di antaranya fitur peminjaman gadget, pengembalian gadget, dan permintaan consumable. 
-Sedangkan fitur yang dapat diakses oleh keduanya adalah fitur pencarian gadget berdasarkan rarity dan tahun ditemukan, fitur save, fitur help dan exit.
+Program pada tugas besar kali ini merupakan program inventarisasi _gadget_ dan _consumable_ dengan menggunakan bahasa Python. Terdapat dua jenis _role_ dalam program ini, yaitu Admin dan User. Fitur–fitur pada program ini juga terbagi menjadi beberapa jenis, yaitu fitur untuk Admin saja, User saja, serta fitur Admin dan User. Fitur untuk Admin saja adalah registrasi, menambahkan _item_ ke _databases_, mengubah jumlah _item_, menghapus _item_, melihat riwayat peminjaman dan pengembalian gadget, dan melihat riwayat permintaan _consumable_. Fitur yang hanya boleh diakses oleh User di antaranya fitur peminjaman _gadget_, pengembalian _gadget_, dan permintaan _consumable_. Sedangkan fitur yang dapat diakses oleh keduanya adalah fitur pencarian _gadget_ berdasarkan _rarity_ dan tahun ditemukan, fitur _save_, fitur _help_ dan _exit_.
 
 
 Untuk mengakses aplikasi ini, User harus diregistrasikan terlebih dahulu oleh Admin menggunakan fitur registrasi. Setelah diregistrasikan, User harus login terlebih 
@@ -23,68 +19,40 @@ dilakukan, atau tidak. Apabila pemilik akun mengetik “Y” atau “y”, maka 
 program tidak akan menyimpan perubahan data yang telah dilakukan.
 
 # Desain Kamus Data
-1.File User (user.csv)
-- id: string
+1. File User (user.csv)
+- id       : string
 - username : string
 - nama     : string
 - alamat   : string
 - password : string
 - role     : string
  
-2.File Gadget (gadget.csv)
+2. File Gadget (gadget.csv)
+- id              : string
+- nama            : string
+- deskripsi       : string
+- jumlah          : integer
+- rarity          : string
+- tahun_ditemukan : integer
 
- a. id              : string
- 
- b. nama            : string
- 
- c. deskripsi       : string
- 
- d. jumlah          : integer
- 
- e. rarity          : string
- 
- f. tahun_ditemukan : integer
+3. File Consumable (consumable.csv)
+- id        : string
+- nama      : string
+- deskripsi : string
+- jumlah    : integer
+- rarity    : string
 
+4. File Pengambilan Consumable(consumable_history.csv)
+- id                  : string
+- id_pengambil        : integer
+- id_consumable       : string
+- tanggal_pengambilan : string
+- jumlah              : integer
 
-
-3.File Consumable (consumable.csv)
-
- a. id        : string
- 
- b. nama      : string
- 
- c. deskripsi : string
- 
- d. jumlah    : integer
- 
- e. rarity    : string
- 
- 
-
-4.File Pengambilan Consumable(consumable_history.csv)
-
- a. id                  : string
- 
- b. id_pengambil        : integer
- 
- c. id_consumable       : string
- 
- d. tanggal_pengambilan : string
- 
- e. jumlah              : integer
- 
- 
-
-5.File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
-
- a. id                 : string
- 
- b. id_peminjam        : integer
- 
- c. id_gadget          : string
- 
- d. tanggal_peminjaman : string
- 
- e. jumlah             : integer
- 
- f. is_returned        : boolean
+5. File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
+- id                 : string
+- id_peminjam        : integer
+- id_gadget          : string
+- tanggal_peminjaman : string
+- jumlah             : integer
+- is_returned        : boolean
