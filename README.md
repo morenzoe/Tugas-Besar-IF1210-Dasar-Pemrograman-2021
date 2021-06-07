@@ -13,14 +13,14 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
 - - - -
 # Desain Kamus Data
 1. File User (user.csv)
-Variable  | Type
+   Variable   |      Type
 ------------- | -------------
-id  | string
-username  | string
-nama  | string
-alamat  | string
-password  | string
-role  | string
+      id      |     string
+   username   |     string
+     nama     |     string
+    alamat    |     string
+   password   |     string
+     role     |     string
 
  
 2. File Gadget (gadget.csv)
