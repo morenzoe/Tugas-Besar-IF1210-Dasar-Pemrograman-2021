@@ -51,7 +51,7 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
     tanggal_pengambilan  | string
     jumlah  | integer
 
-5 File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
+5. File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
     Variable  | Type
     :---: | :---:
     id  | string
