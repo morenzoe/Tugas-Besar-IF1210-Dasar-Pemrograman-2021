@@ -22,31 +22,31 @@ Setiap fitur pada program akan mengidentifikasi _role_ akun terlebih dahulu mela
     - role     : string
  
 2. File Gadget (gadget.csv)
-- id              : string
-- nama            : string
-- deskripsi       : string
-- jumlah          : integer
-- rarity          : string
-- tahun_ditemukan : integer
+    - id              : string
+    - nama            : string
+    - deskripsi       : string
+    - jumlah          : integer
+    - rarity          : string
+    - tahun_ditemukan : integer
 
 3. File Consumable (consumable.csv)
-- id        : string
-- nama      : string
-- deskripsi : string
-- jumlah    : integer
-- rarity    : string
+    - id        : string
+    - nama      : string
+    - deskripsi : string
+    - jumlah    : integer
+    - rarity    : string
 
 4. File Pengambilan Consumable(consumable_history.csv)
-- id                  : string
-- id_pengambil        : integer
-- id_consumable       : string
-- tanggal_pengambilan : string
-- jumlah              : integer
+    - id                  : string
+    - id_pengambil        : integer
+    - id_consumable       : string
+    - tanggal_pengambilan : string
+    - jumlah              : integer
 
 5. File Riwayat Peminjaman Gadget (gadget_borrow_history.csv)
-- id                 : string
-- id_peminjam        : integer
-- id_gadget          : string
-- tanggal_peminjaman : string
-- jumlah             : integer
-- is_returned        : boolean
+    - id                 : string
+    - id_peminjam        : integer
+    - id_gadget          : string
+    - tanggal_peminjaman : string
+    - jumlah             : integer
+    - is_returned        : boolean
